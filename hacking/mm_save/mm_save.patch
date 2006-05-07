@@ -1,0 +1,265 @@
+Index: freemind/freemind/main/FreeMind.java
+===================================================================
+--- freemind/freemind/main/FreeMind.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/main/FreeMind.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -86,6 +86,7 @@
+     private static final String DEFAULT_LANGUAGE = "en";
+     private HookFactory nodeHookFactory;
+ 	public static final String version = "0.8.0";
++    public static final String DEFAULT_CHARSET = "UTF-8";
+     //    public static final String defaultPropsURL = "freemind.properties";
+     public URL defaultPropsURL;
+     //    public static Properties defaultProps;
+Index: freemind/freemind/main/XMLElement.java
+===================================================================
+--- freemind/freemind/main/XMLElement.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/main/XMLElement.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -258,7 +258,58 @@
+      */
+     private int parserLineNr;
+ 
++    private String special_attlist[];
+ 
++    private void _addtoAttlist(int list, String att)
++    {
++    	if (list >= special_attlist.length || list <0)
++    		return;
++    	this.special_attlist[list] += att;
++    	this.special_attlist[list] += ":";
++    	return;
++    }
++    
++    private boolean _isInAttlist(int list, String att)
++    {
++    	if ( list >= special_attlist.length || list <0 || special_attlist[list].length()==0 ) {
++    		return false;
++    	}
++    	return this.special_attlist[list].contains(att+':');
++    }
++
++    public boolean isInWhiteAttlist(String att)
++    {
++    	if ( this.special_attlist[0].length()==0 ) {
++    		return true;
++    	}
++    	return _isInAttlist(0, att);
++    }
++
++    public boolean isInBlackAttlist(String att)
++    {
++    	return _isInAttlist(1, att);
++    }
++
++    public boolean isInEmAttlist(String att)
++    {
++    	return _isInAttlist(2, att);
++    }
++
++    public void addtoWhiteAttlist(String att)
++    {
++    	_addtoAttlist(0, att);
++    }
++
++    public void addtoBlackAttlist(String att)
++    {
++    	_addtoAttlist(1, att);
++    }
++
++    public void addtoEmAttlist(String att)
++    {
++    	_addtoAttlist(2, att);
++    }
++    
+     /**
+      * Creates and initializes a new XML element.
+      * Calling the construction is equivalent to:
+@@ -484,6 +535,10 @@
+         this.children = new Vector();
+         this.entities = entities;
+         this.lineNr = 0;
++        this.special_attlist = new String[3];
++        for (int i = 0; i < 3; i++) {
++            special_attlist[i] = "";
++        }
+         Enumeration enumerator = this.entities.keys();
+         while (enumerator.hasMoreElements()) {
+             Object key = enumerator.nextElement();
+@@ -2200,9 +2256,25 @@
+         if (! this.attributes.isEmpty()) {
+             Iterator enumerator = this.attributes.keySet().iterator();
+             while (enumerator.hasNext()) {
+-                writer.write(' ');
+                 String key = (String) enumerator.next();
+                 String value = (String) this.attributes.get(key);
++
++                if ( this.isInBlackAttlist(key) )
++                {
++                	continue;
++                }
++                else if ( ! this.isInWhiteAttlist(key) )
++                {
++                	continue;
++                }
++
++                writer.write(' ');
++
++                if ( this.isInEmAttlist(key) )
++                {
++                	writer.write("\n\t");
++                }
++
+                 writer.write(key);
+                 writer.write('='); writer.write('"');
+                 this.writeEncoded(writer, value);
+Index: freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+===================================================================
+--- freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -49,13 +49,18 @@
+ import java.util.TimerTask;
+ import java.util.Vector;
+ 
++import javax.xml.parsers.DocumentBuilder;
++import javax.xml.parsers.DocumentBuilderFactory;
+ import javax.xml.transform.Result;
+ import javax.xml.transform.Source;
+ import javax.xml.transform.Transformer;
+ import javax.xml.transform.TransformerFactory;
++import javax.xml.transform.dom.DOMSource;
+ import javax.xml.transform.stream.StreamResult;
+ import javax.xml.transform.stream.StreamSource;
+ 
++import org.w3c.dom.Document;
++
+ import freemind.controller.MindMapNodesSelection;
+ import freemind.main.FreeMind;
+ import freemind.main.FreeMindMain;
+@@ -414,9 +419,25 @@
+             return false; }
+         try {            
+             //Generating output Stream            
+-            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file) ) );
+-            getXml(fileout);
++            // TODO user can define his/her own charset.
++            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), FreeMind.DEFAULT_CHARSET ) );
++            getXml(fileout, 0);
+ 
++            // Save FOLDED attrib into .mmx file...
++            String ext = Tools.getExtension(file.getName());
++            String mmxFileName = "";
++            if(!ext.equals("mm")) 
++            {
++            	mmxFileName = file.getName()+".mmx";
++            }
++            else 
++            {
++            	mmxFileName = Tools.removeExtension(file.getName()) + ".mmx";
++            }
++            File mmxfile = new File(file.getParent(), mmxFileName); 
++            BufferedWriter mmxfileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(mmxfile), FreeMind.DEFAULT_CHARSET ) );
++            getXml(mmxfileout, 1);
++
+             if(!isInternal) {
+                 setFile(file);            
+                 setSaved(true);
+@@ -440,11 +461,33 @@
+     /** writes the content of the map to a writer.
+ 	 * @param fileout
+ 	 * @throws IOException
++	 * @param managed_attr =0|1|2
++	 *         0 (default): do not check FOLDED attribute(make all nodes folded), saved in .mm file.
++	 *         1          : only check and save FOLDED attributes in .mmx file.
++	 *         2          : save all attributes in one single .mm file.
+ 	 */
+ 	public void getXml(Writer fileout) throws IOException {
++		getXml(fileout, 0);
++	}
++
++	public void getXml(Writer fileout, int managed_attr) throws IOException {
++		// TODO user can define his/her own charset.
++		fileout.write("<?xml version=\"1.0\" encoding=\"" + FreeMind.DEFAULT_CHARSET + "\"?>\n");
+ 		fileout.write("<map version=\""+getFrame().getFreemindVersion()+"\">\n");
+-		fileout.write("<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n");
+-		((MindMapNodeModel)getRoot()).save(fileout, this.getLinkRegistry());
++		switch (managed_attr)
++		{
++		case 0:
++			fileout.write("<!-- This .mm file is CVS/SVN friendly, also has better Chinese character support. Contribute by http://www.WorldHello.net, orignal FreeMind can be found at http://freemind.sourceforge.net -->\n");
++			break;
++		case 1:
++			fileout.write("<!-- .mmx files store some extra mm file attributes, which should not check in to CVS/SVN -->\n");
++			break;
++		case 2:
++		default:
++			fileout.write("<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n");
++			break;
++		}
++		((MindMapNodeModel)getRoot()).save(fileout, this.getLinkRegistry(), managed_attr);
+ 		fileout.write("</map>\n");
+ 		fileout.close();
+ 	}
+Index: freemind/freemind/modes/NodeAdapter.java
+===================================================================
+--- freemind/freemind/modes/NodeAdapter.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/modes/NodeAdapter.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -826,7 +826,20 @@
+ 	    return controller.getNodeID(this);
+ 	}
+ 
++    /**
++     * @param writer
++     * @param registry
++     * @param managed_attr =0|1|2
++     *         0 (default): do not check FOLDED attribute(make all nodes folded), saved in .mm file.
++     *         1          : only check and save FOLDED attributes in .mmx file.
++     *         2          : save all attributes in one single .mm file.
++     * @return
++     */
+     public XMLElement save(Writer writer, MindMapLinkRegistry registry) throws IOException {
++    	return save(writer, registry, 0);
++    }
++    
++    public XMLElement save(Writer writer, MindMapLinkRegistry registry, int managed_attr) throws IOException {
+     	XMLElement node = new XMLElement();
+     	
+ //    	if (!isNodeClassToBeSaved()) {
+@@ -863,8 +876,28 @@
+             }
+         }
+             
+-    	if (isFolded()) {
+-               node.setAttribute("FOLDED","true"); }
++    	// do not check FOLDED attribute, save all nodes as Folded, except root and leaf.
++        node.addtoEmAttlist("TEXT");
++        switch (managed_attr)
++    	{
++        case 0:
++        	if (!isRoot() && !isLeaf()) {
++    			node.setAttribute("FOLDED","true");
++    		}
++           	node.addtoBlackAttlist("CREATED");
++           	node.addtoBlackAttlist("MODIFIED");
++        	break;
++        case 1:
++        	node.addtoWhiteAttlist("ID");
++        	node.addtoWhiteAttlist("FOLDED");
++           	node.addtoWhiteAttlist("CREATED");
++           	node.addtoWhiteAttlist("MODIFIED");
++        case 2:
++        default:
++                if (isFolded()) {
++                        node.setAttribute("FOLDED","true"); 
++                }
++    	}
+     	
+         // fc, 17.12.2003: Remove the left/right bug.
+         //                       VVV  save if and only if parent is root.
+@@ -950,7 +983,7 @@
+             //recursive
+             for (ListIterator e = childrenUnfolded(); e.hasNext();) {
+                 NodeAdapter child = (NodeAdapter) e.next();
+-                child.save(writer, registry);
++                child.save(writer, registry, managed_attr);
+             }
+             node.writeClosingTag(writer);
+         } else {

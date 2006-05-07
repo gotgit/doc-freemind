@@ -1,0 +1,129 @@
+Index: freemind/freemind/main/FreeMind.java
+===================================================================
+--- freemind/freemind/main/FreeMind.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/main/FreeMind.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -86,6 +86,7 @@
+     private static final String DEFAULT_LANGUAGE = "en";
+     private HookFactory nodeHookFactory;
+ 	public static final String version = "0.8.0";
++    public static final String DEFAULT_CHARSET = "UTF-8";
+     //    public static final String defaultPropsURL = "freemind.properties";
+     public URL defaultPropsURL;
+     //    public static Properties defaultProps;
+Index: freemind/freemind/main/XMLElement.java
+===================================================================
+--- freemind/freemind/main/XMLElement.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/main/XMLElement.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -2140,7 +2195,8 @@
+     {
+         try {
+             ByteArrayOutputStream out = new ByteArrayOutputStream();
+-            OutputStreamWriter writer = new OutputStreamWriter(out);
++            // TODO user can define his/her own charset.
++            OutputStreamWriter writer = new OutputStreamWriter(out, FreeMind.DEFAULT_CHARSET);
+             this.write(writer);
+             writer.flush();
+             return new String(out.toByteArray());
+@@ -2285,7 +2357,7 @@
+                     break;
+                 default:
+                     int unicode = (int) ch;
+-                    if ((unicode < 32) || (unicode > 126)) {
++                    if (unicode < 32) {
+                         writer.write('&'); writer.write('#');
+                         writer.write('x');
+                         writer.write(Integer.toString(unicode, 16));
+Index: freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+===================================================================
+--- freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -414,7 +419,8 @@
+             return false; }
+         try {            
+             //Generating output Stream            
++            // TODO user can define his/her own charset.
+-            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file) ) );
++            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), FreeMind.DEFAULT_CHARSET ) );
+             getXml(fileout);
+ 
+             if(!isInternal) {
+@@ -440,6 +461,8 @@
+ 	 * @throws IOException
+ 	 */
+ 	public void getXml(Writer fileout) throws IOException {
++		// TODO user can define his/her own charset.
++		fileout.write("<?xml version=\"1.0\" encoding=\"" + FreeMind.DEFAULT_CHARSET + "\"?>\n");
+ 		fileout.write("<map version=\""+getFrame().getFreemindVersion()+"\">\n");
+ 		fileout.write("<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n");
+ 		((MindMapNodeModel)getRoot()).save(fileout, this.getLinkRegistry());
+Index: freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+===================================================================
+--- freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -509,21 +552,37 @@
+         // FIXME: fc, 27.8.2005: this is for 0.8.0 only. Remove me ASAP.
+         String expectedAlternativeStartString = "<map version=\"0.7.1\"";
+         int versionInfoLength = expectedStartString.length();
+-        // reading the start of the file:
+-        StringBuffer buffer = readFileStart(file, versionInfoLength);
+-        String mapStart = "";
+-        if(buffer.length() >= versionInfoLength){
+-        		mapStart = buffer.substring(0, versionInfoLength);
++        // reading magic number:
++    	BufferedReader in=null;
++    	String str = null;
++        try {
++                // get the file start into the memory:
++                in = new BufferedReader(new FileReader(file));
++                while ((str = in.readLine()) != null) {
++                        if (str.substring(0,4).equals("<map"))
++                        {
++                                break;
++                        }
++                }
++                in.close();
++        } catch (Exception e) {
++                e.printStackTrace();
++                str = "";
+         }
++
++        String mapStart = str;
++        if(str.length() >= versionInfoLength){
++                mapStart = str.substring(0, versionInfoLength);
++        }
+         // the resulting file is accessed by the reader:
+         Reader reader = null;
+         if (mapStart.equals(expectedStartString)
+@@ -543,32 +602,6 @@
+         return (MindMapNodeModel) mapElement.getMapChild();
+     }
+ 
+-    /** Returns pMinimumLength bytes of the files content.
+-     * @param file
+-     * @param pMinimumLength
+-     * @return
+-     * @throws FileNotFoundException
+-     * @throws IOException
+-     */
+-    private StringBuffer readFileStart(File file, int pMinimumLength) {
+-    	BufferedReader in=null;
+-    	StringBuffer buffer = new StringBuffer();
+-        try {
+-			// get the file start into the memory:
+-			in = new BufferedReader(new FileReader(file));
+-			String str;
+-			while ((str = in.readLine()) != null) {
+-				buffer.append(str);
+-				if (buffer.length() >= pMinimumLength)
+-					break;
+-			}
+-			in.close();
+-		} catch (Exception e) {
+-			e.printStackTrace();
+-			return new StringBuffer();
+-		}
+-		return buffer;
+-    }
+ 
+     
+ 

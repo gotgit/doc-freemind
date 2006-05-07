@@ -1,0 +1,82 @@
+Index: .classpath
+===================================================================
+--- .classpath	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .classpath	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<classpath>
++	<classpathentry output="bin" kind="src" path="freemind"/>
++	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
++	<classpathentry kind="lib" path="freemind/lib/commons-lang-2.0.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/forms-1.0.5.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/jarbundler-1.4.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/dom.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-api.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-impl.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-libs.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-xjc.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jax-qname.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/namespace.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/relaxngDatatype.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/sax.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/xsdlib.jar"/>
++	<classpathentry kind="output" path="bin"/>
++</classpath>
+Index: .project
+===================================================================
+--- .project	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .project	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<projectDescription>
++	<name>myfreemind</name>
++	<comment></comment>
++	<projects>
++	</projects>
++	<buildSpec>
++		<buildCommand>
++			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
++			<triggers>full,incremental,</triggers>
++			<arguments>
++				<dictionary>
++					<key>LaunchConfigHandle</key>
++					<value>&lt;project&gt;/.externalToolBuilders/freemind_Ant_Builder.launch</value>
++				</dictionary>
++			</arguments>
++		</buildCommand>
++		<buildCommand>
++			<name>org.eclipse.jdt.core.javabuilder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++	</buildSpec>
++	<natures>
++		<nature>org.eclipse.jdt.core.javanature</nature>
++	</natures>
++</projectDescription>
+Index: .externalToolBuilders/freemind_Ant_Builder.launch
+===================================================================
+--- .externalToolBuilders/freemind_Ant_Builder.launch	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .externalToolBuilders/freemind_Ant_Builder.launch	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<launchConfiguration type="org.eclipse.ant.AntBuilderLaunchConfigurationType">
++<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
++<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="false"/>
++<booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="true"/>
++<stringAttribute key="org.eclipse.ui.externaltools.ATTR_RUN_BUILD_KINDS" value="full,incremental,"/>
++<booleanAttribute key="org.eclipse.ant.ui.ATTR_TARGETS_UPDATED" value="true"/>
++<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:/myfreemind/freemind}"/>
++<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/myfreemind/freemind/build.xml}"/>
++<booleanAttribute key="org.eclipse.ui.externaltools.ATTR_TRIGGERS_CONFIGURED" value="true"/>
++<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
++<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
++</launchConfiguration>
+Index: .settings/org.eclipse.jdt.ui.prefs
+===================================================================
+--- .settings/org.eclipse.jdt.ui.prefs	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .settings/org.eclipse.jdt.ui.prefs	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,3 @@
++#Tue Apr 04 22:29:04 CST 2006
++eclipse.preferences.version=1
++org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates/>

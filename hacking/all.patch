@@ -1,0 +1,673 @@
+Index: freemind/freemind/main/FreeMind.java
+===================================================================
+--- freemind/freemind/main/FreeMind.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/main/FreeMind.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -86,6 +86,8 @@
+     private static final String DEFAULT_LANGUAGE = "en";
+     private HookFactory nodeHookFactory;
+ 	public static final String version = "0.8.0";
++    public static final String hackedversion = " (WorldHello.net)";
++    public static final String DEFAULT_CHARSET = "UTF-8";
+     //    public static final String defaultPropsURL = "freemind.properties";
+     public URL defaultPropsURL;
+     //    public static Properties defaultProps;
+Index: freemind/freemind/main/XMLElement.java
+===================================================================
+--- freemind/freemind/main/XMLElement.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/main/XMLElement.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -258,7 +258,58 @@
+      */
+     private int parserLineNr;
+ 
++    private String special_attlist[];
+ 
++    private void _addtoAttlist(int list, String att)
++    {
++    	if (list >= special_attlist.length || list <0)
++    		return;
++    	this.special_attlist[list] += att;
++    	this.special_attlist[list] += ":";
++    	return;
++    }
++    
++    private boolean _isInAttlist(int list, String att)
++    {
++    	if ( list >= special_attlist.length || list <0 || special_attlist[list].length()==0 ) {
++    		return false;
++    	}
++    	return this.special_attlist[list].contains(att+':');
++    }
++
++    public boolean isInWhiteAttlist(String att)
++    {
++    	if ( this.special_attlist[0].length()==0 ) {
++    		return true;
++    	}
++    	return _isInAttlist(0, att);
++    }
++
++    public boolean isInBlackAttlist(String att)
++    {
++    	return _isInAttlist(1, att);
++    }
++
++    public boolean isInEmAttlist(String att)
++    {
++    	return _isInAttlist(2, att);
++    }
++
++    public void addtoWhiteAttlist(String att)
++    {
++    	_addtoAttlist(0, att);
++    }
++
++    public void addtoBlackAttlist(String att)
++    {
++    	_addtoAttlist(1, att);
++    }
++
++    public void addtoEmAttlist(String att)
++    {
++    	_addtoAttlist(2, att);
++    }
++    
+     /**
+      * Creates and initializes a new XML element.
+      * Calling the construction is equivalent to:
+@@ -484,6 +535,10 @@
+         this.children = new Vector();
+         this.entities = entities;
+         this.lineNr = 0;
++        this.special_attlist = new String[3];
++        for (int i = 0; i < 3; i++) {
++            special_attlist[i] = "";
++        }
+         Enumeration enumerator = this.entities.keys();
+         while (enumerator.hasMoreElements()) {
+             Object key = enumerator.nextElement();
+@@ -2140,7 +2195,8 @@
+     {
+         try {
+             ByteArrayOutputStream out = new ByteArrayOutputStream();
+-            OutputStreamWriter writer = new OutputStreamWriter(out);
++            // TODO user can define his/her own charset.
++            OutputStreamWriter writer = new OutputStreamWriter(out, FreeMind.DEFAULT_CHARSET);
+             this.write(writer);
+             writer.flush();
+             return new String(out.toByteArray());
+@@ -2200,9 +2256,25 @@
+         if (! this.attributes.isEmpty()) {
+             Iterator enumerator = this.attributes.keySet().iterator();
+             while (enumerator.hasNext()) {
+-                writer.write(' ');
+                 String key = (String) enumerator.next();
+                 String value = (String) this.attributes.get(key);
++
++                if ( this.isInBlackAttlist(key) )
++                {
++                	continue;
++                }
++                else if ( ! this.isInWhiteAttlist(key) )
++                {
++                	continue;
++                }
++
++                writer.write(' ');
++
++                if ( this.isInEmAttlist(key) )
++                {
++                	writer.write("\n\t");
++                }
++
+                 writer.write(key);
+                 writer.write('='); writer.write('"');
+                 this.writeEncoded(writer, value);
+@@ -2285,7 +2357,7 @@
+                     break;
+                 default:
+                     int unicode = (int) ch;
+-                    if ((unicode < 32) || (unicode > 126)) {
++                    if (unicode < 32) {
+                         writer.write('&'); writer.write('#');
+                         writer.write('x');
+                         writer.write(Integer.toString(unicode, 16));
+Index: freemind/freemind/main/FreeMindSplash.java
+===================================================================
+--- freemind/freemind/main/FreeMindSplash.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/main/FreeMindSplash.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -61,6 +61,7 @@
+         		Font font = new Font("Arial", Font.BOLD, 16);
+         		g2.setFont(font);
+                 // determine width of string to center it.
+                 String freemindVersion = frame.getFreemindVersion();
++                freemindVersion += " " + FreeMind.hackedversion;
+                 int width = g2.getFontMetrics().stringWidth(freemindVersion);
+         		int yCoordinate = (int)(getSize().getHeight())-14;
+                 int xCoordinate = (int)(getSize().getWidth()/2-width/2);
+Index: freemind/freemind/modes/mindmapmode/MindMapMapModel.java
+===================================================================
+--- freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/modes/mindmapmode/MindMapMapModel.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -49,13 +49,18 @@
+ import java.util.TimerTask;
+ import java.util.Vector;
+ 
++import javax.xml.parsers.DocumentBuilder;
++import javax.xml.parsers.DocumentBuilderFactory;
+ import javax.xml.transform.Result;
+ import javax.xml.transform.Source;
+ import javax.xml.transform.Transformer;
+ import javax.xml.transform.TransformerFactory;
++import javax.xml.transform.dom.DOMSource;
+ import javax.xml.transform.stream.StreamResult;
+ import javax.xml.transform.stream.StreamSource;
+ 
++import org.w3c.dom.Document;
++
+ import freemind.controller.MindMapNodesSelection;
+ import freemind.main.FreeMind;
+ import freemind.main.FreeMindMain;
+@@ -414,9 +419,25 @@
+             return false; }
+         try {            
+             //Generating output Stream            
+-            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file) ) );
+-            getXml(fileout);
++            // TODO user can define his/her own charset.
++            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), FreeMind.DEFAULT_CHARSET ) );
++            getXml(fileout, 0);
+ 
++            // Save FOLDED attrib into .mmx file...
++            String ext = Tools.getExtension(file.getName());
++            String mmxFileName = "";
++            if(!ext.equals("mm")) 
++            {
++            	mmxFileName = file.getName()+".mmx";
++            }
++            else 
++            {
++            	mmxFileName = Tools.removeExtension(file.getName()) + ".mmx";
++            }
++            File mmxfile = new File(file.getParent(), mmxFileName); 
++            BufferedWriter mmxfileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(mmxfile), FreeMind.DEFAULT_CHARSET ) );
++            getXml(mmxfileout, 1);
++
+             if(!isInternal) {
+                 setFile(file);            
+                 setSaved(true);
+@@ -440,11 +461,33 @@
+     /** writes the content of the map to a writer.
+ 	 * @param fileout
+ 	 * @throws IOException
++	 * @param managed_attr =0|1|2
++	 *         0 (default): do not check FOLDED attribute(make all nodes folded), saved in .mm file.
++	 *         1          : only check and save FOLDED attributes in .mmx file.
++	 *         2          : save all attributes in one single .mm file.
+ 	 */
+ 	public void getXml(Writer fileout) throws IOException {
++		getXml(fileout, 0);
++	}
++
++	public void getXml(Writer fileout, int managed_attr) throws IOException {
++		// TODO user can define his/her own charset.
++		fileout.write("<?xml version=\"1.0\" encoding=\"" + FreeMind.DEFAULT_CHARSET + "\"?>\n");
+ 		fileout.write("<map version=\""+getFrame().getFreemindVersion()+"\">\n");
+-		fileout.write("<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n");
+-		((MindMapNodeModel)getRoot()).save(fileout, this.getLinkRegistry());
++		switch (managed_attr)
++		{
++		case 0:
++			fileout.write("<!-- This .mm file is CVS/SVN friendly, also has better Chinese character support. Contribute by http://www.WorldHello.net, orignal FreeMind can be found at http://freemind.sourceforge.net -->\n");
++			break;
++		case 1:
++			fileout.write("<!-- .mmx files store some extra mm file attributes, which should not check in to CVS/SVN -->\n");
++			break;
++		case 2:
++		default:
++			fileout.write("<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n");
++			break;
++		}
++		((MindMapNodeModel)getRoot()).save(fileout, this.getLinkRegistry(), managed_attr);
+ 		fileout.write("</map>\n");
+ 		fileout.close();
+ 	}
+@@ -509,21 +552,37 @@
+         // FIXME: fc, 27.8.2005: this is for 0.8.0 only. Remove me ASAP.
+         String expectedAlternativeStartString = "<map version=\"0.7.1\"";
+         int versionInfoLength = expectedStartString.length();
+-        // reading the start of the file:
+-        StringBuffer buffer = readFileStart(file, versionInfoLength);
+-        String mapStart = "";
+-        if(buffer.length() >= versionInfoLength){
+-        		mapStart = buffer.substring(0, versionInfoLength);
++        // reading magic number:
++    	BufferedReader in=null;
++    	String str = null;
++        try {
++                // get the file start into the memory:
++                in = new BufferedReader(new FileReader(file));
++                while ((str = in.readLine()) != null) {
++                        if (str.substring(0,4).equals("<map"))
++                        {
++                                break;
++                        }
++                }
++                in.close();
++        } catch (Exception e) {
++                e.printStackTrace();
++                str = "";
+         }
++
++        String mapStart = str;
++        if(str.length() >= versionInfoLength){
++                mapStart = str.substring(0, versionInfoLength);
++        }
+         // the resulting file is accessed by the reader:
+         Reader reader = null;
+-        if (mapStart.equals(expectedStartString)
+-                || mapStart.equals(expectedAlternativeStartString)) {
+-            // actual version:
+-            reader = getActualReader(file);
+-        } else {
++        // join .mmx with .mm file
++        reader = getActualReader(file);
++
++        if (! mapStart.equals(expectedStartString)
++                && ! mapStart.equals(expectedAlternativeStartString)) {
+             // older version:
+-            reader = getUpdateReader(file);
++            reader = getUpdateReader(reader, file.getName());
+         }
+         try {
+             mapElement.parseFromReader(reader);
+@@ -543,45 +602,17 @@
+         return (MindMapNodeModel) mapElement.getMapChild();
+     }
+ 
+-    /** Returns pMinimumLength bytes of the files content.
+-     * @param file
+-     * @param pMinimumLength
+-     * @return
+-     * @throws FileNotFoundException
+-     * @throws IOException
+-     */
+-    private StringBuffer readFileStart(File file, int pMinimumLength) {
+-    	BufferedReader in=null;
+-    	StringBuffer buffer = new StringBuffer();
+-        try {
+-			// get the file start into the memory:
+-			in = new BufferedReader(new FileReader(file));
+-			String str;
+-			while ((str = in.readLine()) != null) {
+-				buffer.append(str);
+-				if (buffer.length() >= pMinimumLength)
+-					break;
+-			}
+-			in.close();
+-		} catch (Exception e) {
+-			e.printStackTrace();
+-			return new StringBuffer();
+-		}
+-		return buffer;
+-    }
+-
+-    
+-
+     /** Creates a reader that pipes the input file through a XSLT-Script that
+      *  updates the version to the current.
+-     * @param file
++     * @param reader
++     * @param filename
+      * @return 
+      * @throws IOException
+      */
+-    private Reader getUpdateReader(File file) throws IOException {
++    private Reader getUpdateReader(Reader reader, String filename) throws IOException {
+         StringWriter writer = null;
+         InputStream inputStream = null;
+-        logger.info("Updating the file "+file.getName()+" to the current version.");
++        logger.info("Updating the file "+filename+" to the current version.");
+         try{
+             // try to convert map with xslt:
+             URL updaterUrl=null;
+@@ -598,12 +629,12 @@
+             // create an instance of TransformerFactory
+             TransformerFactory transFact = TransformerFactory.newInstance();
+             Transformer trans = transFact.newTransformer(xsltSource);
+-            trans.transform(new StreamSource(file), result);
+-            logger.info("Updating the file "+file.getName()+" to the current version. Done.");
++            trans.transform(new StreamSource(reader), result);
++            logger.info("Updating the file "+filename+" to the current version. Done.");
+         } catch(Exception ex) {
+             ex.printStackTrace();
+             // exception: we take the file itself:
+-            return getActualReader(file);
++            return reader;
+         } finally {
+             if(inputStream!= null) {
+                 inputStream.close();
+@@ -618,12 +649,99 @@
+     /** Creates a default reader that just reads the given file.
+      * @param file
+      * @return
+-     * @throws FileNotFoundException
++     * @throws IOException 
+      */
+-    private Reader getActualReader(File file) throws FileNotFoundException {
+-        return new BufferedReader(new FileReader(file));
++    private Reader getActualReaderXml(File file) throws IOException {
++        try
++        {
++            TransformerFactory tf = TransformerFactory.newInstance();
++            Transformer transformer = tf.newTransformer();
++            DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
++            DocumentBuilder domBuilder = domFactory.newDocumentBuilder();
++
++            Document doc = domBuilder.parse(file);
++            Source src = new DOMSource(doc);
++            StringWriter buffwriter = new StringWriter();
++            StreamResult result = new StreamResult(buffwriter);
++            transformer.transform(src, result);
++
++            return new StringReader(buffwriter.toString());
++        }
++        catch(Exception exp)
++        {
++        	exp.printStackTrace();
++        }
++
++        return new BufferedReader(new FileReader(file));    	
+     }
+ 
++    private Reader getActualReader(File file) throws IOException {
++        // load .mmx file...
++        String ext = Tools.getExtension(file.getName());
++        String mmxFileName = "";
++
++        if(!ext.equals("mm")) 
++        {
++        	mmxFileName = file.getName()+".mmx";
++        }
++        else 
++        {
++        	mmxFileName = Tools.removeExtension(file.getName()) + ".mmx";
++        }
++        File mmxfile = new File(file.getParent(), mmxFileName);
++        
++        if (!mmxfile.exists())
++        {
++        	return getActualReaderXml(file);
++        }
++
++        URL updaterUrl = null;
++        InputStream inputStream = null;
++        Source xsltSource = null;
++        StringWriter buffwriter = null;
++        Result result = null;
++        TransformerFactory tf = null;
++        Transformer transformer = null;
++        String mmxFileFullName = file.getParent() + "/" + mmxFileName;
++        try {
++            // try to convert map with xslt:
++            updaterUrl = getFrame().getResource(
++                    "freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt");
++            if (updaterUrl == null) {
++                throw new IllegalArgumentException(
++                        "freemind_join_mm_mmx.xslt not found.");
++            }
++            inputStream = updaterUrl.openStream();
++            xsltSource = new StreamSource(inputStream);
++            // get output:
++            buffwriter = new StringWriter();
++            result = new StreamResult(buffwriter);
++            // create an instance of TransformerFactory
++            tf = TransformerFactory.newInstance();
++            transformer = tf.newTransformer(xsltSource);
++            transformer.setParameter("mmx_file", mmxFileFullName);
++            transformer.transform(new StreamSource(file), result);
++
++        } catch (Exception ex) {
++            ex.printStackTrace();
++            // exception: we take the file itself:
++            return getActualReaderXml(file);
++        } finally {
++            if (inputStream != null) {
++                inputStream.close();
++            }
++            if (buffwriter != null) {
++                buffwriter.close();
++            }
++            inputStream = null;
++            xsltSource = null;
++            updaterUrl = null;
++            result = null;
++            transformer = null;
++            tf = null;
++        }
++        return new StringReader(buffwriter.getBuffer().toString());    }
++
+     //
+     // cut'n'paste
+     //
+Index: freemind/freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt
+===================================================================
+--- freemind/freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ freemind/freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt	(.../branches/WHFM-0-8-0)	(revision 28)
+@@ -0,0 +1,45 @@
++<xsl:stylesheet version="1.0"
++	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
++
++	<xsl:output method="xml" version="1.0" encoding="utf-8"
++		indent="yes" />
++
++	<xsl:param name="mmx_file" />
++
++	<xsl:template match="map">
++		<map>
++			<xsl:copy-of select="@*" />
++			<xsl:apply-templates />
++		</map>
++	</xsl:template>
++
++	<xsl:template match="node">
++		<xsl:param name="mmx_node" select="document($mmx_file)" />
++		<xsl:copy>
++			<xsl:choose>
++				<xsl:when test="$mmx_node//node[@ID=current()/@ID]">
++					<xsl:for-each select="@*">
++						<xsl:choose>
++							<xsl:when test="local-name(.) = 'FOLDED'">
++							</xsl:when>
++							<xsl:otherwise>
++								<xsl:copy-of select="." />
++							</xsl:otherwise>
++						</xsl:choose>
++					</xsl:for-each>
++					<xsl:copy-of
++						select="$mmx_node//node[@ID=current()/@ID]/@*" />
++				</xsl:when>
++				<xsl:otherwise>
++					<xsl:copy-of select="@*" />
++				</xsl:otherwise>
++			</xsl:choose>
++			<xsl:apply-templates />
++		</xsl:copy>
++	</xsl:template>
++
++	<xsl:template match="*">
++	  <xsl:copy-of select="."/>
++	</xsl:template>
++
++</xsl:stylesheet>
+Index: freemind/freemind/modes/NodeAdapter.java
+===================================================================
+--- freemind/freemind/modes/NodeAdapter.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/modes/NodeAdapter.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -826,7 +826,20 @@
+ 	    return controller.getNodeID(this);
+ 	}
+ 
++    /**
++     * @param writer
++     * @param registry
++     * @param managed_attr =0|1|2
++     *         0 (default): do not check FOLDED attribute(make all nodes folded), saved in .mm file.
++     *         1          : only check and save FOLDED attributes in .mmx file.
++     *         2          : save all attributes in one single .mm file.
++     * @return
++     */
+     public XMLElement save(Writer writer, MindMapLinkRegistry registry) throws IOException {
++    	return save(writer, registry, 0);
++    }
++    
++    public XMLElement save(Writer writer, MindMapLinkRegistry registry, int managed_attr) throws IOException {
+     	XMLElement node = new XMLElement();
+     	
+ //    	if (!isNodeClassToBeSaved()) {
+@@ -863,8 +876,28 @@
+             }
+         }
+             
+-    	if (isFolded()) {
+-               node.setAttribute("FOLDED","true"); }
++    	// do not check FOLDED attribute, save all nodes as Folded, except root and leaf.
++        node.addtoEmAttlist("TEXT");
++        switch (managed_attr)
++    	{
++        case 0:
++        	if (!isRoot() && !isLeaf()) {
++    			node.setAttribute("FOLDED","true");
++    		}
++           	node.addtoBlackAttlist("CREATED");
++           	node.addtoBlackAttlist("MODIFIED");
++        	break;
++        case 1:
++        	node.addtoWhiteAttlist("ID");
++        	node.addtoWhiteAttlist("FOLDED");
++           	node.addtoWhiteAttlist("CREATED");
++           	node.addtoWhiteAttlist("MODIFIED");
++        case 2:
++        default:
++                if (isFolded()) {
++                        node.setAttribute("FOLDED","true"); 
++                }
++    	}
+     	
+         // fc, 17.12.2003: Remove the left/right bug.
+         //                       VVV  save if and only if parent is root.
+@@ -950,7 +983,7 @@
+             //recursive
+             for (ListIterator e = childrenUnfolded(); e.hasNext();) {
+                 NodeAdapter child = (NodeAdapter) e.next();
+-                child.save(writer, registry);
++                child.save(writer, registry, managed_attr);
+             }
+             node.writeClosingTag(writer);
+         } else {
+Index: freemind/freemind/controller/Controller.java
+===================================================================
+--- freemind/freemind/controller/Controller.java	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/freemind/controller/Controller.java	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -993,7 +993,7 @@
+             this.controller = controller;
+         }
+         public void actionPerformed(ActionEvent e) {
+-           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+FreeMind.version);
++           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+FreeMind.version + " " + FreeMind.hackedversion);
+         }
+     }
+ 
+Index: freemind/build.xml
+===================================================================
+--- freemind/build.xml	(.../tags/RELEASE-0-8-0)	(revision 2)
++++ freemind/build.xml	(.../branches/WHFM-0-8-0)	(working copy)
+@@ -284,6 +284,7 @@
+ 				<include name="Resources*"/>
+ 				<include name="mindmap_menus.xml"/>
+ 				<include name="**/freemind_version_updater.xslt"/>
++				<include name="**/freemind_join_mm_mmx.xslt"/>
+ 			</fileset>
+ 		</jar>
+ 	</target>
+Index: .classpath
+===================================================================
+--- .classpath	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .classpath	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<classpath>
++	<classpathentry output="bin" kind="src" path="freemind"/>
++	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
++	<classpathentry kind="lib" path="freemind/lib/commons-lang-2.0.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/forms-1.0.5.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/jarbundler-1.4.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/dom.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-api.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-impl.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-libs.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jaxb-xjc.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/jax-qname.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/namespace.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/relaxngDatatype.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/sax.jar"/>
++	<classpathentry kind="lib" path="freemind/lib/ant/lib/xsdlib.jar"/>
++	<classpathentry kind="output" path="bin"/>
++</classpath>
+Index: .project
+===================================================================
+--- .project	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .project	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<projectDescription>
++	<name>myfreemind</name>
++	<comment></comment>
++	<projects>
++	</projects>
++	<buildSpec>
++		<buildCommand>
++			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
++			<triggers>full,incremental,</triggers>
++			<arguments>
++				<dictionary>
++					<key>LaunchConfigHandle</key>
++					<value>&lt;project&gt;/.externalToolBuilders/freemind_Ant_Builder.launch</value>
++				</dictionary>
++			</arguments>
++		</buildCommand>
++		<buildCommand>
++			<name>org.eclipse.jdt.core.javabuilder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++	</buildSpec>
++	<natures>
++		<nature>org.eclipse.jdt.core.javanature</nature>
++	</natures>
++</projectDescription>
+Index: .externalToolBuilders/freemind_Ant_Builder.launch
+===================================================================
+--- .externalToolBuilders/freemind_Ant_Builder.launch	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .externalToolBuilders/freemind_Ant_Builder.launch	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<launchConfiguration type="org.eclipse.ant.AntBuilderLaunchConfigurationType">
++<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
++<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="false"/>
++<booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="true"/>
++<stringAttribute key="org.eclipse.ui.externaltools.ATTR_RUN_BUILD_KINDS" value="full,incremental,"/>
++<booleanAttribute key="org.eclipse.ant.ui.ATTR_TARGETS_UPDATED" value="true"/>
++<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:/myfreemind/freemind}"/>
++<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/myfreemind/freemind/build.xml}"/>
++<booleanAttribute key="org.eclipse.ui.externaltools.ATTR_TRIGGERS_CONFIGURED" value="true"/>
++<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
++<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
++</launchConfiguration>
+Index: .settings/org.eclipse.jdt.ui.prefs
+===================================================================
+--- .settings/org.eclipse.jdt.ui.prefs	(.../tags/RELEASE-0-8-0)	(revision 0)
++++ .settings/org.eclipse.jdt.ui.prefs	(.../branches/WHFM-0-8-0)	(revision 27)
+@@ -0,0 +1,3 @@
++#Tue Apr 04 22:29:04 CST 2006
++eclipse.preferences.version=1
++org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates/>
