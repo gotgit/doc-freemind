@@ -1,0 +1,109 @@
+Index: freemind/main/XMLElement.java
+===================================================================
+--- a/freemind/freemind/main/XMLElement.java	（修订版 2510）
++++ b/freemind/freemind/main/XMLElement.java	（工作拷贝）
+@@ -2118,7 +2118,8 @@
+     {
+         try {
+             ByteArrayOutputStream out = new ByteArrayOutputStream();
+-            OutputStreamWriter writer = new OutputStreamWriter(out);
++            // OSSXP.COM: Encode output to default_charset(UTF-8). 
++            OutputStreamWriter writer = new OutputStreamWriter(out, FreeMind.DEFAULT_CHARSET);
+             this.write(writer);
+             writer.flush();
+             return new String(out.toByteArray());
+@@ -2270,7 +2271,8 @@
+                     break;
+                 default:
+                     int unicode = (int) ch;
+-                    if ((unicode < 32) || (unicode > 126)) {
++                    // OSSXP.COM: do not convert Chinese characters into &#blahblah;
++                    if (unicode < 32) {
+                         writer.write('&'); writer.write('#');
+                         writer.write('x');
+                         writer.write(Integer.toString(unicode, 16));
+Index: freemind/main/FreeMind.java
+===================================================================
+--- a/freemind/freemind/main/FreeMind.java	（修订版 2512）
++++ b/freemind/freemind/main/FreeMind.java	（工作拷贝）
+@@ -94,6 +94,8 @@
+ 	public static final String XML_VERSION = "0.9.0_Beta_8";
+     // OSSXP.COM: set oem version.
+     public static final String hackedversion = "(worldhello.net)";
++    // OSSXP.COM: set output character set to utf-8.
++    public static final String DEFAULT_CHARSET = "UTF-8";
+     //    public static final String defaultPropsURL = "freemind.properties";
+     //    public static Properties defaultProps;
+     public static Properties props;
+Index: freemind/modes/mindmapmode/MindMapMapModel.java
+===================================================================
+--- a/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（修订版 2510）
++++ b/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（工作拷贝）
+@@ -264,7 +264,8 @@
+             return false; }
+         try {
+             //Generating output Stream
+-            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file) ) );
++            // OSSXP.COM: save file using default character set.
++            BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), FreeMind.DEFAULT_CHARSET ) );
+             getXml(fileout);
+ 
+             if(!isInternal) {
+@@ -291,8 +292,12 @@
+ 	 * @throws IOException
+ 	 */
+ 	private void getXml(Writer fileout, boolean saveInvisible) throws IOException {
++		// OSSXP.COM: write xml declare.
++		fileout.write("<?xml version=\"1.0\" encoding=\"" + FreeMind.DEFAULT_CHARSET + "\"?>\n");
+ 		fileout.write("<map version=\""+FreeMind.XML_VERSION+"\">\n");
+-		fileout.write("<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n");
++		// OSSXP.COM: add notice for this hacked version.
++		fileout.write("<!-- This file is saved using a hacked version of FreeMind. visit: http://www.worldhello.net, http://ossxp.com -->\n");
++		fileout.write("<!-- Orignal FreeMind, can download from http://freemind.sourceforge.net -->\n");
+ 		getRegistry().save(fileout);
+ 		(getRootNode()).save(fileout, this.getLinkRegistry(), saveInvisible, true);
+ 		fileout.write("</map>\n");
+@@ -366,16 +371,38 @@
+ 
+     MindMapNodeModel loadTree(File file) throws XMLParseException, IOException {
+         // FIXME: fc, 27.8.2005: this is for 0.8.0 only. Remove me ASAP.
+-        int versionInfoLength = EXPECTED_START_STRINGS[0].length();
++        int versionInfoLength = 0;
++        // OSSXP.COM: we add a xml declare, bypass it if exist.
++        BufferedReader in=null;
++        String buffer = null;
++        try {
++        	// get the file start into the memory:
++        	in = new BufferedReader(new FileReader(file));
++        	while ((buffer = in.readLine()) != null) {
++        		if (buffer.substring(0,4).equals("<map"))
++        		{
++        			break;
++        		}
++        	}
++        	in.close();
++        } catch (Exception e) {
++        	e.printStackTrace();
++        	buffer = "";
++        }
++        
+         // reading the start of the file:
+-        StringBuffer buffer = readFileStart(file, versionInfoLength);
++        // OSSXP.COM: bugfix: test all EXPECTED_START_STRINGS
+         String mapStart = "";
+-        if(buffer.length() >= versionInfoLength){
+-        		mapStart = buffer.substring(0, versionInfoLength);
+-        }
+         // the resulting file is accessed by the reader:
+         Reader reader = null;
+         for(int i = 0; i < EXPECTED_START_STRINGS.length; i++){
++        	versionInfoLength = EXPECTED_START_STRINGS[i].length();
++            if(buffer.length() >= versionInfoLength){
++        		mapStart = buffer.substring(0, versionInfoLength);
++            }
++            else {
++            	continue;
++            }
+             if (mapStart.equals(EXPECTED_START_STRINGS[i])) {
+                 // actual version:
+                 reader = Tools.getActualReader(file);

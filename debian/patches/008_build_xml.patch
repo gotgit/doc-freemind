@@ -1,0 +1,37 @@
+--- a/freemind/build.xml	2007-03-15 08:45:15.000000000 +0800
++++ b/freemind/build.xml	2007-03-15 08:44:52.000000000 +0800
+@@ -46,7 +46,7 @@
+ 		<classpath path="${jibxlibs}"/>
+ 	</taskdef>
+ 
+-	<property name="classpath" value="${jibxruntimelibs}:${jibxjar}:lib/commons-lang-2.0.jar:lib/forms-1.0.5.jar:lib/SimplyHTML/SimplyHTML.jar"/>
++	<property name="classpath" value="${jibxruntimelibs}:${jibxjar}:lib/commons-lang-2.0.jar:lib/forms-1.0.5.jar:lib/SimplyHTML/SimplyHTML.jar:lib/saxon.jar"/>
+ 
+ 	  <target name="xmlbind.checkStatusOfGeneration">
+ 	    <uptodate property="xmlbind.isUpToDate"
+@@ -156,7 +156,7 @@
+ 		<chmod file="${dist}/freemind.sh" perm="u+rx"/>
+ 		<copy todir="${dist}">
+ 			<fileset dir="${src}/windows-launcher"
+-				includes="Freemind.exe"
++				includes="Freemind.exe,Freemind.vanilla.exe"
+ 			/>
+ 		</copy>
+ 		<mkdir dir="${dist}/doc" />
+@@ -177,6 +177,7 @@
+ 				<include name="commons-lang-2.0.jar"/>
+ 				<include name="forms-1.0.5.jar"/>
+ 				<include name="bindings.jar"/>
++				<include name="saxon.jar"/>
+ 				<include name="jibx/jibx-run.jar"/>
+ 				<include name="jibx/xpp3.jar"/>
+ 				<include name="SimplyHTML/gnu-regexp-1.1.4.jar"/>
+--- a/freemind/MANIFEST.MF	2007-01-04 08:13:26.000000000 +0800
++++ a/freemind/MANIFEST.MF	2007-03-15 15:51:16.000000000 +0800
+@@ -9,5 +9,6 @@
+   bindings.jar
+                           SimplyHTML/gnu-regexp-1.1.4.jar
+   SimplyHTML/SimplyHTML.jar
++  saxon.jar
+ Created-By: Joerg Mueller
+ 

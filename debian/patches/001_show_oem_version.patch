@@ -1,0 +1,55 @@
+Index: freemind/controller/Controller.java
+===================================================================
+--- a/freemind/freemind/controller/Controller.java	（修订版 2510）
++++ b/freemind/freemind/controller/Controller.java	（工作拷贝）
+@@ -1079,7 +1079,8 @@
+             this.controller = controller;
+         }
+         public void actionPerformed(ActionEvent e) {
+-           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+FreeMind.VERSION);
++          // OSSXP.COM: show oem version in about dialog.
++           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+FreeMind.VERSION  + " " + FreeMind.hackedversion);
+         }
+     }
+ 
+Index: freemind/main/FreeMindSplash.java
+===================================================================
+--- a/freemind/freemind/main/FreeMindSplash.java	（修订版 2510）
++++ b/freemind/freemind/main/FreeMindSplash.java	（工作拷贝）
+@@ -127,6 +127,8 @@
+         		g2.setFont(font);
+                 // determine width of string to center it.
+                 String freemindVersion = frame.getFreemindVersion();
++                // OSSXP.COM: Splash screen, show oem version.
++                freemindVersion += " " + FreeMind.hackedversion;
+                 if (mWidth == null) {
+                     mWidth = new Integer(g2.getFontMetrics().stringWidth(
+                             freemindVersion));
+Index: freemind/main/FreeMindSplashLightBulb.java
+===================================================================
+--- a/freemind/freemind/main/FreeMindSplashLightBulb.java	（修订版 2527）
++++ b/freemind/freemind/main/FreeMindSplashLightBulb.java	（工作拷贝）
+@@ -149,6 +149,10 @@
+                 int xCoordinate = 148/*145*/ - mWidth.intValue(); //(int)(getSize().getWidth()/2-mWidth.intValue()/2);
+                 g2.setColor(new Color(0x4d,0x63,0xb4));
+                 g2.drawString(freemindVersion, xCoordinate , yCoordinate);
++                // OSSXP.COM: Splash screen, show oem version.
++                yCoordinate += (int)(g2.getFontMetrics().getHeight());
++                xCoordinate = 148  - (int) (g2.getFontMetrics().stringWidth(FreeMind.hackedversion));
++                g2.drawString(FreeMind.hackedversion, xCoordinate , yCoordinate);
+                 // Draw progress bar
+                 String progressString = (String)getClientProperty("progressString");
+                 if (progressString!=null) {
+Index: freemind/main/FreeMind.java
+===================================================================
+--- a/freemind/freemind/main/FreeMind.java	（修订版 2510）
++++ b/freemind/freemind/main/FreeMind.java	（工作拷贝）
+@@ -92,6 +92,8 @@
+     private static final String DEFAULT_LANGUAGE = "en";
+     public static final String VERSION = "0.9.0 Beta 9";
+ 	public static final String XML_VERSION = "0.9.0_Beta_8";
++    // OSSXP.COM: set oem version.
++    public static final String hackedversion = "(worldhello.net)";
+     //    public static final String defaultPropsURL = "freemind.properties";
+     //    public static Properties defaultProps;
+     public static Properties props;

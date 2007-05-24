@@ -1,0 +1,647 @@
+Index: Resources_zh_CN.properties
+===================================================================
+--- a/freemind/Resources_zh_CN.properties	（修订版 2510）
++++ b/freemind/Resources_zh_CN.properties	（工作拷贝）
+@@ -1,22 +1,22 @@
+-# simplified-chinese version by wonder365  (liwh@ylchkj.com)
+-about = \u5173\u4e8e
+-#about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2001 Joerg Mueller <joemuell@informatik.uni-freiburg.de>\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave Fun!\nVersion: 
+-about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2004 Joerg Mueller and others.\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave fun!\nVersion: 
++#about = About
++#about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2001 Joerg Mueller <joemuell@informatik.uni-freiburg.de>\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave Fun!\nVersion:
++about_text = FreeMind - free mind mapping and knowledge building software\nCopyright \u00a9 2000-2006 Joerg Mueller, Daniel Polansky, Christian Foltin, Dimitri Polivaev, and others.\nThis program is free software, licenced under GNU General Public Licence.\n\nHome: http://freemind.sourceforge.net/\nVersion:
+ antialias_all = \u5168\u5f00\u6297\u952f\u9f7f
+ antialias_edges = \u8fb9\u7f18\u6297\u952f\u9f7f
+ antialias_none = \u5173\u95ed\u6297\u952f\u9f7f
++apply=\u5e94\u7528
+ background = \u80cc\u666f
+ bezier = \u8d1d\u585e\u5c14\u66f2\u7ebf
+ blend_color = \u8272\u5f69\u6df7\u5408
+ bold = \u7c97\u4f53
+ boldify_branch = \u52a0\u7c97\u5206\u652f(branch)
+-cloud = \u4e91\u6846
+-cloud_color = \u4e91\u6846\u989c\u8272...
+ branch = \u5206\u652f\uff08branch)
+ bubble = \u6ce1\u6846
+ cancel = \u53d6\u6d88
+ cannot_join_nodes_with_children = \u6709\u5b50\u8282\u70b9\u7684\u7684\u8282\u70b9\u4e0d\u80fd\u5408\u5e76
+ center = \u5c45\u4e2d
++cloud = \u4e91\u6846
++cloud_color = \u4e91\u6846\u989c\u8272...
+ close = \u5173\u95ed
+ copy = \u590d\u5236
+ copy_single = \u5355\u4e00\u590d\u5236
+@@ -33,6 +33,7 @@
+ edit_long_node = \u7f16\u8f91\u957f\u8282\u70b9...
+ enter_base_url = \u5c06\u7c98\u8d34\u76f8\u5bf9\u94fe\u63a5\u3002\u8bf7\u8f93\u5165\u57fa\u7840 URL \u3002
+ enter_confirms = Enter \u786e\u8ba4
++error = \u9519\u8bef
+ export_branch = \u5bfc\u51fa\u8282\u70b9\u4e3a\u601d\u7ef4\u5bfc\u56fe ...
+ export_branch_to_html = \u5bfc\u51fa\u8282\u70b9\u4e3a HTML
+ export_to_html = \u5bfc\u51fa\u4e3aHTML
+@@ -81,7 +82,7 @@
+ icon_penguin = Linux\u4f01\u9e45
+ icon_licq = \u7f8e\u597d
+ import = \u5bfc\u5165
+-import_branch = \u601d\u7ef4\u5bfc\u56fe...
++import_branch = \u5206\u652f...
+ import_explorer_favorites = \u6536\u85cf\u5939...
+ import_folder_structure = \u76ee\u5f55\u7ed3\u6784...
+ import_linked_branch = \u94fe\u63a5\u56fe
+@@ -119,14 +120,16 @@
+ no = \u5426
+ node = \u8282\u70b9
+ node_changed_discard_changes = \u60a8\u786e\u8ba4\u653e\u5f03\u5bf9\u8282\u70b9\u6240\u505a\u66f4\u6539?
++long_node_changed_submit =\u60a8\u5df2\u7ecf\u4fee\u6539\u4e86\u8fd9\u4e2a\u8282\u70b9\u3002\u4f60\u60f3\u4fdd\u5b58\u4e48\uff1f
++long_node_changed_cancel =\u60a8\u5df2\u7ecf\u4fee\u6539\u4e86\u8fd9\u4e2a\u8282\u70b9\u3002\u4f60\u60f3\u653e\u5f03\u4fdd\u5b58\u4e48\uff1f
+ node_color = \u8282\u70b9\u989c\u8272 ...
+ node_down = \u4e0b\u79fb
+ node_up = \u4e0a\u79fb
+ nonboldify_branch = \u53d6\u6d88\u7c97\u4f53
+ nonitalicise_branch = \u53d6\u6d88\u659c\u4f53
+ normal = \u5e38\u89c4
+-no_found_from = \u672a\u627e\u5230 "$1" \u5728 "$2" \u4e2d.
+-no_more_found_from = \u6ca1\u6709\u627e\u5230\u66f4\u591a\u7684 "$1" \u5728 "$2" \u4e2d.
++no_found_from = <html>\u672a\u5728 <b>$2</b> \u4e2d\u627e\u5230 <b>$1</b>\u3002
++no_more_found_from = <html><b>$2</b> \u4e2d\u6ca1\u80fd\u627e\u5230\u66f4\u591a\u7684 <b>$1</b>\u3002
+ no_previous_find = \u524d\u8fb9\u6ca1\u6709\u4e86.
+ not_saved_for_link_error = \u7528\u6587\u4ef6\u9009\u62e9\u5668\u6dfb\u52a0\u6587\u4ef6\u94fe\u63a5\u524d\u5fc5\u987b\u5148\u4fdd\u5b58\u56fe\u3002
+ open = \u6253\u5f00...
+@@ -136,11 +139,13 @@
+ preferences = \u9996\u9009\u9879
+ previous_map = \u524d\u4e00\u5f20\u56fe
+ print = \u6253\u5370...
++print_preview = \u6253\u5370\u9884\u89c8...
+ quit = \u9000\u51fa
++read_only = \u53ea\u8bfb
+ remove_node = \u5220\u9664\u8282\u70b9
+-read_only = \u53ea\u8bfb
+ repair_link = \u4fee\u590d\u94fe\u63a5
+ repair_link_question = \u4e0d\u80fd\u52a0\u8f7d\u94fe\u63a5\u56fe\u3002\u624b\u52a8\u4fee\u590d\u94fe\u63a5\uff1f
++replace=\u66ff\u6362
+ save = \u4fdd\u5b58
+ save_as = \u53e6\u5b58\u4e3a...
+ save_failed = \u56fe $1 \u5b58\u50a8\u5931\u8d25.
+@@ -181,6 +186,8 @@
+ user_defined_zoom_status_bar = \u7f29\u653e\u4e3a\u7528\u6237\u5b9a\u4e49\u7684 {0}%.
+ # new from 14.12.2003, fc
+ FAQ = FAQ
++# new from 09.12.2006, Dimitri
++webDocu = Web \u6587\u6863
+ # new from 20.12.2003, fc
+ printing_settings = \u6253\u5370\u6bd4\u4f8b
+ fit_to_page = \u9002\u5408\u9875\u9762
+@@ -203,6 +210,7 @@
+ menu_format = \u683c\u5f0f
+ menu_extras = \u5de5\u5177
+ menu_insert = \u63d2\u5165
++menu_attributes = \u5c5e\u6027
+ # Beware: "Edge Width " and "Edge Style " must end with space.
+ edge_width = \u8fde\u7ebf\u5bbd\u5ea6 
+ edge_style = \u8fde\u7ebf\u98ce\u683c 
+@@ -274,6 +282,8 @@
+ accessories/plugins/PMCalculation.properties_name = PM\u8ba1\u7b97
+ accessories/plugins/RevisionPlugin.properties_documentation = <html>\u9010\u4e00\u6807\u8bb0\u66f4\u6539\u8fc7\u7684\u8282\u70b9\u7684\u80cc\u666f.</html>
+ accessories/plugins/RevisionPlugin.properties_name = \u4ee5\u989c\u8272\uff08\u9ec4\u8272\u80cc\u666f\uff09\u663e\u793a\u66f4\u6539
++accessories/plugins/SplitNode.properties_documentation = <html>\u8282\u70b9\u88ab\u62c6\u5206</html>
++accessories/plugins/SplitNode.properties_name = \u62c6\u5206\u8282\u70b9
+ accessories/plugins/UnfoldAll.properties_documentation = <html>\u5c55\u5f00\u6240\u9009\u8282\u70b9\u53ca\u4ed6\u4eec\u7684\u5b50\u8282\u70b9.</html>
+ accessories/plugins/UnfoldAll.properties_name = \u5c55\u5f00\u5168\u90e8\uff08\u6240\u9009\u53ca\u5b50\u8282\u70b9\uff09
+ accessories/plugins/FoldAll.properties_documentation = <html>\u6298\u53e0\u6240\u9009\u8282\u70b9\u53ca\u4ed6\u4eec\u7684\u5b50\u8282\u70b9.</html>
+@@ -365,6 +375,75 @@
+ plugins/RemoveReminder.xml_name=\u5220\u9664\u63d0\u9192
+ # fc, 3.5.2005:
+ plugins/TimeManagement.xml_reminderButton_tooltip=<html>\u5f53\u7ed9\u5b9a\u65f6\u95f4\u6709\u4e00\u4e2a\u5b9a\u65f6\u5668\u88ab\u8bbe\u7f6e. \u901a\u8fc7\u95ea\u70c1\u56fe\u6807\u63d0\u9192\u4f60.<br> \u5173\u95ed\u56fe\u518d\u6b21\u6253\u5f00\u56fe\u65f6\uff0c\u5b9a\u65f6\u5668\u5c06\u6fc0\u6d3b.</html>
++# dimitri, 8.05.05
++filter_toolbar=\u8fc7\u6ee4\u5668
++filter_dialog=Filter Composer
++filter_no_filtering=\u672a\u8fc7\u6ee4
++filter_selected_node_view=\u5f53\u524d\u9009\u62e9\u7684\u8282\u70b9
++filter_conditions = \u8fc7\u6ee4\u5668
++filter_edit=\u7f16\u8f91
++filter_edit_description=\u7f16\u8f91\u8fc7\u6ee4\u5217\u8868
++filter_unfold_ancestors=\u5c55\u5f00\u8fc7\u6ee4\u7684\u8282\u70b9
++filter_icon=\u56fe\u6807
++filter_node=\u8282\u70b9\u6587\u5b57
++filter_exist=\u5b58\u5728
++filter_does_not_exist=\u4e0d\u5b58\u5728
++filter_contains=\u5305\u542b
++filter_is_equal_to=\u7b49\u4e8e
++filter_is_not_equal_to=\u4e0d\u7b49\u4e8e
++filter_ignore_case=\u5ffd\u7565\u5927\u5c0f\u5199
++filter_enter_value=\u8f93\u5165\u503c
++filter_add=\u6dfb\u52a0
++filter_delete=\u5220\u9664
++filter_select=\u9009\u62e9
++filter_not=\u975e
++filter_and=\u4e0e
++filter_or=\u6216
++filter_show_ancestors=\u663e\u793a\u7956\u5148
++filter_show_descendants=\u663e\u793a\u6d3e\u751f
++# dimitri, 10.07.2005
++attributes_all=\u6240\u6709\u5c5e\u6027
++attributes_attribute=\u5c5e\u6027
++attributes_close=\u5173\u95ed
++attribute_delete=\u5220\u9664\u6240\u6709\u53d6\u503c
++attribute_delete_value=\u5220\u9664\u8fd9\u4e2a\u503c
++attributes_edit=\u7f16\u8f91
++attributes_edit_in_place=\u7f16\u8f91\u5c5e\u6027
++attributes_edit_tooltip=Edit Set
++attribute_font_size_tooltip=\u5c5e\u6027\u5b57\u4f53\u5927\u5c0f
++attributes_dialog=\u5c5e\u6027\u7ba1\u7406\u5668
++attributes_import=\u5bfc\u5165
++attributes_import_tooltip=\u4ece\u5176\u4ed6\u601d\u7ef4\u5bfc\u56fe\u4e2d\u5bfc\u5165\u5c5e\u6027
++attributes_assign_dialog=\u5206\u914d\u5c5e\u6027...
++attributes_visible=\u9009\u62e9\u53ef\u89c1
++attributes_visible_tooltip=\u901a\u8fc7\u83dc\u5355 View->Attribute->Show Selected Attributes
++attributes_visible_tooltip=\u9009\u62e9\u53ef\u89c1
++attributes_refresh=\u5237\u65b0
++attribute_replace=\u66ff\u6362
++attributes_restriction=\u9650\u5236\u53d6\u503c
++attributes_restricted_attributes_tooltip=\u9650\u5236\u5c5e\u6027\u53d6\u503c
++attributes_restricted_values_tooltip=\u9650\u5236\u5f53\u524d\u5c5e\u6027\u7684\u53d6\u503c\u8303\u56f4
++attributes_select_all=\u6240\u6709
++attributes_select_all_tooltip=\u9009\u62e9\uff0f\u53cd\u9009 \u6240\u6709
++attributes_for_selected=\u9009\u62e9\u7684\u8282\u70b9
++attributes_for_visible=\u6240\u6709\u53ef\u89c1\u8282\u70b9
++attributes_deselect_all=\u65e0
++attribute_list_box_label_text=\u53ef\u7528\u53d6\u503c
++attributes_popup_edit=\u7f16\u8f91
++attributes_popup_optimal_width=\u6700\u4f73\u5bbd\u5ea6
++attributes_popup_hide=\u9690\u85cf
++attributes_popup_new=\u65b0\u5c5e\u6027
++attributes_popup_delete=\u5220\u9664
++attributes_popup_up=\u5411\u4e0a
++attributes_popup_down=\u5411\u4e0b
++attributes_show=\u663e\u793a
++attributes_show_all = \u663e\u793a\u6240\u6709\u5c5e\u6027
++attributes_show_selected = \u663e\u793a\u9009\u62e9\u7684\u5c5e\u6027
++attributes_hide_all = \u9690\u85cf\u6240\u6709\u5c5e\u6027
++attribute_top=\u52a0\u8f7d\u7684\u601d\u7ef4\u5bfc\u56fe\u7684\u6240\u6709\u5df2\u77e5\u5c5e\u6027
++attributes_skip_root=\u8df3\u8fc7\u6839\u8282\u70b9
++atributes_no_import_candidates_found=\u672a\u53d1\u73b0\u65b0\u5c5e\u6027
++attributes_adding_empty_attribute_error=\u4e0d\u80fd\u7528\u7a7a\u5b57\u7b26\u4e32\u4f5c\u4e3a\u5c5e\u6027\u540d\u79f0
+ # fc, 10.5.2005:
+ property_dialog=\u9996\u9009\u9879 ...
+ OptionPanel.automatic=\u81ea\u52a8
+@@ -383,8 +462,8 @@
+ OptionPanel.pt_PT=\u8461\u8404\u7259\u8bed\uff08\u8461\u8404\u7259\uff09
+ OptionPanel.ru=\u4fc4\u8bed
+ OptionPanel.sl=Sl
+-OptionPanel.zh=\u7e41\u4f53\u4e2d\u6587
+-OptionPanel.zh_CN=\u7b80\u4f53\u4e2d\u6587
++OptionPanel.zh=\u7e41\u4f53\u4e2d\u6587\uff08zh\uff09
++OptionPanel.zh_CN=\u7b80\u4f53\u4e2d\u6587\uff08zh_CN\uff09
+ OptionPanel.fork=\u5e95\u7ebf
+ OptionPanel.bubble=\u6ce1\u6846
+ OptionPanel.as_parent=\u540c\u7236\u8282\u70b9
+@@ -475,6 +554,7 @@
+ OptionPanel.el__min_default_window_width=\u9ed8\u8ba4\u7a97\u53e3\u6700\u5c0f\u5bbd\u5ea6
+ OptionPanel.el__max_default_window_width=\u9ed8\u8ba4\u7a97\u53e3\u6700\u5927\u5bbd\u5ea6
+ OptionPanel.el__enter_confirms_by_default=\u9ed8\u8ba4\u8fdb\u5165\u786e\u8ba4
++OptionPanel.el__show_icon_for_attributes=\u663e\u793a\u5c5e\u6027\u56fe\u6807
+ OptionPanel.Keystrokes=\u6309\u952e
+ OptionPanel.keystroke_newMap=\u65b0\u5efa
+ OptionPanel.keystroke_open=\u6253\u5f00
+@@ -619,6 +699,13 @@
+ OptionPanel.separator.selection_method=\u9009\u4e2d\u65b9\u5f0f
+ OptionPanel.separator.browser=\u6d4f\u89c8\u5668
+ OptionPanel.separator.html_export=Html\u5bfc\u51fa
++OptionPanel.separator.attributes=\u5c5e\u6027
++OptionPanel.keystroke_edit_attributes=\u7f16\u8f91\u5c5e\u6027
++OptionPanel.keystroke_show_all_attributes=\u663e\u793a\u6240\u6709\u5c5e\u6027
++OptionPanel.keystroke_show_selected_attributes=\u663e\u793a\u9009\u62e9\u7684\u5c5e\u6027
++OptionPanel.keystroke_hide_all_attributes=\u9690\u85cf\u6240\u6709\u5c5e\u6027
++OptionPanel.keystroke_show_attribute_manager=\u663e\u793a\u5c5e\u6027\u7ba1\u7406\u5668
++OptionPanel.keystroke_assign_attributes=\u5206\u914d\u5c5e\u6027 ...
+ # fc, 2.6.2005:
+ OptionPanel.antialias.tooltip=<html>\u786e\u5b9a\u56fe\u7684\u8d28\u91cf. \u8d8a\u5e73\u6ed1\u5904\u7406\u65f6\u95f4\u8d8a\u957f.</html>
+ OptionPanel.antialias=\u6297\u952f\u9f7f
+@@ -642,4 +729,425 @@
+ # fc, 10.7.2005:
+ OptionPanel.separator.undo=\u64a4\u6d88
+ OptionPanel.undo_levels=\u64a4\u9500\u6b21\u6570
+-OptionPanel.undo_levels.tooltip=<html>\u51b3\u5b9a\u5b58\u50a8\u201c\u64a4\u9500\u201d\u7684\u6700\u5927\u6b65\u6570.</html>
+\ 在文件末尾没有新行
++OptionPanel.undo_levels.tooltip=<html>\u51b3\u5b9a\u5b58\u50a8\u201c\u64a4\u9500\u201d\u7684\u6700\u5927\u6b65\u6570.</html>
++# fc, 13.8.2005
++OptionPanel.lt=Lt
++# fc, 12.1.2006: if you create a translation of the documentation file, change this value (see german translation):
++browsemode_initial_map = ./doc/freemind.mm
++# fc, 1.2.06
++link_not_found = Link $1 not found.
++# fc, 15.2.06
++icon_smily_bad = I'm not amused
++OptionPanel.hr=Hr
++OptionPanel.nn=Nn
++OptionPanel.se=Se
++# fc, 16.2.06
++accessories/plugins/ExportWithXSLT_Applet.properties_documentation=Exports the map as a java browser applet.
++accessories/plugins/ExportWithXSLT_Applet.properties_name=As Java Applet...
++accessories/plugins/ExportWithXSLT_Applet.properties_webpage=Web page
++accessories/plugins/ExportWithXSLT_Flash.properties_documentation=Exports the map as a flash application.
++accessories/plugins/ExportWithXSLT_Flash.properties_name=As Flash...
++# fc, 21.2.06
++accessories/plugins/ChangeNodeLevelAction_left.properties_documentation=On the left of root the node(s) is/are shifted downwards. It/they become children of its above sibling. On the right of root the node(s) are shifted upwards. Directly at root, the node(s) change sides.
++accessories/plugins/ChangeNodeLevelAction_left.properties_name=Node left
++accessories/plugins/ChangeNodeLevelAction_right.properties_documentation=On the right of root the node(s) is/are shifted downwards. It/they become children of its above sibling. On the left of root the node(s) are shifted upwards. Directly at root, the node(s) change sides.
++accessories/plugins/ChangeNodeLevelAction_right.properties_name=Node right
++# fc, 27.2.06:
++PatternDialog.ColorProperty.ResetColor=ResetColor
++PatternDialog.EdgeWidth_1=1
++PatternDialog.EdgeWidth_2=2
++PatternDialog.EdgeWidth_4=4
++PatternDialog.EdgeWidth_8=8
++PatternDialog.EdgeWidth_parent=As parent
++PatternDialog.EdgeWidth_thin=thin
++PatternDialog.as_parent=As parent
++PatternDialog.bezier=bezier
++PatternDialog.bubble=bubble
++PatternDialog.combined=combined
++PatternDialog.edgecolor.tooltip=Property of the edge to the parent node (is also applied to all child nodes)
++PatternDialog.edgecolor=Edge color
++PatternDialog.edgestyle.tooltip=Property of the edge to the parent node (is also applied to all child nodes)
++PatternDialog.edgestyle=Edge style
++PatternDialog.edgewidth.tooltip=Property of the edge to the parent node (is also applied to all child nodes)
++PatternDialog.edgewidth=Edge width
++PatternDialog.fork=fork
++PatternDialog.linear=linear
++PatternDialog.nodebackgroundcolor.tooltip=nodebackgroundcolor.tooltip
++PatternDialog.nodebackgroundcolor=Node background color
++PatternDialog.nodecolor.tooltip=nodecolor.tooltip
++PatternDialog.nodecolor=Node color
++PatternDialog.nodestyle.tooltip=nodestyle.tooltip
++PatternDialog.nodestyle=Node style
++PatternDialog.nodetext.tooltip=nodetext.tooltip
++PatternDialog.nodetext=Node text
++PatternDialog.separator.EdgeControls=Edges
++PatternDialog.separator.NodeColors=Node colors
++PatternDialog.separator.NodeStyles=Node styles
++PatternDialog.sharp_bezier=sharp bezier
++PatternDialog.sharp_linear=sharp linear
++PatternDialog.undefined_font=Undefined font
++accessories/plugins/ApplyFormatPlugin.properties_documentation=Presents a dialog in which node and edge attributes can be changed at once.
++accessories/plugins/ApplyFormatPlugin.properties_name=Change format ...
++accessories/plugins/ApplyFormatPlugin.dialog.title=Change format of nodes
++
++OptionPanel.keystroke_accessories/plugins/ChangeNodeLevelAction_left.properties_key=Move left
++OptionPanel.keystroke_accessories/plugins/ChangeNodeLevelAction_right.properties_key=Move right
++OptionPanel.keystroke_accessories/plugins/FormatCopy.properties.properties_key=Copy format
++OptionPanel.keystroke_accessories/plugins/FormatPaste.properties.properties_key=Paste format
++OptionPanel.keystroke_accessories/plugins/IconSelectionPlugin.properties.properties_key=Insert icon
++OptionPanel.keystroke_accessories/plugins/NewParentNode.properties_key=Indent nodes
++OptionPanel.keystroke_accessories/plugins/SplitNode.properties_key=Split node
++# OptionPanel.keystroke_accessories/plugins/NodeNote.properties_key=Insert a note
++OptionPanel.keystroke_accessories/plugins/UnfoldAll.keystroke.alt_PAGE_UP=Fold one level
++OptionPanel.keystroke_accessories/plugins/UnfoldAll.keystroke.alt_PAGE_DOWN=Unfold on level
++OptionPanel.keystroke_accessories/plugins/UnfoldAll.keystroke.alt_HOME=Fold all
++OptionPanel.keystroke_accessories/plugins/UnfoldAll.keystroke.alt_END=Unfold all
++OptionPanel.separator.others=Other key bindings
++
++PatternDialog.separator.General=General
++PatternDialog.clear_all_setters=Switch all
++PatternDialog.clear_all_setters.tooltip=Enables or disables all change indications.
++# fc, 1.3.06:
++accessories/plugins/ManagePatterns.dialog.title=Manage Patterns...
++accessories/plugins/ManagePatterns.not_found=Pattern file can't be loaded.
++accessories/plugins/ManagePatterns.properties_documentation=Change the patterns defined in patterns.xml in an editor. The result is automatically saved.
++accessories/plugins/ManagePatterns.properties_name=Manage Patterns...
++# fc, 14.3.06:
++PatternDialog.nodefontname.tooltip=nodefont.tooltip
++PatternDialog.nodefontname=Node font
++PatternDialog.nodefontsize.tooltip=nodefont.tooltip
++PatternDialog.nodefontsize=Node font
++PatternDialog.nodefontbold.tooltip=nodefont.tooltip
++PatternDialog.nodefontbold=Bold font
++PatternDialog.nodefontitalic.tooltip=nodefont.tooltip
++PatternDialog.nodefontitalic=Italic font
++PatternDialog.separator.NodeFont=Node Font
++# fc, 19.3.06:
++ManagePatternsPopupDialog.remove=Remove Pattern
++ManagePatternsPopupDialog.add=Add new Pattern
++PatternDialog.patternname=Name
++PatternDialog.patternname.tooltip=Unique pattern name
++PatternNewNameProperty=New Pattern
++ManagePatternsPopupDialog.DuplicateNameMessage=You have chosen a name twice. Please change this before leaving this dialog.
++PatternDialog.childpattern.tooltip=The selected pattern is applied to all children.
++PatternDialog.childpattern=Child Pattern
++ManagePatternsPopupDialog.Save=Save and Return
++PatternDialog.icon.tooltip=If applied, the node will have exactly this icon.
++PatternDialog.icon=Icon
++PatternDialog.set_property_text=Change
++PatternDialog.set_property_text.tooltip=Empty: Don't touch; Minus=Remove property (set default values); Plus=Change property
++accessories/plugins/AutomaticLayout.properties_StyleDialogTitle=Change pattern
++OptionPanel.accessories/plugins/AutomaticLayout.properties_PatternTabName=Automatic layout patterns
++OptionPanel.separator.accessories/plugins/AutomaticLayout.properties_PatternSeparatorName=Patterns
++PatternToString.color=Color
++PatternToString.backgroundColor=Background Color
++OptionPanel.automaticFormat_level1=Root Node Format
++OptionPanel.automaticFormat_level2=1. Level Node Format
++PatternToString.NodeFontSize=Font Size
++OptionPanel.level1=Format of the Root Node
++OptionPanel.level2=1. Level Node Format
++OptionPanel.level3=2. Level Node Format
++OptionPanel.level4=3. Level Node Format
++OptionPanel.level5=Other's Node Format
++OptionPanel.automaticFormat_level=Automatic Layout Styles
++# fc, 13.4.06:
++ManagePatternsPopupDialog.duplicate=Duplicate Pattern
++ManagePatternsPopupDialog.from_nodes=Create Pattern From Selected Nodes
++# fc, 25.5.2006:
++accessories/plugins/SaveAll.properties_documentation=Saves all open maps.
++accessories/plugins/SaveAll.properties_name=Save All
++accessories/plugins/SaveAll.properties_save_all_cancelled=Operation was not completed successfully.
++# fc, 23.7.06
++OptionPanel.loadLastMap=Automatically open last map
++OptionPanel.loadLastMap.tooltip=<html>When FreeMind starts, it fetches the last opened map automatically if checked.</html>
++# dan, whenever
++use_rich_formatting = \u4f7f\u7528\u683c\u5f0f\u5316\u6587\u672c
++use_plain_text = \u4f7f\u7528\u7eaf\u6587\u672c
++# fc, 30.7.06:
++FreeMind.progress.gettingPreferenceDirectories=\u83b7\u53d6\u53c2\u6570\u76ee\u5f55...
++FreeMind.progress.gettingPreferences=\u83b7\u53d6\u53c2\u6570\u8bbe\u7f6e...
++FreeMind.progress.updateLookAndFeel=\u66f4\u65b0\u754c\u9762...
++FreeMind.progress.createController=\u521b\u5efa\u63a7\u5236\u5668...
++FreeMind.progress.settingPreferences=\u8bbe\u7f6e\u7528\u6237\u53c2\u6570...
++FreeMind.progress.propageteLookAndFeel=\u751f\u6210\u7528\u6237\u754c\u9762...
++FreeMind.progress.createInitialMode=\u521b\u5efa\u8d77\u59cb\u6a21\u5f0f...
++FreeMind.progress.startCreateController=\u5f00\u59cb\u521b\u5efa\u63a7\u5236\u5668...
++FreeMind.progress.loadMaps=\u52a0\u8f7d\u601d\u7ef4\u5bfc\u56fe...
++FreeMind.progress.buildScreen=\u521b\u5efa\u5c4f\u5e55...
++FreeMind.progress.endStartup=\u542f\u52a8\u5b8c\u6bd5\u3002
++OptionPanel.tr=Tr
++OptionPanel.level=Level
++# fc, 13.8.06:
++map_not_saved=The map was not saved before.
++# fc, 27.8.06:
++plugins/TimeManagement.xml_Find=Find
++plugins/TimeManagement.xml_Replace=Replace
++plugins/TimeManagement.xml_Select=Select
++plugins/TimeManagement.xml_Export=Export Selected Nodes
++plugins/TimeManagement.xml_Replace_All=Replace All
++plugins/TimeManagement.xml_Replace_Selected=Replace Selected
++plugins/TimeManagement.xml_Goto=Goto
++plugins/TimeManagement.xml_Cancel=Cancel
++# fc, 2.9.06: 
++automatically_save_message=Map was automatically saved (using the file name {0}) ...
++plugins/ScriptingEngine.xml_documentation=Evaluates all contained scripts (recursive order, leaves first).
++plugins/ScriptingEngine.xml_name=Evaluate
++# fc, 4.9.06
++OptionPanel.keystroke_plugins/ScriptingEngine.keystroke.evaluate=Evaluate
++# fc, 6.9.06:
++error_applying_template=Error applying XSL tempalte.
++# fc, 11.10.06:
++accessories/plugins/NodeNote_jumpto.properties_documentation=Switch to resp. from note window
++accessories/plugins/NodeNote_jumpto.properties_name=Note Edit Switch
++#accessories/plugins/NodeNote_jumpfrom.properties_documentation=Switch back from notes to mindmap
++#accessories/plugins/NodeNote_jumpfrom.properties_name=Leave note
++# fc, 12.10.06
++OptionPanel.max_tooltip_width=ToolTip Width
++OptionPanel.max_tooltip_width.tooltip=<html>The default tooltip width in pixels.</html>
++# fc, 13.10.06: renamed:
++plugins/NodeList.xml_documentation=Shows all nodes as a searchable list with filter properties.
++# fc, 10.11.2006:
++accessories/plugins/NodeNote_hide_show.properties_documentation=Is a menu short cut for the little arrows on the splitting line.
++accessories/plugins/NodeNote_hide_show.properties_name=Show/Hide Note Window
++OptionPanel.keystroke_accessories/plugins/NodeNote_jumpto.keystroke.alt_N=Note Edit Switch
++OptionPanel.keystroke_accessories/plugins/NodeNote_hide_show.keystroke.control_shift_less=Show/Hide Note Window
++# aki 19.10.06: (TJI support)
++accessories/plugins/ExportWithXSLT_Applet.properties_tji= Task Juggler Include Files
++accessories/plugins/ExportWithXSLT_TASKSTJI.properties_documentation=<html>Exports tasks from TASKS node to Taskjuggler module. </html>
++accessories/plugins/ExportWithXSLT_TASKSTJI.properties_name=Tasks from TASKS node to TaskJuggler file...
++accessories/plugins/ExportWithXSLT_RESOURCESTJI.properties_documentation=<html>Exports resources from RESOURCES node to Taskjuggler module. </html>
++accessories/plugins/ExportWithXSLT_RESOURCESTJI.properties_name=Resources from RESOURCES node to TaskJuggler file...
++# fc, 14.12.2006: renamed:
++plugins/NodeList.xml_name=Find and Replace...
++plugins/TimeManagement.xml_menu_actions=Actions
++# fc, 23.12.06:
++plugins/TimeList.xml_Notes=Notes
++# fc, 30.12.06:
++accessories/plugins/SortNodes.properties_documentation=Sorts all children of a node alphabetically.
++accessories/plugins/SortNodes.properties_name=Sort Children
++# fc, 3.1.07:
++OptionPanel.ar=Ar
++# fc, 10.1.07:
++plugins/TimeManagement.xml_WindowTitle_All_Nodes=Search & Replace
++plugins/ScriptEditor.xml_documentation=Enables to write larger scripts within FreeMind.
++plugins/ScriptEditor.xml_name=Script Editor...
++# fc, 24.1.07:
++plugins/ScriptEditor/window.title=Script Editor
++plugins/ScriptEditor.menu_actions=Actions
++plugins/ScriptEditor.run=Run
++plugins/ScriptEditor.exit=Exit
++plugins/ScriptEditor/window.Result=Result: 
++
++# SimplyHTML.properties
++#
++# resource bundle with strings for application SimplyHTML
++# - English Language (default) -
++
++# edit menu definition
++simplyhtml.editLabel=Edit
++
++# edit menu items
++simplyhtml.undoLabel=Undo
++simplyhtml.undoTip=undo
++simplyhtml.redoLabel=Redo
++simplyhtml.redoTip=redo
++simplyhtml.cutLabel=Cut
++simplyhtml.cutTip=cut
++simplyhtml.copyLabel=Copy
++simplyhtml.copyTip=copy
++simplyhtml.pasteLabel=Paste
++simplyhtml.pasteTip=paste
++simplyhtml.selectAllLabel=Select all
++simplyhtml.findReplaceLabel=Find & Replace
++simplyhtml.findReplaceTip=find & replace
++
++#insert menu definition
++simplyhtml.insertTableLabel=Table...
++# format menu definition
++simplyhtml.formatLabel=Format
++
++# format menu items
++simplyhtml.fontLabel=Font...
++simplyhtml.fontTip=Format font...
++simplyhtml.clearFormatLabel=Remove Formatting
++simplyhtml.clearFormatTip=Remove Formatting
++simplyhtml.fontBoldLabel=Bold
++simplyhtml.fontBoldImage=resources/bold.gif
++simplyhtml.fontBoldSelectedIcon=resources/bold_on.gif
++simplyhtml.fontBoldTip=switch bold on/off
++simplyhtml.fontItalicLabel=Italic
++simplyhtml.fontItalicImage=resources/italic.gif
++simplyhtml.fontItalicSelectedIcon=resources/italic_on.gif
++simplyhtml.fontItalicTip=switch italic on/off
++simplyhtml.fontUnderlineLabel=Underline
++simplyhtml.fontUnderlineImage=resources/uline.gif
++simplyhtml.fontUnderlineTip=switch underline on/off
++simplyhtml.formatTableLabel=Table...
++simplyhtml.formatTableTip=Format table
++simplyhtml.toggleBulletsLabel=Bulleted list on/off
++simplyhtml.toggleBulletsTip=bulleted list on/off
++simplyhtml.toggleNumbersLabel=Numbered list on/off
++simplyhtml.toggleNumbersTip=numbered list on/off
++simplyhtml.formatListLabel=List...
++simplyhtml.formatListTip=change list format
++simplyhtml.formatParaLabel=Paragraph...
++simplyhtml.formatParaTip=Change paragraph format
++simplyhtml.paraAlignLeftLabel=Align left
++simplyhtml.paraAlignLeftTip=Set paragraph left alignment
++simplyhtml.paraAlignCenterLabel=Align center
++simplyhtml.paraAlignCenterTip=Set paragraph center alignment
++simplyhtml.paraAlignRightLabel=Align right
++simplyhtml.paraAlignRightTip=Set paragraph right alignment
++
++# table menu definition
++
++# table menu items
++simplyhtml.tableLabel=Table
++simplyhtml.nextTableCellLabel=Next cell
++simplyhtml.prevTableCellLabel=Previous cell
++simplyhtml.insertTableRowLabel=Insert row
++simplyhtml.insertTableColLabel=Insert column
++simplyhtml.appendTableRowLabel=Append row
++simplyhtml.appendTableColLabel=Append col
++simplyhtml.deleteTableRowLabel=Delete row
++simplyhtml.deleteTableColLabel=Delete column
++
++# About frame
++simplyhtml.aboutFrameTitle=About this application
++
++# Font Dialog
++simplyhtml.fontDialogTitle=Format Font
++
++# Font panel
++simplyhtml.uLineLabel=Underline
++simplyhtml.strikeLabel=Strikethrough
++simplyhtml.previewLabel=Preview
++simplyhtml.previewText=Preview text
++simplyhtml.familyLabel=Family
++simplyhtml.sizeLabel=Size
++simplyhtml.plainName=plain
++simplyhtml.boldName=bold
++simplyhtml.italicName=italic
++simplyhtml.boldItalicName=bold italic
++simplyhtml.styleLabel=Style
++simplyhtml.effectLabel=Effect
++simplyhtml.colorLabel=Color
++simplyhtml.foregroundLabel=Foreground:
++simplyhtml.backgroundLabel=Background:
++simplyhtml.noLineLabel=none
++
++# Paragraph style panel
++simplyhtml.textIndentLabel=Indent:
++simplyhtml.alignLabel=Alignment:
++simplyhtml.alignLeft=left
++simplyhtml.alignCenter=center
++simplyhtml.alignRight=right
++simplyhtml.valignLabel=Vert. Alignment:
++simplyhtml.valignTop=top
++simplyhtml.valignMiddle=middle
++simplyhtml.valignBottom=bottom
++simplyhtml.valignBaseline=baseline
++
++# Margin panel
++simplyhtml.marginLabel=Outer
++simplyhtml.paddingLabel=Inner
++
++# Table dialog
++simplyhtml.tableDialogTitle=Format Table
++simplyhtml.tablePanelTitle=Table format
++simplyhtml.cellPanelTitle=Cell format
++simplyhtml.tableWidthLabel=Width:
++simplyhtml.tableBgColLabel=Background color:
++simplyhtml.cellMarginTabLabel=Margin
++simplyhtml.cellBorderTabLabel=Borders
++simplyhtml.borderWidthLabel=Width
++simplyhtml.borderColorLabel=Color:
++simplyhtml.thisCellRangeLabel=this cell
++simplyhtml.thisColRangeLabel=this column
++simplyhtml.thisRowRangeLabel=this row
++simplyhtml.allCellsRangeLabel=all cells
++simplyhtml.applyCellAttrLabel=Apply to
++simplyhtml.cellGenTabLabel=General
++
++# Paragraph style dialog
++simplyhtml.paraStyleDialogTitle=Paragraph Style
++simplyhtml.fontTabLabel=Font
++simplyhtml.paraTabLabel=Paragraph
++
++# Tag names
++simplyhtml.cTagNamePara=Paragraph
++simplyhtml.cTagNameHead1=Heading 1
++simplyhtml.cTagNameHead2=Heading 2
++simplyhtml.cTagNameHead3=Heading 3
++simplyhtml.cTagNameHead4=Heading 4
++simplyhtml.cTagNameHead5=Heading 5
++simplyhtml.cTagNameHead6=Heading 6
++simplyhtml.cTagNameLink=Link
++simplyhtml.cTagNameUL=Unordered List
++simplyhtml.cTagNameOL=Ordered List
++
++# List dialog
++simplyhtml.listDialogTitle=Format List
++simplyhtml.listTypeLabel=Type:
++simplyhtml.listPositionLabel=Position:
++simplyhtml.listIndentTitle=Indent:
++simplyhtml.listTypeNone=none
++simplyhtml.listTypeDecimal=1.,2.,3.,4.
++simplyhtml.listTypeLowerRoman=i.,ii.,iii.,iv.
++simplyhtml.listTypeUpperRoman=I.,II.,III.,IV.
++simplyhtml.listTypeLowerAlpha=a.,b.,c.,d.
++simplyhtml.listTypeUpperAlpha=A.,B.,C.,D.
++simplyhtml.listTypeDisc=file symbol as bullet
++simplyhtml.listTypeCircle=round bulled
++simplyhtml.listTypeSquare=square bullet
++simplyhtml.listPosInside=inside
++simplyhtml.listPosOutside=outside
++
++# Find & replace dialog
++simplyhtml.findReplaceDialogTitle=Find & Replace
++simplyhtml.findNext=Find next...
++simplyhtml.searchFromStart=Search from start
++simplyhtml.searchDown=Search down
++simplyhtml.wholeWordsOnly=Whole words only
++simplyhtml.searchUp=Search up
++simplyhtml.matchCase=Match case
++simplyhtml.replaceWith=Replace with:
++simplyhtml.textToFind=Text to find:
++simplyhtml.replace=Replace...
++simplyhtml.noMoreOccurrencesFound=no (more) occurrences found
++simplyhtml.allOccurrencesReplaced=All occurrences replaced
++simplyhtml.replaceThisQuery=replace this occurrence of
++simplyhtml.replaceYes=Yes
++simplyhtml.replaceNo=No
++simplyhtml.replaceAll=All
++simplyhtml.replaceDone=Done
++
++# Error messages
++simplyhtml.unableToUndoError=Unable to undo:
++simplyhtml.unableToRedoError=Unable to redo:
++simplyhtml.unableToOpenFileError=File can not be opened
++
++# Miscellaneous text
++simplyhtml.imageFileDesc=Image files
++simplyhtml.defaultDocName=Untitled
++simplyhtml.cancelBtnName=Cancel
++simplyhtml.closeBtnName=Close
++simplyhtml.okBtnName=OK
++simplyhtml.leftLabel=left:
++simplyhtml.rightLabel=right:
++simplyhtml.topLabel=top:
++simplyhtml.bottomLabel=bottom:
++simplyhtml.insertTableTitle=insertTable
++simplyhtml.insertTableMsg=How many columns?
++simplyhtml.close=Close
++simplyhtml.standardStyleName=standard
++simplyhtml.styleNameInputTitle=Save style
++simplyhtml.styleNameInputText=Name of new style?
++simplyhtml.newStyleDefaultName=new style
++simplyhtml.docTitleTitle=Edit Document Title
++simplyhtml.docTitleQuery=Set title to:
++simplyhtml.layoutTabTitle=Layout view
++simplyhtml.htmlTabTitle=HTML Code view
++
++#fc, 14.2.07:
++ScriptEditorPanel.changed_cancel=The scripts were changed. Do you really want to abandon this changes?

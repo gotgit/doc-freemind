@@ -1,0 +1,31 @@
+ossxp-freemind (0.9.0.Beta.9-10) unstable; urgency=low
+
+  * bugfix for windows.
+  * only save node in .mmx file.
+  * use saxon as xslt process engine for freemind_join_mm_mmx.xslt.
+  * use key() in freemind_join_mm_mmx.xslt. greate performance improved!
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Mon, 12 Mar 2007 12:00:18 +0800
+
+ossxp-freemind (0.9.0.Beta.9-5) unstable; urgency=low
+
+  * store freemind flash in accessories/plugins/flash for other packages;
+  * change algorithm of split and join .mm with .mmx;
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Sun, 11 Mar 2007 00:54:05 +0800
+
+ossxp-freemind (0.9.0.Beta.9-4) unstable; urgency=low
+
+  * Orignal version saved as *.vanilla.*;
+  * Use light-bulb splash screen;
+  * add config files into /opt/freemind/conf;
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Fri, 09 Mar 2007 18:27:35 +0800
+
+ossxp-freemind (0.9.0.Beta.9-1) unstable; urgency=low
+
+  * WorldHello.net hacked version;
+  * Save output .mm file using Chinese utf-8;
+  * Do not save nodes' folded status in to .mm file, save to .mmx file;
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Fri, 08 Mar 2007 10:16:31 +0800

@@ -1,0 +1,7 @@
+001_show_oem_version.patch
+002_utf8_file_encoding.patch
+003_save_split_mm.patch
+004_join_mm_with_mmx.patch
+005_messages_zh_cn.patch
+007_freemind.startup.patch
+008_build_xml.patch
