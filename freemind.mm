@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="0.8.0">
-<!-- This .mm file is CVS/SVN friendly, also has better Chinese character support. Contribute by http://www.WorldHello.net, orignal FreeMind can be found at http://freemind.sourceforge.net -->
+<map version="0.9.0_Beta_8">
+<!-- This file is saved using a hacked version of FreeMind. visit: http://www.worldhello.net, http://ossxp.com -->
+<!-- Orignal FreeMind, can download from http://freemind.sourceforge.net -->
+<!-- This .mm file is CVS/SVN friendly, some atts are saved in .mmx file.(by Worldhello.net) -->
 <node COLOR="#990000" ID="Freemind_Link_1426395329" 
 	TEXT="    FreeMind &#xa;点亮智慧的明灯">
 <edge WIDTH="thin"/>
@@ -40,6 +42,8 @@
 </node>
 <node FOLDED="true" ID="Freemind_Link_1142742545" 
 	TEXT="FreeMind 版本">
+<node ID="Freemind_Link_468483604" 
+	TEXT="0.9.beta9"/>
 <node FOLDED="true" ID="Freemind_Link_694596374" 
 	TEXT="0.8.0">
 <node ID="Freemind_Link_683670273" 
@@ -96,24 +100,11 @@
 <font NAME="SansSerif" SIZE="12"/>
 </node>
 </node>
-<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_1678449276" 
+<node COLOR="#009999" ID="Freemind_Link_1678449276" 
 	TEXT="Freemind WHODO 修改版">
 <edge WIDTH="thin"/>
+<arrowlink DESTINATION="Freemind_Link_444881047" ENDARROW="Default" ENDINCLINATION="726;0;" ID="Freemind_Arrow_Link_277447131" STARTARROW="None" STARTINCLINATION="726;0;"/>
 <font NAME="SansSerif" SIZE="12"/>
-<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_892745594" 
-	TEXT="1. 下载： ">
-<edge WIDTH="thin"/>
-<font NAME="SansSerif" SIZE="12"/>
-<node ID="Freemind_Link_1229823809" LINK="http://whodo.worldhello.net/download/freemind/freemind.jar" 
-	TEXT="http://whodo.worldhello.net/download/freemind/freemind.jar"/>
-<node ID="Freemind_Link_1942834014" LINK="http://www.worldhello.net/doc/freemind/download/freemind.jar" 
-	TEXT="或者 http://www.worldhello.net/doc/freemind/download/freemind.jar (加载时忽略 .mmx 文件)"/>
-</node>
-<node COLOR="#009999" ID="Freemind_Link_1689537530" 
-	TEXT="2. 替换 FreeMind 0.8.0 安装目录下 lib 目录中的同名文件">
-<edge WIDTH="thin"/>
-<font NAME="SansSerif" SIZE="12"/>
-</node>
 </node>
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_568900406" 
 	TEXT="代码下载">
@@ -144,9 +135,10 @@
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_1763784472" 
 	TEXT="WHODO 的 FreeMind 代码补丁">
 <edge WIDTH="thin"/>
+<arrowlink DESTINATION="Freemind_Link_1283337136" ENDARROW="Default" ENDINCLINATION="746;0;" ID="Freemind_Arrow_Link_1532664923" STARTARROW="None" STARTINCLINATION="746;0;"/>
 <font NAME="SansSerif" SIZE="12"/>
-<node COLOR="#009999" ID="Freemind_Link_437590954" LINK="http://svn.worldhello.net/whodo/trunk/doc/freemind/ " 
-	TEXT="svn checkout http://svn.worldhello.net/whodo/trunk/doc/freemind/ ">
+<node COLOR="#009999" ID="Freemind_Link_437590954" LINK="http://svn.worldhello.net/svn/whodo/trunk/doc/freemind/debian" 
+	TEXT="svn checkout http://svn.worldhello.net/svn/whodo/trunk/doc/freemind/debian">
 <edge WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
@@ -214,8 +206,21 @@
 	TEXT="1. 加载慢">
 <node ID="Freemind_Link_1505495192" 
 	TEXT="对于比较大的 .mm 文档，合并存储附加节点属性的 .mmx 文档，速度慢，我测试了一个 200KB 的合并，最长要 4 分钟！"/>
-<node ID="Freemind_Link_718849910" 
-	TEXT="&lt;html&gt;&#xa;&lt;pre&gt;&#xa;$ time xsltproc --stringparam mmx_file subject-forum.mmx freemind_join_mm_mmx.xslt subject-forum.mm &gt; jx.mm&#xa;&#xa;real    4m33.148s&#xa;user    4m30.093s&#xa;sys     0m0.015s&#xa;&lt;/pre&gt;&#xa;"/>
+<node ID="Freemind_Link_718849910">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <pre>$ time xsltproc --stringparam mmx_file subject-forum.mmx freemind_join_mm_mmx.xslt subject-forum.mm &gt; jx.mm
+
+real    4m33.148s
+user    4m30.093s
+sys     0m0.015s</pre>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 <node FOLDED="true" ID="Freemind_Link_1690523477" 
 	TEXT="2. 内存耗尽">
@@ -248,29 +253,31 @@
 <node FOLDED="true" ID="Freemind_Link_444881047" 
 	TEXT="如何安装 FreeMind 的 WHODO 修改版？">
 <cloud COLOR="#33ff33"/>
-<node FOLDED="true" ID="Freemind_Link_1742971135" 
-	TEXT="先安装 FreeMind 0.8.0">
-<node ID="Freemind_Link_302897838" 
-	TEXT="FreeMind 的下载地址参见前面的网址链接"/>
-</node>
 <node FOLDED="true" ID="Freemind_Link_1707225405" 
-	TEXT="下载 WHODO 提供的修改过的 freemind.jar">
-<node COLOR="#666600" FOLDED="true" ID="Freemind_Link_103629594" 
-	TEXT="1. 下载地址：">
-<node COLOR="#666600" ID="Freemind_Link_382639776" LINK="http://whodo.worldhello.net/download/freemind/freemind.jar" 
-	TEXT="http://whodo.worldhello.net/download/freemind/freemind.jar"/>
-<node ID="Freemind_Link_681909770" LINK="http://www.worldhello.net/doc/freemind/download/freemind.jar" 
-	TEXT="http://www.worldhello.net/doc/freemind/download/freemind.jar (加载时忽略 .mmx 文件)"/>
+	TEXT="Whodo 增强版">
+<node FOLDED="true" ID="Freemind_Link_1263045530" 
+	TEXT="0.9.0 Beta9">
+<arrowlink DESTINATION="Freemind_Link_468483604" ENDARROW="None" ENDINCLINATION="804;0;" ID="Freemind_Arrow_Link_1612405647" STARTARROW="Default" STARTINCLINATION="804;0;"/>
+<node ID="Freemind_Link_1076124116" LINK="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip" 
+	TEXT="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip"/>
 </node>
-<node COLOR="#666600" ID="Freemind_Link_417964696" 
-	TEXT="2. 用该文件替换 FreeMind 0.8.0 安装目录下（lib 目录中）的同名文件"/>
+<node FOLDED="true" ID="Freemind_Link_896692738" 
+	TEXT="0.8&#xa;">
+<node ID="Freemind_Link_1383038" LINK="0.9.0 Beta9  http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip  0.8  http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0_8_0.zip" 
+	TEXT="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0_8_0.zip"/>
+</node>
+</node>
+<node FOLDED="true" ID="Freemind_Link_1744493833" 
+	TEXT="FreeMind 标准版下载">
+<node ID="Freemind_Link_53049176" LINK="http://sourceforge.net/project/showfiles.php?group_id=7118" 
+	TEXT="SourceForge 下载"/>
 </node>
 <node FOLDED="true" ID="Freemind_Link_1283337136" 
-	TEXT="代码下载">
+	TEXT="Whodo 代码补丁">
 <node FOLDED="true" ID="Freemind_Link_961986248" 
 	TEXT="From WHODO SVN">
 <node ID="Freemind_Link_290121055" 
-	TEXT="svn  checkout  http://svn.worldhello.net/whodo/trunk/doc/freemind/ "/>
+	TEXT="svn  checkout  http://svn.worldhello.net/svn/whodo/trunk/doc/freemind/debian"/>
 </node>
 <node FOLDED="true" ID="Freemind_Link_1942515934" 
 	TEXT="From FreeMind Wiki">
@@ -438,8 +445,8 @@
 </node>
 <node FOLDED="true" ID="Freemind_Link_905820494" 
 	TEXT="build">
-<arrowlink DESTINATION="Freemind_Link_1536361413" ENDARROW="Default" ENDINCLINATION="310;0;" ID="Freemind_Arrow_Link_1330417053" STARTARROW="None" STARTINCLINATION="310;0;"/>
 <arrowlink DESTINATION="Freemind_Link_1623530901" ENDARROW="Default" ENDINCLINATION="183;0;" ID="Freemind_Arrow_Link_1468707270" STARTARROW="None" STARTINCLINATION="183;0;"/>
+<arrowlink DESTINATION="Freemind_Link_1536361413" ENDARROW="Default" ENDINCLINATION="310;0;" ID="Freemind_Arrow_Link_1330417053" STARTARROW="None" STARTINCLINATION="310;0;"/>
 <node ID="Freemind_Link_537054088" 
 	TEXT="创建目录 ${build} （即 ../bin/classes）"/>
 <node FOLDED="true" ID="Freemind_Link_1187086638" 
@@ -992,8 +999,17 @@
 <node FOLDED="true" ID="Freemind_Link_1956774680" 
 	TEXT="line 418 增加 charset 设置">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
-<node ID="Freemind_Link_1142801037" 
-	TEXT="&lt;html&gt;BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), &quot;&lt;b&gt;UTF-8&lt;/b&gt;&quot; ) );"/>
+<node ID="Freemind_Link_1142801037">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), &quot;<b>UTF-8</b>&quot; ) );
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 <node FOLDED="true" ID="Freemind_Link_1356194758" 
 	TEXT="line 444: public void getXml(Writer fileout) ">
@@ -1109,6 +1125,13 @@
 	TEXT="关于本文">
 <node FOLDED="true" ID="Freemind_Link_1757541703" 
 	TEXT="版本">
+<node FOLDED="true" ID="Freemind_Link_1127595077" 
+	TEXT="0.3.1">
+<node ID="Freemind_Link_1940091493" 
+	TEXT="修改 whodo svn 地址。 2007/6/4"/>
+<node ID="Freemind_Link_572328670" 
+	TEXT="添加 freemind 下载地址。 2007/6/4"/>
+</node>
 <node FOLDED="true" ID="Freemind_Link_211307111" 
 	TEXT="0.2">
 <node ID="Freemind_Link_302969466" 
