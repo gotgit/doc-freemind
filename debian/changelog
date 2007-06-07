@@ -1,3 +1,9 @@
+ossxp-freemind (0.9.0.Beta.9-wh-11) unstable; urgency=low
+
+  * filter out all illegal xml characters when save xml file.
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Thu, 07 Jun 2007 08:40:29 +0800
+
 ossxp-freemind (0.9.0.Beta.9-10) unstable; urgency=low
 
   * bugfix for windows.

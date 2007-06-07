@@ -29,7 +29,7 @@ configure-stamp:
 	touch configure-stamp
 
 
-build: configure build-stamp build-hacked-stamp
+build: configure build-stamp build-hacked-stamp oemrevunpatch
 
 build-stamp: configure-stamp
 	dh_testdir
@@ -57,13 +57,13 @@ eol-format-stamp:
 		freemind/MANIFEST.MF \
 		freemind/Resources_zh_CN.properties \
 		; do \
-	    sed -i -e 's/\r$$//g' -e 's/\r/\n/g' $$i ; \
+	    dos2unix $$i; sed -i -e 's/\r$$//g' -e 's/\r/\n/g' $$i ; \
 	done
 
 	touch eol-format-stamp
 
 
-build-hacked-stamp: build-stamp eol-format-stamp patch
+build-hacked-stamp: build-stamp eol-format-stamp patch oemrevpatch
 	dh_testdir
 
 	cp -Rf $(CURDIR)/debian/freemind/* $(CURDIR)/freemind/
@@ -145,6 +145,17 @@ binary-indep: build install
 # Build architecture-dependent files here.
 binary-arch: build install
 # We have nothing to do by default.
+
+OEMREV=`head -1 $(CURDIR)/debian/changelog | sed -e "s/.*(.*-\([^-]*\)).*/\1/"`
+oemrevpatch:
+	echo "OEM Revision Patch"
+	@sed -ie "/public static final String hackedversion/ s/<REVISION>/v$(OEMREV)/" \
+	    $(CURDIR)/freemind/freemind/main/FreeMind.java
+
+oemrevunpatch:
+	echo "OEM Revision Unpatch"
+	@sed -ie "/public static final String hackedversion/ s/\(worldhello.net,\s*\)v$(OEMREV)/\1<REVISION>/" \
+	    $(CURDIR)/freemind/freemind/main/FreeMind.java
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install configure

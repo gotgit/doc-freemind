@@ -5,3 +5,4 @@
 005_messages_zh_cn.patch
 007_freemind.startup.patch
 008_build_xml.patch
+009_filter_all_illegal_xml_characters.patch

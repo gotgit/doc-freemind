@@ -49,7 +49,7 @@ Index: freemind/main/FreeMind.java
      public static final String VERSION = "0.9.0 Beta 9";
  	public static final String XML_VERSION = "0.9.0_Beta_8";
 +    // OSSXP.COM: set oem version.
-+    public static final String hackedversion = "(worldhello.net)";
++    public static final String hackedversion = "(worldhello.net, <REVISION>)";
      //    public static final String defaultPropsURL = "freemind.properties";
      //    public static Properties defaultProps;
      public static Properties props;
