@@ -3,8 +3,23 @@
 <!-- This file is saved using a hacked version of FreeMind. visit: http://www.worldhello.net, http://ossxp.com -->
 <!-- Orignal FreeMind, can download from http://freemind.sourceforge.net -->
 <!-- This .mm file is CVS/SVN friendly, some atts are saved in .mmx file.(by Worldhello.net) -->
-<node COLOR="#990000" ID="Freemind_Link_1426395329" 
-	TEXT="    FreeMind &#xa;点亮智慧的明灯">
+<node COLOR="#990000" ID="Freemind_Link_1426395329">
+<richcontent TYPE="NODE"><html>
+  <head>
+    <style type="text/css">
+      <!--
+        p { margin-top: 0 }
+      -->
+    </style>
+    
+  </head>
+  <body>
+    <p style="text-align: center">
+      <font size="5">FreeMind&#160;<br size="5" />&#28857;&#20142;&#26234;&#24935;&#30340;&#26126;&#28783;</font><br /><font size="2"><b>(&#29256;&#26412;&#21495;: 0.3.$Rev$ )</b></font>
+    </p>
+  </body>
+</html>
+</richcontent>
 <edge WIDTH="thin"/>
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <node COLOR="#3300cc" FOLDED="true" ID="Freemind_Link_757657139" POSITION="right" STYLE="bubble" 
@@ -215,6 +230,11 @@
 <node ID="Freemind_Link_44517587" 
 	TEXT="综上所述，Freemind 的 WHODO 修改版，提供了 Freemind 更好的中文支持和更易于版本控制的文件格式"/>
 </node>
+<node ID="Freemind_Link_444881047" 
+	TEXT="如何安装 FreeMind 的 WHODO 修改版？">
+<cloud COLOR="#33ff33"/>
+<arrowlink DESTINATION="Freemind_Link_1707225405" ENDARROW="Default" ENDINCLINATION="786;0;" ID="Freemind_Arrow_Link_1973632980" STARTARROW="None" STARTINCLINATION="786;0;"/>
+</node>
 <node FOLDED="true" ID="Freemind_Link_293461055" 
 	TEXT="TODO">
 <cloud COLOR="#ffff66"/>
@@ -249,11 +269,6 @@
 </node>
 </node>
 </node>
-</node>
-<node ID="Freemind_Link_444881047" 
-	TEXT="如何安装 FreeMind 的 WHODO 修改版？">
-<cloud COLOR="#33ff33"/>
-<arrowlink DESTINATION="Freemind_Link_1707225405" ENDARROW="Default" ENDINCLINATION="786;0;" ID="Freemind_Arrow_Link_1973632980" STARTARROW="None" STARTINCLINATION="786;0;"/>
 </node>
 </node>
 <node COLOR="#0033cc" FOLDED="true" ID="Freemind_Link_1537167583" POSITION="right" STYLE="bubble" 
@@ -1095,7 +1110,7 @@
 <node FOLDED="true" ID="Freemind_Link_1757541703" 
 	TEXT="版本">
 <node FOLDED="true" ID="Freemind_Link_1127595077" 
-	TEXT="0.3.1">
+	TEXT="0.3">
 <node ID="Freemind_Link_1940091493" 
 	TEXT="修改 whodo svn 地址。 2007/6/4"/>
 <node ID="Freemind_Link_572328670" 
