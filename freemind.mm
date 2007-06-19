@@ -15,7 +15,7 @@
   </head>
   <body>
     <p style="text-align: center">
-      <font size="5">FreeMind&#160;<br size="5" />&#28857;&#20142;&#26234;&#24935;&#30340;&#26126;&#28783;</font><br /><font size="2"><b>(&#29256;&#26412;&#21495;: 0.3.$Rev$ )</b></font>
+      <font size="5">FreeMind&#160;<br size="5" />&#28857;&#20142;&#26234;&#24935;&#30340;&#26126;&#28783;</font><br /><font size="2"><b>(&#29256;&#26412;&#21495;: 0.3-F-$Rev$ )</b></font>
     </p>
   </body>
 </html>
