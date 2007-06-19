@@ -15,7 +15,7 @@
   </head>
   <body>
     <p style="text-align: center">
-      <font size="5">FreeMind&#160;<br size="5" />&#28857;&#20142;&#26234;&#24935;&#30340;&#26126;&#28783;</font><br /><font size="2"><b>(&#29256;&#26412;&#21495;: 0.3-F-$Rev$ )</b></font>
+      <font size="5">FreeMind&#160;<br size="5" />&#28857;&#20142;&#26234;&#24935;&#30340;&#26126;&#28783;</font><br /><font size="2"><b>(&#29256;&#26412;&#21495;: 0.4.F-$Rev$ )</b></font>
     </p>
   </body>
 </html>
@@ -55,19 +55,24 @@
 <node COLOR="#3300cc" ID="Freemind_Link_242364145" 
 	TEXT="所有你脑子里的东西 8-)"/>
 </node>
-<node FOLDED="true" ID="Freemind_Link_1142742545" 
+<node COLOR="#3300cc" FOLDED="true" ID="Freemind_Link_1142742545" 
 	TEXT="FreeMind 版本">
-<node ID="Freemind_Link_468483604" 
-	TEXT="0.9.beta9"/>
-<node FOLDED="true" ID="Freemind_Link_694596374" 
-	TEXT="0.8.0">
-<node ID="Freemind_Link_683670273" 
-	TEXT="2005.06.09 发布"/>
+<edge COLOR="#808080" WIDTH="thin"/>
+<node COLOR="#3300cc" ID="Freemind_Link_468483604" 
+	TEXT="0.9.beta9">
+<edge COLOR="#808080" WIDTH="thin"/>
 </node>
-<node FOLDED="true" ID="Freemind_Link_1196429371" 
+<node COLOR="#3300cc" FOLDED="true" ID="Freemind_Link_694596374" 
+	TEXT="0.8.0">
+<edge COLOR="#808080" WIDTH="thin"/>
+<node COLOR="#3300cc" ID="Freemind_Link_683670273" 
+	TEXT="2005.06.09 发布">
+<edge COLOR="#808080" WIDTH="thin"/>
+</node>
+</node>
+<node COLOR="#3300cc" ID="Freemind_Link_1196429371" 
 	TEXT="0.8.1">
-<node ID="Freemind_Link_486122342" LINK="http://freemind.sourceforge.net/dimitri_testversions/0_8_1/" 
-	TEXT="下载 0.8.1 beta"/>
+<edge COLOR="#808080" WIDTH="thin"/>
 </node>
 </node>
 <node COLOR="#3300cc" ID="Freemind_Link_616035510" LINK="freemind_manual.mm" 
@@ -94,6 +99,10 @@
 <edge WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
+<node COLOR="#009999" ID="Freemind_Link_715830598" 
+	TEXT="Java 下载： http://java.sun.com/">
+<edge COLOR="#808080" WIDTH="thin"/>
+</node>
 </node>
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_1248343623" 
 	TEXT="软件下载">
@@ -102,8 +111,11 @@
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_1707225405" 
 	TEXT="Whodo 增强版">
 <edge COLOR="#808080" WIDTH="thin"/>
+<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_649158442" 
+	TEXT="for Windows">
+<edge COLOR="#808080" WIDTH="thin"/>
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_1263045530" 
-	TEXT="0.9.0 Beta9">
+	TEXT="0.9.0 Beta9（推荐）">
 <edge COLOR="#808080" WIDTH="thin"/>
 <arrowlink DESTINATION="Freemind_Link_468483604" ENDARROW="None" ENDINCLINATION="804;0;" ID="Freemind_Arrow_Link_1612405647" STARTARROW="Default" STARTINCLINATION="804;0;"/>
 <node COLOR="#009999" ID="Freemind_Link_1076124116" LINK="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip" 
@@ -114,9 +126,42 @@
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_896692738" 
 	TEXT="0.8&#xa;">
 <edge COLOR="#808080" WIDTH="thin"/>
+<node ID="Freemind_Link_607637507" 
+	TEXT="注意：0.8 版本的 FreeMind 打不开 0.9 版本编辑的文件。">
+<icon BUILTIN="clanbomber"/>
+</node>
 <node COLOR="#009999" ID="Freemind_Link_1383038" LINK="0.9.0 Beta9  http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip  0.8  http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0_8_0.zip" 
 	TEXT="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0_8_0.zip">
 <edge COLOR="#808080" WIDTH="thin"/>
+</node>
+</node>
+</node>
+<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_423457983" 
+	TEXT="for Debian Linux">
+<edge COLOR="#808080" WIDTH="thin"/>
+<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_142640409" 
+	TEXT="添加 Debian 源： ">
+<edge COLOR="#808080" WIDTH="thin"/>
+<node COLOR="#009999" ID="Freemind_Link_318343862" 
+	TEXT="deb http://update.ossxp.com/public testing main ">
+<edge COLOR="#808080" WIDTH="thin"/>
+</node>
+</node>
+<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_672953612" 
+	TEXT="导入 群英汇-开源速递 软件升级签名公钥&#xa;">
+<edge COLOR="#808080" WIDTH="thin"/>
+<node COLOR="#009999" ID="Freemind_Link_1461269748" 
+	TEXT="wget -q http://update.ossxp.com/public.key -O - | sudo apt-key add -&#xa;">
+<edge COLOR="#808080" WIDTH="thin"/>
+</node>
+</node>
+<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_230607109" 
+	TEXT="安装 ossxp-freemind &#xa;">
+<edge COLOR="#808080" WIDTH="thin"/>
+<node COLOR="#009999" ID="Freemind_Link_33594089" 
+	TEXT="apt-get update &amp;&amp; apt-get install ossxp-freemind">
+<edge COLOR="#808080" WIDTH="thin"/>
+</node>
 </node>
 </node>
 </node>
@@ -154,8 +199,8 @@
 </node>
 </node>
 </node>
-<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_55712590" 
-	TEXT="FreeMind 0.8.0 代码">
+<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_366752444" 
+	TEXT="官方 CVS 版本库">
 <edge WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="12"/>
 <node COLOR="#009999" ID="Freemind_Link_1183277206" 
@@ -163,18 +208,11 @@
 <edge WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-</node>
-<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_366752444" 
-	TEXT="当前开发分支 代码">
-<edge WIDTH="thin"/>
-<font NAME="SansSerif" SIZE="12"/>
 <node COLOR="#009999" ID="Freemind_Link_368642651" 
-	TEXT="cvs -d :pserver:anonymous@cvs.sourceforge.net:/cvsroot/freemind checkout -r fm_041017_base_integration freemind">
+	TEXT="cvs -d :pserver:anonymous@cvs.sourceforge.net:/cvsroot/freemind checkout freemind">
 <edge WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node ID="Freemind_Link_1733108800" 
-	TEXT="branch: fm_050531_filtered_merged"/>
 </node>
 </node>
 </node>
@@ -277,6 +315,20 @@
 <font BOLD="true" ITALIC="true" NAME="SansSerif" SIZE="14"/>
 <node FOLDED="true" ID="Freemind_Link_37644593" 
 	TEXT="两种方法主要方法">
+<node FOLDED="true" ID="Freemind_Link_1548450560" 
+	TEXT="推荐： Flash viewer">
+<node ID="Freemind_Link_278029702" 
+	TEXT="来自于 http://www.efectokiwano.net/mm 的一款依靠 JavaScript 和 Flash 的 mindmap 解决方案"/>
+<node FOLDED="true" ID="Freemind_Link_132525865" 
+	TEXT="优势">
+<node ID="Freemind_Link_922226915" 
+	TEXT="Flash, Javascript 本身文件小，网络带宽占用小，加载迅速"/>
+<node ID="Freemind_Link_620602809" 
+	TEXT="格式更加美观"/>
+<node ID="Freemind_Link_1624659317" 
+	TEXT="提供更多功能。如缩放、预览、查找等功能"/>
+</node>
+</node>
 <node FOLDED="true" ID="Freemind_Link_546384814" 
 	TEXT="Java Applet">
 <node ID="Freemind_Link_929090092" 
@@ -290,20 +342,6 @@
 	TEXT="缺点">
 <node ID="Freemind_Link_616321612" 
 	TEXT="该 Java applet 文件本身很大，下载会消耗带宽和时间！"/>
-</node>
-</node>
-<node FOLDED="true" ID="Freemind_Link_1548450560" 
-	TEXT="Flash viewer">
-<node ID="Freemind_Link_278029702" 
-	TEXT="来自于 http://www.efectokiwano.net/mm 的一款依靠 JavaScript 和 Flash 的 mindmap 解决方案"/>
-<node FOLDED="true" ID="Freemind_Link_132525865" 
-	TEXT="优势">
-<node ID="Freemind_Link_922226915" 
-	TEXT="Flash, Javascript 本身文件小，网络带宽占用小，加载迅速"/>
-<node ID="Freemind_Link_620602809" 
-	TEXT="格式更加美观"/>
-<node ID="Freemind_Link_1624659317" 
-	TEXT="提供更多功能。如缩放、预览、查找等功能"/>
 </node>
 </node>
 </node>
@@ -325,6 +363,15 @@
 	TEXT="这种方法不是实时的在线显示，而是通过 FreeMind 的导出功能。"/>
 <node ID="Freemind_Link_393163450" 
 	TEXT="转换为 HTML 的最主要的好处，应该是更方便的打印。"/>
+</node>
+<node FOLDED="true" ID="Freemind_Link_876436232" 
+	TEXT="为什么我的浏览器显示不了网页上的 FreeMind 智图？">
+<node ID="Freemind_Link_661796722" 
+	TEXT="Flash 插件的版本不能低于 7.0，否则可能不能正确显示；&#xa;"/>
+<node ID="Freemind_Link_324664329" 
+	TEXT="看看是否由于您的浏览器禁用了 JavaScript；  "/>
+<node ID="Freemind_Link_1894215054" 
+	TEXT="或者浏览器的广告过滤插件把 Flash 屏蔽掉了；"/>
 </node>
 </node>
 <node COLOR="#990000" FOLDED="true" ID="Freemind_Link_868000310" POSITION="left" STYLE="bubble" 
@@ -1106,29 +1153,33 @@
 </node>
 </node>
 <node FOLDED="true" ID="Freemind_Link_947773230" POSITION="left" 
-	TEXT="关于本文">
+	TEXT="版本控制">
 <node FOLDED="true" ID="Freemind_Link_1757541703" 
 	TEXT="版本">
+<node FOLDED="true" ID="Freemind_Link_1564385688" 
+	TEXT="0.4">
+<node ID="Freemind_Link_1853726563" 
+	TEXT="补充 Debian Linux 下安装 WorldHello 版本的 FreeMind。(2007/06/19)"/>
+<node ID="Freemind_Link_1943835699" 
+	TEXT="增加 FreeMind Flash player 限制条件。(2007/06/19)"/>
+</node>
 <node FOLDED="true" ID="Freemind_Link_1127595077" 
 	TEXT="0.3">
 <node ID="Freemind_Link_1940091493" 
-	TEXT="修改 whodo svn 地址。 2007/6/4"/>
+	TEXT="修改 whodo svn 地址。 (2007/06/04)"/>
 <node ID="Freemind_Link_572328670" 
-	TEXT="添加 freemind 下载地址。 2007/6/4"/>
+	TEXT="添加 freemind 下载地址。 (2007/06/04)"/>
 </node>
 <node FOLDED="true" ID="Freemind_Link_211307111" 
 	TEXT="0.2">
 <node ID="Freemind_Link_302969466" 
-	TEXT="补充 FreeMind 在网页上的显示。 2006/05/03"/>
+	TEXT="补充 FreeMind 在网页上的显示。 (2006/05/03)"/>
 </node>
 </node>
 <node FOLDED="true" ID="Freemind_Link_1998866896" 
 	TEXT="作者">
-<node FOLDED="true" ID="Freemind_Link_935430690" 
-	TEXT="J">
 <node ID="Freemind_Link_1892886125" LINK="http://whodo.worldhello.net/wiki/User:Jiangxin" 
-	TEXT="Jiang Xin"/>
-</node>
+	TEXT="蒋鑫"/>
 </node>
 </node>
 </node>
