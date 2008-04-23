@@ -1,14 +1,14 @@
 --- a/freemind/freemind.sh	2006-10-30 04:31:53.000000000 +0800
 +++ b/freemind/freemind.sh	2007-03-09 23:57:16.000000000 +0800
-@@ -113,6 +113,7 @@
- }
+@@ -135,6 +135,7 @@
+ #--------- Put the environment together --------------------------------
  
  _source /etc/freemind/freemindrc
 +_source /opt/freemind/conf/freemindrc
  _source ~/.freemind/freemindrc
  
  findjava
-@@ -154,7 +155,10 @@
+@@ -176,7 +177,10 @@
  	exit 1
  fi
  
@@ -20,7 +20,7 @@
  then
  	if [ ! -d ~/.freemind ]
  	then
-@@ -162,7 +166,7 @@
+@@ -184,7 +188,7 @@
  		mkdir -p ~/.freemind
  	fi
  	_debug "Copying patterns.xml to ~/.freemind."
@@ -28,15 +28,15 @@
 +	cp $PATTERNS_XML ~/.freemind/patterns.xml
  fi
  
- # The CLASSPATH also lets one specify additional jars, which is good, if
-@@ -174,6 +178,7 @@
+ #--------- Call (at last) FreeMind -------------------------------------
+@@ -198,6 +202,7 @@
  ${freedir}/lib/bindings.jar:\
  ${freedir}/lib/commons-lang-2.0.jar:\
  ${freedir}/lib/forms-1.0.5.jar:\
 +${freedir}/lib/saxon.jar:\
  ${freedir}"
- _debug "Calling: '${JAVACMD} -Dfreemind.base.dir=${freedir} -cp ${CLASSPATH} freemind.main.FreeMindStarter  $@'."
- "${JAVACMD}" -Dfreemind.base.dir="${freedir}" -cp "${CLASSPATH}" freemind.main.FreeMindStarter "$@"
+ if [ "${JAVA_TYPE}" = "sun" ]
+ then
 --- a/freemind/freemind.bat	2007-03-14 15:55:06.000000000 +0800
 +++ b/freemind/freemind.bat	2007-03-14 16:03:45.000000000 +0800
 @@ -1,2 +1,2 @@

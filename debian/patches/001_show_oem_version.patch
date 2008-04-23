@@ -2,7 +2,7 @@ Index: freemind/controller/Controller.java
 ===================================================================
 --- a/freemind/freemind/controller/Controller.java	（修订版 2510）
 +++ b/freemind/freemind/controller/Controller.java	（工作拷贝）
-@@ -1079,7 +1079,8 @@
+@@ -1123,7 +1123,8 @@
              this.controller = controller;
          }
          public void actionPerformed(ActionEvent e) {
@@ -16,15 +16,15 @@ Index: freemind/main/FreeMindSplash.java
 ===================================================================
 --- a/freemind/freemind/main/FreeMindSplash.java	（修订版 2510）
 +++ b/freemind/freemind/main/FreeMindSplash.java	（工作拷贝）
-@@ -127,6 +127,8 @@
-         		g2.setFont(font);
-                 // determine width of string to center it.
+@@ -143,6 +143,8 @@
+                 g2.setFont(versionTextFont);
+                 // Determine width of string to center it
                  String freemindVersion = frame.getFreemindVersion();
 +                // OSSXP.COM: Splash screen, show oem version.
 +                freemindVersion += " " + FreeMind.hackedversion;
                  if (mWidth == null) {
-                     mWidth = new Integer(g2.getFontMetrics().stringWidth(
-                             freemindVersion));
+                     mWidth = new Integer(g2.getFontMetrics().stringWidth(freemindVersion));
+                 }
 Index: freemind/main/FreeMindSplashLightBulb.java
 ===================================================================
 --- a/freemind/freemind/main/FreeMindSplashLightBulb.java	（修订版 2527）
@@ -44,12 +44,13 @@ Index: freemind/main/FreeMind.java
 ===================================================================
 --- a/freemind/freemind/main/FreeMind.java	（修订版 2510）
 +++ b/freemind/freemind/main/FreeMind.java	（工作拷贝）
-@@ -92,6 +92,8 @@
-     private static final String DEFAULT_LANGUAGE = "en";
-     public static final String VERSION = "0.9.0 Beta 9";
- 	public static final String XML_VERSION = "0.9.0_Beta_8";
-+    // OSSXP.COM: set oem version.
-+    public static final String hackedversion = "(worldhello.net, <REVISION>)";
-     //    public static final String defaultPropsURL = "freemind.properties";
-     //    public static Properties defaultProps;
-     public static Properties props;
+@@ -82,6 +82,9 @@
+ 
+ public class FreeMind extends JFrame implements FreeMindMain {
+ 
++	// OSSXP.COM: set oem version.
++	public static final String hackedversion = "(worldhello.net, <REVISION>)";
++
+ 	private static final String SPLIT_PANE_POSITION = "split_pane_position";
+ 
+ 	private static final String SPLIT_PANE_LAST_POSITION = "split_pane_last_position";

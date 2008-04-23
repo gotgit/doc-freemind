@@ -1,6 +1,6 @@
 --- a/freemind/build.xml	2007-03-15 08:45:15.000000000 +0800
 +++ b/freemind/build.xml	2007-03-15 08:44:52.000000000 +0800
-@@ -46,7 +46,7 @@
+@@ -47,7 +47,7 @@
  		<classpath path="${jibxlibs}"/>
  	</taskdef>
  
@@ -9,7 +9,7 @@
  
  	  <target name="xmlbind.checkStatusOfGeneration">
  	    <uptodate property="xmlbind.isUpToDate"
-@@ -156,7 +156,7 @@
+@@ -159,7 +159,7 @@
  		<chmod file="${dist}/freemind.sh" perm="u+rx"/>
  		<copy todir="${dist}">
  			<fileset dir="${src}/windows-launcher"
@@ -18,7 +18,7 @@
  			/>
  		</copy>
  		<mkdir dir="${dist}/doc" />
-@@ -177,6 +177,7 @@
+@@ -180,6 +180,7 @@
  				<include name="commons-lang-2.0.jar"/>
  				<include name="forms-1.0.5.jar"/>
  				<include name="bindings.jar"/>

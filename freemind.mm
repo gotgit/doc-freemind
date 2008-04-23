@@ -15,11 +15,10 @@
   </head>
   <body>
     <p style="text-align: center">
-      <font size="5">FreeMind&#160;<br size="5" />&#28857;&#20142;&#26234;&#24935;&#30340;&#26126;&#28783;</font><br /><font size="2"><b>(&#29256;&#26412;&#21495;: 0.4.F-$Rev$ )</b></font>
+      <font size="5">FreeMind <br size="5"/>点亮智慧的明灯</font><br/><font size="2"><b>(版本号: 0.4.F-$Rev$ )</b></font>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge WIDTH="thin"/>
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <node COLOR="#3300cc" FOLDED="true" ID="Freemind_Link_757657139" POSITION="right" STYLE="bubble" 
@@ -59,7 +58,7 @@
 	TEXT="FreeMind 版本">
 <edge COLOR="#808080" WIDTH="thin"/>
 <node COLOR="#3300cc" ID="Freemind_Link_468483604" 
-	TEXT="0.9.beta9">
+	TEXT="0.9.beta">
 <edge COLOR="#808080" WIDTH="thin"/>
 </node>
 <node COLOR="#3300cc" FOLDED="true" ID="Freemind_Link_694596374" 
@@ -114,26 +113,9 @@
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_649158442" 
 	TEXT="for Windows">
 <edge COLOR="#808080" WIDTH="thin"/>
-<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_1263045530" 
-	TEXT="0.9.0 Beta9（推荐）">
-<edge COLOR="#808080" WIDTH="thin"/>
-<arrowlink DESTINATION="Freemind_Link_468483604" ENDARROW="None" ENDINCLINATION="804;0;" ID="Freemind_Arrow_Link_1612405647" STARTARROW="Default" STARTINCLINATION="804;0;"/>
-<node COLOR="#009999" ID="Freemind_Link_1076124116" LINK="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip" 
-	TEXT="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip">
-<edge COLOR="#808080" WIDTH="thin"/>
-</node>
-</node>
-<node COLOR="#009999" FOLDED="true" ID="Freemind_Link_896692738" 
-	TEXT="0.8&#xa;">
-<edge COLOR="#808080" WIDTH="thin"/>
-<node ID="Freemind_Link_607637507" 
-	TEXT="注意：0.8 版本的 FreeMind 打不开 0.9 版本编辑的文件。">
-<icon BUILTIN="clanbomber"/>
-</node>
-<node COLOR="#009999" ID="Freemind_Link_1383038" LINK="0.9.0 Beta9  http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0.9.0_Beta_9_icon_butterfly.zip  0.8  http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0_8_0.zip" 
-	TEXT="http://update.ossxp.com/public/tools/Windows/freemind/freemind-bin-0_8_0.zip">
-<edge COLOR="#808080" WIDTH="thin"/>
-</node>
+<node COLOR="#009999" ID="ID_868495952" LINK="http://update.ossxp.com/public/tools/Windows/freemind" STYLE="bubble" 
+	TEXT="update.ossxp.com &gt; Public &gt; Tools &gt; Windows &gt; Freemind">
+<edge COLOR="#808080" STYLE="bezier" WIDTH="thin"/>
 </node>
 </node>
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_423457983" 
@@ -163,6 +145,10 @@
 <edge COLOR="#808080" WIDTH="thin"/>
 </node>
 </node>
+</node>
+<node COLOR="#009999" ID="ID_315235515" STYLE="bubble" 
+	TEXT="注意： 可能需要身份认证，请输入在 WorldHello.net 的注册帐号和口令。">
+<edge COLOR="#808080" STYLE="bezier" WIDTH="thin"/>
 </node>
 </node>
 <node COLOR="#009999" FOLDED="true" ID="Freemind_Link_1744493833" 
@@ -271,26 +257,21 @@
 <node ID="Freemind_Link_444881047" 
 	TEXT="如何安装 FreeMind 的 WHODO 修改版？">
 <cloud COLOR="#33ff33"/>
-<arrowlink DESTINATION="Freemind_Link_1707225405" ENDARROW="Default" ENDINCLINATION="786;0;" ID="Freemind_Arrow_Link_1973632980" STARTARROW="None" STARTINCLINATION="786;0;"/>
+<arrowlink COLOR="#b0b0b0" DESTINATION="Freemind_Link_1707225405" ENDARROW="Default" ENDINCLINATION="804;0;" ID="Freemind_Arrow_Link_1973632980" STARTARROW="None" STARTINCLINATION="728;0;"/>
 </node>
 <node FOLDED="true" ID="Freemind_Link_293461055" 
 	TEXT="TODO">
 <cloud COLOR="#ffff66"/>
 <node FOLDED="true" ID="Freemind_Link_358648752" 
 	TEXT="解决加载速度慢的问题 （这个问题已经解决）">
-<node FOLDED="true" ID="Freemind_Link_648744209" 
-	TEXT="注：这个问题已经解决。解决方案参见：">
-<node ID="Freemind_Link_562353531" LINK="http://freemind.sourceforge.net/wiki/index.php/User:Jiangxin/Patch_load_mm_file_with_mmx_file#the_XSLT" 
-	TEXT="http://freemind.sourceforge.net/wiki/index.php/User:Jiangxin/Patch_load_mm_file_with_mmx_file#the_XSLT"/>
-</node>
 <node FOLDED="true" ID="Freemind_Link_516667859" 
-	TEXT="存在的问题">
+	TEXT="旧版本中存在的问题">
 <node FOLDED="true" ID="Freemind_Link_52189103" 
 	TEXT="1. 加载慢">
 <node ID="Freemind_Link_1505495192" 
 	TEXT="对于比较大的 .mm 文档，合并存储附加节点属性的 .mmx 文档，速度慢，我测试了一个 200KB 的合并，最长要 4 分钟！"/>
 <node ID="Freemind_Link_718849910">
-<richcontent TYPE="NODE"><html>   <head>        </head>   <body>     <pre>$ time xsltproc --stringparam mmx_file subject-forum.mmx freemind_join_mm_mmx.xslt subject-forum.mm &gt; jx.mm  real    4m33.148s user    4m30.093s sys     0m0.015s</pre>   </body> </html> </richcontent>
+<richcontent TYPE="NODE"><html>   <head>        </head>   <body>     <pre>$ time xsltproc --stringparam mmx_file subject-forum.mmx freemind_join_mm_mmx.xslt subject-forum.mm &gt; jx.mm  real    4m33.148s user    4m30.093s sys     0m0.015s</pre>   </body> </html></richcontent>
 </node>
 </node>
 <node FOLDED="true" ID="Freemind_Link_1690523477" 
@@ -305,6 +286,11 @@
 <node ID="Freemind_Link_1758596918" 
 	TEXT="这一定搔到了部分人的痒处，期待您来完善……"/>
 </node>
+</node>
+<node FOLDED="true" ID="Freemind_Link_648744209" 
+	TEXT="注：这个问题已经解决。解决方案参见：">
+<node ID="Freemind_Link_562353531" LINK="http://freemind.sourceforge.net/wiki/index.php/User:Jiangxin/Patch_load_mm_file_with_mmx_file#the_XSLT" 
+	TEXT="http://freemind.sourceforge.net/wiki/index.php/User:Jiangxin/Patch_load_mm_file_with_mmx_file#the_XSLT"/>
 </node>
 </node>
 </node>
@@ -1038,8 +1024,7 @@
   <body>
     BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), "<b>UTF-8</b>" ) );
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node FOLDED="true" ID="Freemind_Link_1356194758" 

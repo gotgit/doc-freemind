@@ -1,3 +1,9 @@
+ossxp-freemind (0.9.0.Beta.16-wh-11) unstable; urgency=low
+
+  * upstream upgrade
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Wed, 23 Apr 2008 19:44:35 +0800
+
 ossxp-freemind (0.9.0.Beta.9-wh-11) unstable; urgency=low
 
   * filter out all illegal xml characters when save xml file.

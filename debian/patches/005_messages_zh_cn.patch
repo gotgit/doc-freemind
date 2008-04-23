@@ -2,13 +2,13 @@ Index: Resources_zh_CN.properties
 ===================================================================
 --- a/freemind/Resources_zh_CN.properties	（修订版 2510）
 +++ b/freemind/Resources_zh_CN.properties	（工作拷贝）
-@@ -1,22 +1,22 @@
--# simplified-chinese version by wonder365  (liwh@ylchkj.com)
+@@ -1,10 +1,12 @@
+ # simplified-chinese version by wonder365  (liwh@ylchkj.com)
 -about = \u5173\u4e8e
--#about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2001 Joerg Mueller <joemuell@informatik.uni-freiburg.de>\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave Fun!\nVersion: 
--about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2004 Joerg Mueller and others.\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave fun!\nVersion: 
 +#about = About
-+#about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2001 Joerg Mueller <joemuell@informatik.uni-freiburg.de>\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave Fun!\nVersion:
+ 
+-about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2008 Joerg Mueller and others.\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave fun!\nVersion:
++#about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2008 Joerg Mueller and others.\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave fun!\nVersion:
 +about_text = FreeMind - free mind mapping and knowledge building software\nCopyright \u00a9 2000-2006 Joerg Mueller, Daniel Polansky, Christian Foltin, Dimitri Polivaev, and others.\nThis program is free software, licenced under GNU General Public Licence.\n\nHome: http://freemind.sourceforge.net/\nVersion:
  antialias_all = \u5168\u5f00\u6297\u952f\u9f7f
  antialias_edges = \u8fb9\u7f18\u6297\u952f\u9f7f
@@ -17,21 +17,7 @@ Index: Resources_zh_CN.properties
  background = \u80cc\u666f
  bezier = \u8d1d\u585e\u5c14\u66f2\u7ebf
  blend_color = \u8272\u5f69\u6df7\u5408
- bold = \u7c97\u4f53
- boldify_branch = \u52a0\u7c97\u5206\u652f(branch)
--cloud = \u4e91\u6846
--cloud_color = \u4e91\u6846\u989c\u8272...
- branch = \u5206\u652f\uff08branch)
- bubble = \u6ce1\u6846
- cancel = \u53d6\u6d88
- cannot_join_nodes_with_children = \u6709\u5b50\u8282\u70b9\u7684\u7684\u8282\u70b9\u4e0d\u80fd\u5408\u5e76
- center = \u5c45\u4e2d
-+cloud = \u4e91\u6846
-+cloud_color = \u4e91\u6846\u989c\u8272...
- close = \u5173\u95ed
- copy = \u590d\u5236
- copy_single = \u5355\u4e00\u590d\u5236
-@@ -33,6 +33,7 @@
+@@ -33,6 +35,7 @@
  edit_long_node = \u7f16\u8f91\u957f\u8282\u70b9...
  enter_base_url = \u5c06\u7c98\u8d34\u76f8\u5bf9\u94fe\u63a5\u3002\u8bf7\u8f93\u5165\u57fa\u7840 URL \u3002
  enter_confirms = Enter \u786e\u8ba4
@@ -39,7 +25,7 @@ Index: Resources_zh_CN.properties
  export_branch = \u5bfc\u51fa\u8282\u70b9\u4e3a\u601d\u7ef4\u5bfc\u56fe ...
  export_branch_to_html = \u5bfc\u51fa\u8282\u70b9\u4e3a HTML
  export_to_html = \u5bfc\u51fa\u4e3aHTML
-@@ -81,7 +82,7 @@
+@@ -81,7 +84,7 @@
  icon_penguin = Linux\u4f01\u9e45
  icon_licq = \u7f8e\u597d
  import = \u5bfc\u5165
@@ -48,7 +34,7 @@ Index: Resources_zh_CN.properties
  import_explorer_favorites = \u6536\u85cf\u5939...
  import_folder_structure = \u76ee\u5f55\u7ed3\u6784...
  import_linked_branch = \u94fe\u63a5\u56fe
-@@ -119,14 +120,16 @@
+@@ -119,14 +122,16 @@
  no = \u5426
  node = \u8282\u70b9
  node_changed_discard_changes = \u60a8\u786e\u8ba4\u653e\u5f03\u5bf9\u8282\u70b9\u6240\u505a\u66f4\u6539?
@@ -67,22 +53,22 @@ Index: Resources_zh_CN.properties
  no_previous_find = \u524d\u8fb9\u6ca1\u6709\u4e86.
  not_saved_for_link_error = \u7528\u6587\u4ef6\u9009\u62e9\u5668\u6dfb\u52a0\u6587\u4ef6\u94fe\u63a5\u524d\u5fc5\u987b\u5148\u4fdd\u5b58\u56fe\u3002
  open = \u6253\u5f00...
-@@ -136,11 +139,13 @@
+@@ -136,11 +141,13 @@
  preferences = \u9996\u9009\u9879
  previous_map = \u524d\u4e00\u5f20\u56fe
  print = \u6253\u5370...
 +print_preview = \u6253\u5370\u9884\u89c8...
  quit = \u9000\u51fa
-+read_only = \u53ea\u8bfb
- remove_node = \u5220\u9664\u8282\u70b9
--read_only = \u53ea\u8bfb
+-remove_node = \u5220\u9664\u8282\u70b9
+ read_only = \u53ea\u8bfb
++remove_node = \u5220\u9664\u8282\u70b9
  repair_link = \u4fee\u590d\u94fe\u63a5
  repair_link_question = \u4e0d\u80fd\u52a0\u8f7d\u94fe\u63a5\u56fe\u3002\u624b\u52a8\u4fee\u590d\u94fe\u63a5\uff1f
 +replace=\u66ff\u6362
  save = \u4fdd\u5b58
  save_as = \u53e6\u5b58\u4e3a...
  save_failed = \u56fe $1 \u5b58\u50a8\u5931\u8d25.
-@@ -181,6 +186,8 @@
+@@ -181,6 +188,8 @@
  user_defined_zoom_status_bar = \u7f29\u653e\u4e3a\u7528\u6237\u5b9a\u4e49\u7684 {0}%.
  # new from 14.12.2003, fc
  FAQ = FAQ
@@ -91,15 +77,15 @@ Index: Resources_zh_CN.properties
  # new from 20.12.2003, fc
  printing_settings = \u6253\u5370\u6bd4\u4f8b
  fit_to_page = \u9002\u5408\u9875\u9762
-@@ -203,6 +210,7 @@
+@@ -203,6 +212,7 @@
  menu_format = \u683c\u5f0f
  menu_extras = \u5de5\u5177
  menu_insert = \u63d2\u5165
 +menu_attributes = \u5c5e\u6027
  # Beware: "Edge Width " and "Edge Style " must end with space.
- edge_width = \u8fde\u7ebf\u5bbd\u5ea6 
- edge_style = \u8fde\u7ebf\u98ce\u683c 
-@@ -274,6 +282,8 @@
+ edge_width = \u8fde\u7ebf\u5bbd\u5ea6
+ edge_style = \u8fde\u7ebf\u98ce\u683c
+@@ -274,6 +284,8 @@
  accessories/plugins/PMCalculation.properties_name = PM\u8ba1\u7b97
  accessories/plugins/RevisionPlugin.properties_documentation = <html>\u9010\u4e00\u6807\u8bb0\u66f4\u6539\u8fc7\u7684\u8282\u70b9\u7684\u80cc\u666f.</html>
  accessories/plugins/RevisionPlugin.properties_name = \u4ee5\u989c\u8272\uff08\u9ec4\u8272\u80cc\u666f\uff09\u663e\u793a\u66f4\u6539
@@ -108,7 +94,7 @@ Index: Resources_zh_CN.properties
  accessories/plugins/UnfoldAll.properties_documentation = <html>\u5c55\u5f00\u6240\u9009\u8282\u70b9\u53ca\u4ed6\u4eec\u7684\u5b50\u8282\u70b9.</html>
  accessories/plugins/UnfoldAll.properties_name = \u5c55\u5f00\u5168\u90e8\uff08\u6240\u9009\u53ca\u5b50\u8282\u70b9\uff09
  accessories/plugins/FoldAll.properties_documentation = <html>\u6298\u53e0\u6240\u9009\u8282\u70b9\u53ca\u4ed6\u4eec\u7684\u5b50\u8282\u70b9.</html>
-@@ -365,6 +375,75 @@
+@@ -365,6 +377,75 @@
  plugins/RemoveReminder.xml_name=\u5220\u9664\u63d0\u9192
  # fc, 3.5.2005:
  plugins/TimeManagement.xml_reminderButton_tooltip=<html>\u5f53\u7ed9\u5b9a\u65f6\u95f4\u6709\u4e00\u4e2a\u5b9a\u65f6\u5668\u88ab\u8bbe\u7f6e. \u901a\u8fc7\u95ea\u70c1\u56fe\u6807\u63d0\u9192\u4f60.<br> \u5173\u95ed\u56fe\u518d\u6b21\u6253\u5f00\u56fe\u65f6\uff0c\u5b9a\u65f6\u5668\u5c06\u6fc0\u6d3b.</html>
@@ -184,7 +170,7 @@ Index: Resources_zh_CN.properties
  # fc, 10.5.2005:
  property_dialog=\u9996\u9009\u9879 ...
  OptionPanel.automatic=\u81ea\u52a8
-@@ -383,8 +462,8 @@
+@@ -383,8 +464,8 @@
  OptionPanel.pt_PT=\u8461\u8404\u7259\u8bed\uff08\u8461\u8404\u7259\uff09
  OptionPanel.ru=\u4fc4\u8bed
  OptionPanel.sl=Sl
@@ -195,7 +181,7 @@ Index: Resources_zh_CN.properties
  OptionPanel.fork=\u5e95\u7ebf
  OptionPanel.bubble=\u6ce1\u6846
  OptionPanel.as_parent=\u540c\u7236\u8282\u70b9
-@@ -475,6 +554,7 @@
+@@ -475,6 +556,7 @@
  OptionPanel.el__min_default_window_width=\u9ed8\u8ba4\u7a97\u53e3\u6700\u5c0f\u5bbd\u5ea6
  OptionPanel.el__max_default_window_width=\u9ed8\u8ba4\u7a97\u53e3\u6700\u5927\u5bbd\u5ea6
  OptionPanel.el__enter_confirms_by_default=\u9ed8\u8ba4\u8fdb\u5165\u786e\u8ba4
@@ -203,7 +189,7 @@ Index: Resources_zh_CN.properties
  OptionPanel.Keystrokes=\u6309\u952e
  OptionPanel.keystroke_newMap=\u65b0\u5efa
  OptionPanel.keystroke_open=\u6253\u5f00
-@@ -619,6 +699,13 @@
+@@ -619,6 +701,13 @@
  OptionPanel.separator.selection_method=\u9009\u4e2d\u65b9\u5f0f
  OptionPanel.separator.browser=\u6d4f\u89c8\u5668
  OptionPanel.separator.html_export=Html\u5bfc\u51fa
@@ -217,12 +203,12 @@ Index: Resources_zh_CN.properties
  # fc, 2.6.2005:
  OptionPanel.antialias.tooltip=<html>\u786e\u5b9a\u56fe\u7684\u8d28\u91cf. \u8d8a\u5e73\u6ed1\u5904\u7406\u65f6\u95f4\u8d8a\u957f.</html>
  OptionPanel.antialias=\u6297\u952f\u9f7f
-@@ -642,4 +729,425 @@
+@@ -642,4 +731,425 @@
  # fc, 10.7.2005:
  OptionPanel.separator.undo=\u64a4\u6d88
  OptionPanel.undo_levels=\u64a4\u9500\u6b21\u6570
 -OptionPanel.undo_levels.tooltip=<html>\u51b3\u5b9a\u5b58\u50a8\u201c\u64a4\u9500\u201d\u7684\u6700\u5927\u6b65\u6570.</html>
-\ 在文件末尾没有新行
+\ No newline at end of file
 +OptionPanel.undo_levels.tooltip=<html>\u51b3\u5b9a\u5b58\u50a8\u201c\u64a4\u9500\u201d\u7684\u6700\u5927\u6b65\u6570.</html>
 +# fc, 13.8.2005
 +OptionPanel.lt=Lt

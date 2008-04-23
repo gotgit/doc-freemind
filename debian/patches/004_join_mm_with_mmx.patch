@@ -2,9 +2,9 @@ Index: freemind/main/Tools.java
 ===================================================================
 --- a/freemind/freemind/main/Tools.java	（修订版 2519）
 +++ b/freemind/freemind/main/Tools.java	（工作拷贝）
-@@ -74,6 +74,12 @@
- import javax.xml.transform.stream.StreamResult;
- import javax.xml.transform.stream.StreamSource;
+@@ -84,6 +84,12 @@
+ 
+ import freemind.view.mindmapview.NodeMotionListenerView;
  
 +//OSSXP.COM: classes for .mm and .mmx join.
 +import javax.xml.parsers.DocumentBuilder;
@@ -15,28 +15,25 @@ Index: freemind/main/Tools.java
  public class Tools {
  
      //public static final Set executableExtensions = new HashSet ({ "exe",
-@@ -845,7 +851,8 @@
- 	    } catch(Exception ex) {
- 	        freemind.main.Resources.getInstance().logException(ex);
- 	        // exception: we take the file itself:
+@@ -956,16 +962,119 @@
+ 		    return new StringReader(writer.getBuffer().toString());
+ 	    }
+ 	    else{
 -	        return getActualReader(file);
 +	        // OSSXP.COM
 +	        return getActualReader(file, frame);
- 	    } finally {
- 	        if(inputStream!= null) {
- 	            inputStream.close();
-@@ -857,10 +864,112 @@
- 	    return new StringReader(writer.getBuffer().toString());
+ 	    }
  	}
- 
 -	/** Creates a default reader that just reads the given file.
 -	 * @throws FileNotFoundException
++
 +	/*
 +	 * OSSXP.COM: hacked FreeMind saved two seperate files, .mm and .mmx file.
 +	 * Join them in runtime using XSLT TransformerFactory.
 +	 * TODO: Improvement needed. the joining stage may very slow, so disable it.
  	 */
 -	public static Reader getActualReader(File file) throws FileNotFoundException {
+-	    return new BufferedReader(new FileReader(file));
 +	public static Reader getActualReader(File file, FreeMindMain frame) throws IOException {
 +	    // load .mmx file...
 +	    String ext = Tools.getExtension(file.getName());
@@ -111,8 +108,8 @@ Index: freemind/main/Tools.java
 +	        tf = null;
 +	    }
 +	    return new StringReader(buffwriter.getBuffer().toString());
-+	}
-+
+ 	}
+ 
 +	/* 
 +	 * OSSXP.COM: In this hacked version, .mm file is a true XML file.
 +	 * load XML file using DOM.
@@ -138,9 +135,11 @@ Index: freemind/main/Tools.java
 +	    	exp.printStackTrace();
 +	    }
 +
- 	    return new BufferedReader(new FileReader(file));
- 	}
++	    return new BufferedReader(new FileReader(file));
++	}
  
+    public static void logTransferable(Transferable t) {
+       System.err.println();
 Index: freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt
 ===================================================================
 --- a/freemind/freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt	（修订版 0）
@@ -192,20 +191,29 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
 ===================================================================
 --- a/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（修订版 2519）
 +++ b/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（工作拷贝）
-@@ -440,7 +440,7 @@
-             }
-             if (mapStart.equals(EXPECTED_START_STRINGS[i])) {
+@@ -430,7 +430,7 @@
+         	}
+             if (mapStart.startsWith(EXPECTED_START_STRINGS[i])) {
                  // actual version:
 -                reader = Tools.getActualReader(file);
 +                reader = Tools.getActualReader(file, getFrame());
                  break;
              }
          }
+@@ -444,7 +444,7 @@
+ 					OptionalDontShowMeAgainDialog.ONLY_OK_SELECTION_IS_STORED)
+ 					.show().getResult();
+ 			if(showResult != JOptionPane.OK_OPTION) {
+-				reader = Tools.getActualReader(file);
++				reader = Tools.getActualReader(file, getFrame());
+ 			} else {
+ 				reader = Tools.getUpdateReader(file, FREEMIND_VERSION_UPDATER_XSLT, getFrame());
+ 			}
 Index: build.xml
 ===================================================================
 --- a/freemind/build.xml	（修订版 2519）
 +++ b/freemind/build.xml	（工作拷贝）
-@@ -343,6 +343,7 @@
+@@ -346,6 +346,7 @@
  				<include name="Resources*"/>
  				<include name="mindmap_menus.xml"/>
  				<include name="**/freemind_version_updater.xslt"/>
