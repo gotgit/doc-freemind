@@ -125,7 +125,7 @@
 	TEXT="添加 Debian 源： ">
 <edge COLOR="#808080" WIDTH="thin"/>
 <node COLOR="#009999" ID="Freemind_Link_318343862" 
-	TEXT="deb http://update.ossxp.com/public testing main ">
+	TEXT="deb http://YourName:YourPasswd@update.ossxp.com/public testing main ">
 <edge COLOR="#808080" WIDTH="thin"/>
 </node>
 </node>
@@ -172,7 +172,7 @@
 	TEXT="From WHODO SVN">
 <edge COLOR="#808080" WIDTH="thin"/>
 <node COLOR="#009999" ID="Freemind_Link_290121055" 
-	TEXT="svn  checkout  http://svn.worldhello.net/svn/whodo/trunk/doc/freemind/debian">
+	TEXT="svn  checkout  http://svn.worldhello.net/svn/whodo/trunk/doc/freemind/debian/patches">
 <edge COLOR="#808080" WIDTH="thin"/>
 </node>
 </node>
