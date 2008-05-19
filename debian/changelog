@@ -1,3 +1,9 @@
+ossxp-freemind (0.9.0.Beta.16-wh-12) unstable; urgency=low
+
+  * new resources strings translation.
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Fri, 16 May 2008 21:16:25 +0800
+
 ossxp-freemind (0.9.0.Beta.16-wh-11) unstable; urgency=low
 
   * upstream upgrade

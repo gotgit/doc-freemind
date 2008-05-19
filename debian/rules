@@ -62,8 +62,18 @@ eol-format-stamp:
 
 	touch eol-format-stamp
 
+eol-u2d:
+	rm -f eol-format-stamp
+	for i in \
+		freemind/freemind.bat \
+		freemind/MANIFEST.MF \
+		; do \
+	    unix2dos $$i; \
+	done
 
-build-hacked-stamp: build-stamp eol-format-stamp patch oemrevpatch
+
+
+build-hacked-stamp: build-stamp eol-format-stamp patch eol-u2d oemrevpatch
 	dh_testdir
 
 	cp -Rf $(CURDIR)/debian/freemind/* $(CURDIR)/freemind/
