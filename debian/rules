@@ -43,11 +43,12 @@ build-stamp: configure-stamp
 eol-format-stamp:
 	for i in \
 		freemind/build.xml \
+		freemind/freemind.properties \
 		freemind/freemind.bat \
 		freemind/freemind/controller/Controller.java \
 		freemind/freemind/main/FreeMind.java \
 		freemind/freemind/main/FreeMindSplash.java \
-		freemind/freemind/main/FreeMindSplashLightBulb.java \
+		freemind/freemind/main/FreeMindSplashModern.java \
 		freemind/freemind/main/Tools.java \
 		freemind/freemind/main/XMLElement.java \
 		freemind/freemind/modes/mindmapmode/MindMapMapModel.java \
@@ -65,6 +66,7 @@ eol-format-stamp:
 eol-u2d:
 	rm -f eol-format-stamp
 	for i in \
+		freemind/freemind.properties \
 		freemind/freemind.bat \
 		freemind/MANIFEST.MF \
 		; do \

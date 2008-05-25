@@ -2,9 +2,9 @@ Index: freemind/main/Tools.java
 ===================================================================
 --- a/freemind/freemind/main/Tools.java	（修订版 2519）
 +++ b/freemind/freemind/main/Tools.java	（工作拷贝）
-@@ -84,6 +84,12 @@
- 
- import freemind.view.mindmapview.NodeMotionListenerView;
+@@ -82,6 +82,12 @@
+ import javax.xml.transform.stream.StreamResult;
+ import javax.xml.transform.stream.StreamSource;
  
 +//OSSXP.COM: classes for .mm and .mmx join.
 +import javax.xml.parsers.DocumentBuilder;
@@ -12,10 +12,10 @@ Index: freemind/main/Tools.java
 +import javax.xml.transform.dom.DOMSource;
 +import org.w3c.dom.Document;
 +
- public class Tools {
- 
-     //public static final Set executableExtensions = new HashSet ({ "exe",
-@@ -956,16 +962,119 @@
+ /**
+  * @author foltin
+  *
+@@ -960,16 +966,125 @@
  		    return new StringReader(writer.getBuffer().toString());
  	    }
  	    else{
@@ -24,17 +24,21 @@ Index: freemind/main/Tools.java
 +	        return getActualReader(file, frame);
  	    }
  	}
--	/** Creates a default reader that just reads the given file.
--	 * @throws FileNotFoundException
-+
+ 	/** Creates a default reader that just reads the given file.
+ 	 * @throws FileNotFoundException
+ 	 */
+-	public static Reader getActualReader(File file) throws FileNotFoundException {
+-	    return new BufferedReader(new FileReader(file));
 +	/*
 +	 * OSSXP.COM: hacked FreeMind saved two seperate files, .mm and .mmx file.
 +	 * Join them in runtime using XSLT TransformerFactory.
 +	 * TODO: Improvement needed. the joining stage may very slow, so disable it.
- 	 */
--	public static Reader getActualReader(File file) throws FileNotFoundException {
--	    return new BufferedReader(new FileReader(file));
++	 */
 +	public static Reader getActualReader(File file, FreeMindMain frame) throws IOException {
++	    if (!Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file"))
++	    {
++	    	return getActualReaderXml(file);
++	    }
 +	    // load .mmx file...
 +	    String ext = Tools.getExtension(file.getName());
 +	    String mmxFileName = "";
@@ -137,9 +141,9 @@ Index: freemind/main/Tools.java
 +
 +	    return new BufferedReader(new FileReader(file));
 +	}
- 
-    public static void logTransferable(Transferable t) {
-       System.err.println();
+ 	
+ 	/**
+ 	 * In case of trouble, the method returns null.
 Index: freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt
 ===================================================================
 --- a/freemind/freemind/modes/mindmapmode/freemind_join_mm_mmx.xslt	（修订版 0）
@@ -191,7 +195,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
 ===================================================================
 --- a/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（修订版 2519）
 +++ b/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（工作拷贝）
-@@ -430,7 +430,7 @@
+@@ -433,7 +433,7 @@
          	}
              if (mapStart.startsWith(EXPECTED_START_STRINGS[i])) {
                  // actual version:
@@ -200,7 +204,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
                  break;
              }
          }
-@@ -444,7 +444,7 @@
+@@ -447,7 +447,7 @@
  					OptionalDontShowMeAgainDialog.ONLY_OK_SELECTION_IS_STORED)
  					.show().getResult();
  			if(showResult != JOptionPane.OK_OPTION) {
@@ -213,7 +217,7 @@ Index: build.xml
 ===================================================================
 --- a/freemind/build.xml	（修订版 2519）
 +++ b/freemind/build.xml	（工作拷贝）
-@@ -346,6 +346,7 @@
+@@ -327,6 +327,7 @@
  				<include name="Resources*"/>
  				<include name="mindmap_menus.xml"/>
  				<include name="**/freemind_version_updater.xslt"/>

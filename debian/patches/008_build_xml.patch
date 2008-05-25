@@ -9,16 +9,17 @@
  
  	  <target name="xmlbind.checkStatusOfGeneration">
  	    <uptodate property="xmlbind.isUpToDate"
-@@ -159,7 +159,7 @@
+@@ -140,7 +140,8 @@
  		<chmod file="${dist}/freemind.sh" perm="u+rx"/>
  		<copy todir="${dist}">
- 			<fileset dir="${src}/windows-launcher"
--				includes="Freemind.exe"
-+				includes="Freemind.exe,Freemind.vanilla.exe"
- 			/>
+ 			<fileset dir="${src}/windows-launcher">
+-			  <include name="FreeMind.exe"/>
++			  <include name="Freemind.exe"/>
++			  <include name="Freemind.vanilla.exe"/>
+ 			</fileset>
  		</copy>
  		<mkdir dir="${dist}/doc" />
-@@ -180,6 +180,7 @@
+@@ -161,6 +162,7 @@
  				<include name="commons-lang-2.0.jar"/>
  				<include name="forms-1.0.5.jar"/>
  				<include name="bindings.jar"/>

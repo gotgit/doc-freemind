@@ -118,7 +118,15 @@ Index: freemind/modes/NodeAdapter.java
 ===================================================================
 --- a/freemind/freemind/modes/NodeAdapter.java	（修订版 2510）
 +++ b/freemind/freemind/modes/NodeAdapter.java	（工作拷贝）
-@@ -953,11 +953,42 @@
+@@ -55,6 +55,7 @@
+ import freemind.main.FreeMindCommon;
+ import freemind.main.FreeMindMain;
+ import freemind.main.HtmlTools;
++import freemind.main.Resources;
+ import freemind.main.Tools;
+ import freemind.main.XMLElement;
+ import freemind.modes.attributes.Attribute;
+@@ -953,11 +954,42 @@
  	    return controller.getNodeID(this);
  	}
  
@@ -147,22 +155,22 @@ Index: freemind/modes/NodeAdapter.java
 +        {
 +        case 0:
 +        	// Save this node to .mm file without certain attributes.
-+        	node.addtoBlackAttlist("CREATED");
-+        	node.addtoBlackAttlist("MODIFIED");
++        	if(Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file") && Resources.getInstance().getBoolProperty("wh_separate_attr_created")) node.addtoBlackAttlist("CREATED");
++        	if(Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file") && Resources.getInstance().getBoolProperty("wh_separate_attr_modified")) node.addtoBlackAttlist("MODIFIED");
 +        	break;
 +        case 1:
 +        	// Save this node to .mmx file. Only save certain attributes.
 +        	node.addtoWhiteAttlist("ID");
-+        	node.addtoWhiteAttlist("FOLDED");
-+        	node.addtoWhiteAttlist("CREATED");
-+        	node.addtoWhiteAttlist("MODIFIED");
++        	if(Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file") && Resources.getInstance().getBoolProperty("wh_separate_attr_folded")) node.addtoWhiteAttlist("FOLDED");
++        	if(Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file") && Resources.getInstance().getBoolProperty("wh_separate_attr_created")) node.addtoWhiteAttlist("CREATED");
++        	if(Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file") && Resources.getInstance().getBoolProperty("wh_separate_attr_modified")) node.addtoWhiteAttlist("MODIFIED");
 +        	break;
 +        }
 +
  //    	if (!isNodeClassToBeSaved()) {
      	node.setName(XMLElementAdapter.XML_NODE);
  //        } else {
-@@ -966,6 +997,9 @@
+@@ -966,6 +998,9 @@
  //        }
  
          /** fc, 12.6.2005: XML must not contain any zero characters. */
@@ -172,7 +180,7 @@ Index: freemind/modes/NodeAdapter.java
          String text = this.toString().replace('\0', ' ');
          if(!HtmlTools.isHtmlNode(text)) {
              node.setAttribute(XMLElementAdapter.XML_NODE_TEXT,text);
-@@ -985,6 +1019,7 @@
+@@ -985,6 +1020,7 @@
  	        	node.addChild(htmlElement);
          	
          }
@@ -180,7 +188,7 @@ Index: freemind/modes/NodeAdapter.java
      	// save additional info:
      	if (getAdditionalInfo() != null) {
              node.setAttribute(XMLElementAdapter.XML_NODE_ENCRYPTED_CONTENT,
-@@ -992,15 +1027,26 @@
+@@ -992,15 +1028,26 @@
          }
      	//	((MindMapEdgeModel)getEdge()).save(doc,node);
  
@@ -208,7 +216,7 @@ Index: freemind/modes/NodeAdapter.java
          Vector linkVector = registry.getAllLinksFromMe(this); /* Puh... */
          for(int i = 0; i < linkVector.size(); ++i) {
              if(linkVector.get(i) instanceof ArrowLinkAdapter) {
-@@ -1008,10 +1054,27 @@
+@@ -1008,10 +1055,30 @@
                  node.addChild(arrowLinkElement);
              }
          }
@@ -222,10 +230,13 @@ Index: freemind/modes/NodeAdapter.java
 +        {
 +        case 0:
 +        	// Save this node to .mm file without certain attributes.
-+        	if (!isRoot() && !isLeaf()) {
-+        		node.setAttribute("FOLDED","true");
-+        	}
-+        	break;
++        	if(Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file") && Resources.getInstance().getBoolProperty("wh_separate_attr_folded")) 
++         {
++           if (!isRoot() && !isLeaf()) {
++             node.setAttribute("FOLDED","true");
++        	  }
++           break;
++         }
 +        case 1:
 +        case 2:
 +        default:
@@ -239,7 +250,7 @@ Index: freemind/modes/NodeAdapter.java
          // fc, 17.12.2003: Remove the left/right bug.
          //                       VVV  save if and only if parent is root.
      	if (!(isRoot()) && (getParentNode().isRoot())) {
-@@ -1065,6 +1128,9 @@
+@@ -1065,6 +1132,9 @@
  									.getLastModifiedAt()));
  	}
      	//font
@@ -249,7 +260,7 @@ Index: freemind/modes/NodeAdapter.java
      	if (font!=null) {
      	    XMLElement fontElement = new XMLElement();
      	    fontElement.setName("font");
-@@ -1080,6 +1146,10 @@
+@@ -1080,6 +1150,10 @@
      	    if (isUnderlined()) {
                     fontElement.setAttribute("UNDERLINE","true"); }
      	    node.addChild(fontElement); }
@@ -260,7 +271,7 @@ Index: freemind/modes/NodeAdapter.java
          for(int i = 0; i < getIcons().size(); ++i) {
      	    XMLElement iconElement = new XMLElement();
      	    iconElement.setName("icon");
-@@ -1087,18 +1157,28 @@
+@@ -1087,18 +1161,28 @@
              node.addChild(iconElement);
          }
  
@@ -291,7 +302,7 @@ Index: freemind/modes/NodeAdapter.java
              node.writeClosingTag(writer);
          } else {
              node.write(writer);
-@@ -1110,13 +1190,17 @@
+@@ -1110,13 +1194,17 @@
  		return map.getModeController();
  	}
  
@@ -315,7 +326,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
 ===================================================================
 --- a/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（修订版 2516）
 +++ b/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（工作拷贝）
-@@ -253,7 +253,23 @@
+@@ -255,7 +255,26 @@
          	}
              // OSSXP.COM: save file using default character set.
              BufferedWriter fileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(file), FreeMind.DEFAULT_CHARSET ) );
@@ -323,24 +334,27 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
 +            // OSSXP.COM: save tree into .mm file, without some attrs(such as node fold status).
 +            getXml(fileout, true, 0);
 +            
-+            // OSSXP.COM: save variable attrs(such as node fold status) into .mmx file...
-+            String ext = Tools.getExtension(file.getName());
-+            String mmxFileName = "";
-+            if(!ext.equals("mm")) 
++            if(Resources.getInstance().getBoolProperty("wh_save_extra_attrs_in_aux_file"))
 +            {
-+            	mmxFileName = "." + file.getName()+".mmx";
++              // OSSXP.COM: save variable attrs(such as node fold status) into .mmx file...
++              String ext = Tools.getExtension(file.getName());
++              String mmxFileName = "";
++              if(!ext.equals("mm")) 
++              {
++              	mmxFileName = "." + file.getName()+".mmx";
++              }
++              else 
++              {
++              	mmxFileName = "." + Tools.removeExtension(file.getName()) + ".mmx";
++              }
++              File mmxfile = new File(file.getParent(), mmxFileName); 
++              BufferedWriter mmxfileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(mmxfile), FreeMind.DEFAULT_CHARSET ) );
++              getXml(mmxfileout, true, 1);
 +            }
-+            else 
-+            {
-+            	mmxFileName = "." + Tools.removeExtension(file.getName()) + ".mmx";
-+            }
-+            File mmxfile = new File(file.getParent(), mmxFileName); 
-+            BufferedWriter mmxfileout = new BufferedWriter( new OutputStreamWriter( new FileOutputStream(mmxfile), FreeMind.DEFAULT_CHARSET ) );
-+            getXml(mmxfileout, true, 1);
  
              if(!isInternal) {
                  setFile(file);
-@@ -277,8 +293,12 @@
+@@ -280,8 +299,12 @@
  
      /** writes the content of the map to a writer.
  	 * @throws IOException
@@ -354,7 +368,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
  		// OSSXP.COM: write xml declare.
  		fileout.write("<?xml version=\"1.0\" encoding=\"" + FreeMind.DEFAULT_CHARSET + "\"?>\n");
  		fileout.write("<map ");
-@@ -287,17 +307,33 @@
+@@ -290,17 +313,33 @@
  		// OSSXP.COM: add notice for this hacked version.
  		fileout.write("<!-- This file is saved using a hacked version of FreeMind. visit: http://www.worldhello.net, http://ossxp.com -->\n");
  		fileout.write("<!-- Orignal FreeMind, can download from http://freemind.sourceforge.net -->\n");

@@ -1,3 +1,18 @@
+ossxp-freemind (0.9.0.Beta.17+wh-13) unstable; urgency=low
+
+  * Change default properties:
+    * set auto save time to 600 seconds;
+    * set save_folding_state to false;
+  * Add worldhello extension's setting dialog;
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Thu, 22 May 2008 23:25:50 +0800
+
+ossxp-freemind (0.9.0.Beta.17-wh-12) unstable; urgency=low
+
+  * new resources strings translation.
+
+ -- Jiang Xin <worldhello.net@gmail.com>  Thu, 22 May 2008 19:14:12 +0800
+
 ossxp-freemind (0.9.0.Beta.16-wh-12) unstable; urgency=low
 
   * new resources strings translation.

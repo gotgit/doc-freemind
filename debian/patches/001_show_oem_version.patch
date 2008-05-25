@@ -2,13 +2,12 @@ Index: freemind/controller/Controller.java
 ===================================================================
 --- a/freemind/freemind/controller/Controller.java	（修订版 2510）
 +++ b/freemind/freemind/controller/Controller.java	（工作拷贝）
-@@ -1123,7 +1123,8 @@
+@@ -1128,7 +1128,7 @@
              this.controller = controller;
          }
          public void actionPerformed(ActionEvent e) {
--           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+FreeMind.VERSION);
-+          // OSSXP.COM: show oem version in about dialog.
-+           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+FreeMind.VERSION  + " " + FreeMind.hackedversion);
+-           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+getFrame().getFreemindVersion());
++           JOptionPane.showMessageDialog(getFrame().getViewport(),controller.getResourceString("about_text")+getFrame().getFreemindVersion()+" "+FreeMind.hackedversion);
          }
      }
  
@@ -16,30 +15,36 @@ Index: freemind/main/FreeMindSplash.java
 ===================================================================
 --- a/freemind/freemind/main/FreeMindSplash.java	（修订版 2510）
 +++ b/freemind/freemind/main/FreeMindSplash.java	（工作拷贝）
-@@ -143,6 +143,8 @@
+@@ -143,6 +143,7 @@
                  g2.setFont(versionTextFont);
                  // Determine width of string to center it
-                 String freemindVersion = frame.getFreemindVersion();
-+                // OSSXP.COM: Splash screen, show oem version.
+                 String freemindVersion = frame.getFreemindVersion().toString();
 +                freemindVersion += " " + FreeMind.hackedversion;
                  if (mWidth == null) {
                      mWidth = new Integer(g2.getFontMetrics().stringWidth(freemindVersion));
                  }
-Index: freemind/main/FreeMindSplashLightBulb.java
+Index: freemind/main/FreeMindSplashModern.java
 ===================================================================
---- a/freemind/freemind/main/FreeMindSplashLightBulb.java	（修订版 2527）
-+++ b/freemind/freemind/main/FreeMindSplashLightBulb.java	（工作拷贝）
-@@ -149,6 +149,10 @@
-                 int xCoordinate = 148/*145*/ - mWidth.intValue(); //(int)(getSize().getWidth()/2-mWidth.intValue()/2);
+--- a/freemind/freemind/main/FreeMindSplashModern.java
++++ b/freemind/freemind/main/FreeMindSplashModern.java
+@@ -151,6 +151,10 @@
+                 int xCoordinate = (int)(getSize().getWidth()/2-mWidth.intValue()/2);
                  g2.setColor(new Color(0x4d,0x63,0xb4));
                  g2.drawString(freemindVersion, xCoordinate , yCoordinate);
 +                // OSSXP.COM: Splash screen, show oem version.
 +                yCoordinate += (int)(g2.getFontMetrics().getHeight());
-+                xCoordinate = 148  - (int) (g2.getFontMetrics().stringWidth(FreeMind.hackedversion));
++                xCoordinate = (int)(getSize().getWidth()/2 - g2.getFontMetrics().stringWidth(FreeMind.hackedversion)/2);
 +                g2.drawString(FreeMind.hackedversion, xCoordinate , yCoordinate);
                  // Draw progress bar
                  String progressString = (String)getClientProperty("progressString");
                  if (progressString!=null) {
+@@ -205,4 +209,4 @@
+         return mIcon;
+     }
+ 
+-}
+\ No newline at end of file
++}
 Index: freemind/main/FreeMind.java
 ===================================================================
 --- a/freemind/freemind/main/FreeMind.java	（修订版 2510）

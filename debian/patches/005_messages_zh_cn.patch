@@ -2,11 +2,12 @@ Index: Resources_zh_CN.properties
 ===================================================================
 --- a/freemind/Resources_zh_CN.properties	（修订版 2510）
 +++ b/freemind/Resources_zh_CN.properties	（工作拷贝）
-@@ -1,22 +1,22 @@
+@@ -1,28 +1,30 @@
 -# simplified-chinese version by wonder365  (liwh@ylchkj.com)
  about = \u5173\u4e8e
  
 -about_text = Joerg Mueller's FreeMind\nTaking the Concept-Mapping approach to Human-Computer Interface design.\nCopyright (C) 2000-2008 Joerg Mueller and others.\nThis program is free software (GPL)\nHome: http://freemind.sourceforge.net/\nHave fun!\nVersion:
++add=\u6dfb\u52a0&A
 +about_text = FreeMind - free mind mapping and knowledge building software\nCopyright \u00a9 2000-2008 Joerg Mueller, Daniel Polansky, Christian Foltin, Dimitry Polivaev, and others.\nThis program is free software, licenced under GNU General Public Licence.\n\nHome: http://freemind.sourceforge.net/\nVersion:
  antialias_all = \u5168\u5f00\u6297\u952f\u9f7f
  antialias_edges = \u8fb9\u7f18\u6297\u952f\u9f7f
@@ -31,15 +32,30 @@ Index: Resources_zh_CN.properties
  close = \u5173\u95ed
  copy = \u590d\u5236
  copy_single = \u5355\u4e00\u590d\u5236
-@@ -33,6 +33,7 @@
+ cut = \u526a\u5207
+ decrease_branch_font_size = \u7f29\u5c0f\u5b57\u4f53
+ decrease_node_font_size = \u7f29\u5c0f\u5b57\u4f53
++delete=\u5220\u9664&D
+ documentation = \u6587\u6863
+ edge = \u8fde\u7ebf
+ edge_color = \u8fde\u7ebf\u989c\u8272...
+@@ -33,6 +35,7 @@
  edit_long_node = \u7f16\u8f91\u957f\u8282\u70b9...
  enter_base_url = \u5c06\u7c98\u8d34\u76f8\u5bf9\u94fe\u63a5\u3002\u8bf7\u8f93\u5165\u57fa\u7840 URL \u3002
  enter_confirms = Enter \u786e\u8ba4
 +error = \u9519\u8bef
- export_branch = \u5bfc\u51fa\u8282\u70b9\u4e3a\u601d\u7ef4\u5bfc\u56fe ...
+ #export_branch = \u5bfc\u51fa\u8282\u70b9\u4e3a\u601d\u7ef4\u5bfc\u56fe ...
  export_branch_to_html = \u5bfc\u51fa\u8282\u70b9\u4e3a HTML
  export_to_html = \u5bfc\u51fa\u4e3aHTML
-@@ -94,6 +95,7 @@
+@@ -65,7 +68,6 @@
+ icon_ksmiletris = \u9ad8\u5174
+ icon_clanbomber = \u5371\u9669
+ icon_desktop_new = \u5907\u5fd8
+-icon_flag = \u6807\u8bb0
+ icon_gohome = \u5bb6
+ icon_kaddressbook = \u7535\u8bdd
+ icon_knotify = \u97f3\u4e50
+@@ -94,6 +96,7 @@
  license = \u8bb8\u53ef
  license_text = FreeMind - \u601d\u7ef4\u5bfc\u56fe(Mindmap)\u521b\u5efa\u53ca\u67e5\u770b\u7a0b\u5e8f\nCopyright (C) 2000-2008  Joerg Mueller <joergmueller@bigfoot.com>\nSee COPYING for Details\n\nThis program is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License\nas published by the Free Software Foundation; either version 2\nof the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software\nFoundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  linear = \u76f4\u7ebf
@@ -47,7 +63,7 @@ Index: Resources_zh_CN.properties
  locking_failed_by_open = \u601d\u7ef4\u5bfc\u56fe $1 \u52a0\u9501\u5931\u8d25. \u4ee5\u53ea\u8bfb\u65b9\u5f0f\u6253\u5f00.
  locking_failed_by_save_as = \u601d\u7ef4\u5bfc\u56fe $1 \u52a0\u9501\u5931\u8d25. \u4fdd\u5b58\u52a8\u4f5c\u88ab\u4e2d\u6b62.
  locking_old_lock_removed = \u601d\u7ef4\u5bfc\u56fe $1 \u88ab\u7528\u6237 $2 \u52a0\u9501. \u65e7\u9501\u5df2\u88ab\u79fb\u9664.
-@@ -104,6 +106,7 @@
+@@ -104,6 +107,7 @@
  mindmap = \u601d\u7ef4\u5bfc\u56fe
  mindmaps = \u601d\u7ef4\u5bfc\u56fe
  mindmaps_desc = \u601d\u7ef4\u5bfc\u56fe (*.mm)
@@ -55,7 +71,7 @@ Index: Resources_zh_CN.properties
  mode_na = \u6a21\u5f0f\u4e0d\u53ef\u7528
  mode_status = \u6a21\u5f0f\u5207\u6362\u4e3a {0} \u6a21\u5f0f
  mode_title =\u601d\u7ef4\u5bfc\u56fe - {0} \u6a21\u5f0f
-@@ -113,12 +116,14 @@
+@@ -113,12 +117,14 @@
  new_child = \u63d2\u5165\u5b50\u8282\u70b9
  new_mindmap = \u65b0\u589e\u601d\u7ef4\u5bfc\u56fe
  new_node = \u65b0\u589e\u8282\u70b9
@@ -71,23 +87,24 @@ Index: Resources_zh_CN.properties
  node_color = \u8282\u70b9\u989c\u8272 ...
  node_down = \u4e0b\u79fb
  node_up = \u4e0a\u79fb
-@@ -136,11 +141,14 @@
- preferences = \u9996\u9009\u9879
+@@ -137,11 +143,15 @@
  previous_map = \u524d\u4e00\u5f20\u56fe
- print = \u6253\u5370...
+ print = \u6253\u5370
+ print_dialog = \u6253\u5370...
 +print_preview = \u6253\u5370\u9884\u89c8...
 +print_preview_title = \u6253\u5370\u9884\u89c8
  quit = \u9000\u51fa
 -remove_node = \u5220\u9664\u8282\u70b9
  read_only = \u53ea\u8bfb
 +remove_node = \u5220\u9664\u8282\u70b9
++rename=\u91cd\u547d\u540d&R
  repair_link = \u4fee\u590d\u94fe\u63a5
  repair_link_question = \u4e0d\u80fd\u52a0\u8f7d\u94fe\u63a5\u56fe\u3002\u624b\u52a8\u4fee\u590d\u94fe\u63a5\uff1f
 +replace=\u66ff\u6362
  save = \u4fdd\u5b58
  save_as = \u53e6\u5b58\u4e3a...
  save_failed = \u56fe $1 \u5b58\u50a8\u5931\u8d25.
-@@ -156,13 +164,10 @@
+@@ -157,13 +167,10 @@
  sharp_linear = \u6e10\u7a84\u76f4\u7ebf
  split = \u5206\u5272
  style = \u98ce\u683c
@@ -103,7 +120,7 @@ Index: Resources_zh_CN.properties
  underline = \u4e0b\u5212\u7ebf
  unfold = \u5c55\u5f00
  url_error = URL \u683c\u5f0f\u9519\u8bef!
-@@ -181,6 +186,8 @@
+@@ -182,11 +189,13 @@
  user_defined_zoom_status_bar = \u7f29\u653e\u4e3a\u7528\u6237\u5b9a\u4e49\u7684 {0}%.
  # new from 14.12.2003, fc
  FAQ = FAQ
@@ -112,7 +129,13 @@ Index: Resources_zh_CN.properties
  # new from 20.12.2003, fc
  printing_settings = \u6253\u5370\u6bd4\u4f8b
  fit_to_page = \u9002\u5408\u9875\u9762
-@@ -203,9 +210,10 @@
+ user_zoom = \u6253\u5370\u7f29\u653e\u7cfb\u6570 (0.0 - 2.0):
+-ok = OK
++ok = &OK
+ # changed from 23.1.2004, fc.
+ selection_method_by_click = \u5355\u51fb\u65f6\u9009\u5b9a
+ selection_method_direct = \u6307\u5411\u65f6\u9009\u5b9a
+@@ -204,9 +213,10 @@
  menu_format = \u683c\u5f0f
  menu_extras = \u5de5\u5177
  menu_insert = \u63d2\u5165
@@ -124,7 +147,7 @@ Index: Resources_zh_CN.properties
  menu_file_import = \u5bfc\u5165
  menu_file_export = \u5bfc\u51fa
  edit_node = \u7f16\u8f91\u8282\u70b9
-@@ -236,8 +244,9 @@
+@@ -237,8 +247,9 @@
  goto_link_node_action = \u8df3\u5230\u94fe\u63a5
  #fc, 14.11.2004:
  undefined_error = \u5f02\u5e38\u9519\u8bef\u53d1\u751f. \u8bf7\u53d1\u9001bug\u62a5\u544a.
@@ -135,7 +158,16 @@ Index: Resources_zh_CN.properties
  no_format_copy_before_format_paste = \u590d\u5236\uff08\u683c\u5f0f\uff09\u540e\u624d\u53ef\u7c98\u8d34\u683c\u5f0f.
  #fc, 15.11.2004:
  accessories/plugins/AutomaticLayout.properties_documentation = <html>\u786e\u5b9a\u56fe\u7684\u5e03\u5c40. <br>\u7b2c\u4e00\u7ea7\u9ed1\u8272, \u7b2c\u4e8c\u7ea7\u84dd\u8272, \u7b49\u7b49.</html>
-@@ -272,8 +281,12 @@
+@@ -257,6 +268,8 @@
+ accessories/plugins/ExportWithXSLT_HTML.properties_name = XHTML\u683c\u5f0f (JavaScript \u7248\u672c)...
+ accessories/plugins/ExportWithXSLT_HTML3.properties_documentation=
+ accessories/plugins/ExportWithXSLT_HTML3.properties_name = XHTML\u683c\u5f0f (\u53ef\u70b9\u51fb\u56fe\u50cf\u7248\u672c)...
++accessories/plugins/ExportWithXSLT_MINDMANAGER.properties_name = MindManager MindMap\u683c\u5f0f...
++accessories/plugins/ExportWithXSLT_MINDMANAGER.properties_documentation=
+ accessories/plugins/FitToPage.properties_documentation = \u8c03\u8282\u7f29\u653e\u6bd4\u4f8b, \u4f7f\u6574\u4e2a\u56fe\u9002\u5408\u5f53\u524d\u7a97\u4f53.
+ accessories/plugins/FitToPage.properties_name = \u7f29\u653e\u9002\u5408\u9875\u9762
+ accessories/plugins/FormatCopy.properties_documentation = <html>\u590d\u5236\u8282\u70b9\u7684\u683c\u5f0f.</html>
+@@ -273,8 +286,12 @@
  accessories/plugins/NodeNote.properties_name = \u6ce8\u91ca
  accessories/plugins/PMCalculation.properties_documentation = <html>\u8ba1\u7b97\u4e0d\u540c\u4efb\u52a1\u7684\u6210\u7ee9.</html>
  accessories/plugins/PMCalculation.properties_name = PM\u8ba1\u7b97
@@ -148,7 +180,7 @@ Index: Resources_zh_CN.properties
  accessories/plugins/UnfoldAll.properties_documentation = <html>\u5c55\u5f00\u6240\u9009\u8282\u70b9\u53ca\u4ed6\u4eec\u7684\u5b50\u8282\u70b9.</html>
  accessories/plugins/UnfoldAll.properties_name = \u5c55\u5f00\u5168\u90e8\uff08\u6240\u9009\u53ca\u5b50\u8282\u70b9\uff09
  accessories/plugins/FoldAll.properties_documentation = <html>\u6298\u53e0\u6240\u9009\u8282\u70b9\u53ca\u4ed6\u4eec\u7684\u5b50\u8282\u70b9.</html>
-@@ -327,6 +340,11 @@
+@@ -328,6 +345,11 @@
  plugins/TimeManagement.xml_minute= \u5206:
  plugins/TimeManagement.xml_hour= \u65f6:
  plugins/TimeManagement.xml_WindowTitle=\u65f6\u95f4\u7ba1\u7406
@@ -160,7 +192,7 @@ Index: Resources_zh_CN.properties
  # fc, 18.2.2005:
  accessories/plugins/HierarchicalIcons.properties_documentation=\u4e0d\u8bba\u5b50\u3001\u4e3b\u8282\u70b9\u7684\u56fe\u6807\uff0c\u90fd\u5c06\u7f29\u5c0f\u663e\u793a.
  accessories/plugins/HierarchicalIcons.properties_name=\u68af\u7ea7\u56fe\u6807\u663e\u793a
-@@ -365,6 +383,76 @@
+@@ -366,6 +388,76 @@
  plugins/RemoveReminder.xml_name=\u5220\u9664\u63d0\u9192
  # fc, 3.5.2005:
  plugins/TimeManagement.xml_reminderButton_tooltip=<html>\u5f53\u7ed9\u5b9a\u65f6\u95f4\u6709\u4e00\u4e2a\u5b9a\u65f6\u5668\u88ab\u8bbe\u7f6e. \u901a\u8fc7\u95ea\u70c1\u56fe\u6807\u63d0\u9192\u4f60.<br> \u5173\u95ed\u56fe\u518d\u6b21\u6253\u5f00\u56fe\u65f6\uff0c\u5b9a\u65f6\u5668\u5c06\u6fc0\u6d3b.</html>
@@ -205,25 +237,25 @@ Index: Resources_zh_CN.properties
 +attributes_import=\u5bfc\u5165
 +attributes_import_tooltip=\u4ece\u5176\u4ed6\u52a0\u8f7d\u7684\u8111\u56fe\u5bfc\u5165\u5c5e\u6027
 +attributes_assign_dialog=\u8bbe\u7f6e\u5c5e\u6027...
-+attributes_visible=\u663e\u793a\u9009\u62e9\u7684\u5c5e\u6027
++attributes_visible=\u9009\u62e9\u53ef\u89c1
 +attributes_visible_tooltip=\u901a\u8fc7 \u89c6\u56fe->\u5c5e\u6027->\u663e\u793a\u9009\u62e9\u7684\u5c5e\u6027
-+#attributes_visible_tooltip=Selected Visible
++#attributes_visible_tooltip=\u9009\u62e9\u53ef\u89c1
 +attributes_refresh=\u5237\u65b0
 +attribute_replace=\u66ff\u6362
-+attributes_restriction=Restricted Set
-+attributes_restricted_attributes_tooltip=Restrict Set of Attributes
-+attributes_restricted_values_tooltip=Restrict Set of Values for Current Attribute
-+attributes_select_all=All
-+attributes_select_all_tooltip=Select / Deselect all
-+attributes_for_selected=Selected Nodes
-+attributes_for_visible=All Visible Nodes
++attributes_restriction=\u9650\u5236\u96c6\u5408
++attributes_restricted_attributes_tooltip=\u5c5e\u6027\u7684\u9650\u5236\u96c6\u5408
++attributes_restricted_values_tooltip=\u5f53\u524d\u5c5e\u6027\u7684\u53d6\u503c\u7684\u9650\u5236\u96c6\u5408
++attributes_select_all=\u6240\u6709
++attributes_select_all_tooltip=\u9009\u62e9 / \u53cd\u9009\u6240\u6709
++attributes_for_selected=\u9009\u62e9\u7684\u8282\u70b9
++attributes_for_visible=\u6240\u6709\u53ef\u89c1\u8282\u70b9
 +attributes_deselect_all=Nothing
-+attribute_list_box_label_text=Existing Values
-+attributes_popup_edit=Edit
-+attributes_popup_optimal_width=Optimal Width
-+attributes_popup_hide=Hide
-+attributes_popup_new=New Attribute
-+attributes_popup_delete=Delete
++attribute_list_box_label_text=\u5b58\u5728\u7684\u503c
++attributes_popup_edit=\u7f16\u8f91
++attributes_popup_optimal_width=\u9002\u5408\u5bbd\u5ea6
++attributes_popup_hide=\u9690\u85cf
++attributes_popup_new=\u65b0\u5c5e\u6027
++attributes_popup_delete=\u5220\u9664
 +attributes_popup_up=\u4e0a
 +attributes_popup_down=\u4e0b
 +attributes_show=\u663e\u793a
@@ -237,7 +269,7 @@ Index: Resources_zh_CN.properties
  # fc, 10.5.2005:
  property_dialog=\u9996\u9009\u9879 ...
  OptionPanel.automatic=\u81ea\u52a8
-@@ -373,6 +461,7 @@
+@@ -374,6 +466,7 @@
  OptionPanel.en=\u82f1\u8bed
  OptionPanel.es=\u897f\u73ed\u7259\u8bed
  OptionPanel.fr=\u6cd5\u8bed
@@ -245,7 +277,7 @@ Index: Resources_zh_CN.properties
  OptionPanel.hu=\u5308\u7259\u5229\u8bed
  OptionPanel.it=\u610f\u5927\u5229\u8bed
  OptionPanel.ja=\u65e5\u8bed
-@@ -439,12 +528,19 @@
+@@ -440,12 +533,19 @@
  OptionPanel.standardnodetextcolor.tooltip=<html>\u6807\u51c6\u8282\u70b9\u989c\u8272. html \u7b26\u53f7\u8868\u793a (#RRGGBB 16\u8fdb\u5236) </html>
  OptionPanel.standardselectednodecolor=\u6807\u51c6\u8282\u70b9\u9009\u4e2d\u989c\u8272
  OptionPanel.standardselectednodecolor.tooltip=<html>\u8282\u70b9\u9009\u4e2d\u65f6\u7684\u6807\u51c6\u989c\u8272. html \u7b26\u53f7\u8868\u793a (#RRGGBB 16\u8fdb\u5236) </html>
@@ -265,7 +297,7 @@ Index: Resources_zh_CN.properties
  OptionPanel.standardcloudcolor=\u6807\u51c6\u4e91\u6846\u989c\u8272
  OptionPanel.standardcloudcolor.tooltip=<html> html \u7b26\u53f7\u8868\u793a\u6807\u51c6\u4e91\u6846\u989c\u8272 </html>
  OptionPanel.defaultfont=\u9ed8\u8ba4\u5b57\u4f53
-@@ -475,6 +571,7 @@
+@@ -476,6 +576,7 @@
  OptionPanel.el__min_default_window_width=\u9ed8\u8ba4\u7a97\u53e3\u6700\u5c0f\u5bbd\u5ea6
  OptionPanel.el__max_default_window_width=\u9ed8\u8ba4\u7a97\u53e3\u6700\u5927\u5bbd\u5ea6
  OptionPanel.el__enter_confirms_by_default=\u9ed8\u8ba4\u8fdb\u5165\u786e\u8ba4
@@ -273,7 +305,7 @@ Index: Resources_zh_CN.properties
  OptionPanel.Keystrokes=\u6309\u952e
  OptionPanel.keystroke_newMap=\u65b0\u5efa
  OptionPanel.keystroke_open=\u6253\u5f00
-@@ -602,6 +699,7 @@
+@@ -603,6 +704,7 @@
  OptionPanel.separator.automatic_save=\u81ea\u52a8\u4fdd\u5b58
  OptionPanel.separator.default_styles=\u9ed8\u8ba4\u98ce\u683c
  OptionPanel.separator.default_colors=\u9ed8\u8ba4\u989c\u8272
@@ -281,7 +313,7 @@ Index: Resources_zh_CN.properties
  OptionPanel.separator.default_fonts=\u9ed8\u8ba4\u5b57\u4f53
  OptionPanel.separator.other_defaults=\u5176\u5b83\u9ed8\u8ba4\u8bbe\u5b9a
  OptionPanel.separator.look_and_feel=\u5916\u89c2\u611f\u89c9
-@@ -619,6 +717,14 @@
+@@ -620,6 +722,14 @@
  OptionPanel.separator.selection_method=\u9009\u4e2d\u65b9\u5f0f
  OptionPanel.separator.browser=\u6d4f\u89c8\u5668
  OptionPanel.separator.html_export=Html\u5bfc\u51fa
@@ -296,7 +328,7 @@ Index: Resources_zh_CN.properties
  # fc, 2.6.2005:
  OptionPanel.antialias.tooltip=<html>\u786e\u5b9a\u56fe\u7684\u8d28\u91cf. \u8d8a\u5e73\u6ed1\u5904\u7406\u65f6\u95f4\u8d8a\u957f.</html>
  OptionPanel.antialias=\u6297\u952f\u9f7f
-@@ -642,4 +748,539 @@
+@@ -643,4 +753,618 @@
  # fc, 10.7.2005:
  OptionPanel.separator.undo=\u64a4\u6d88
  OptionPanel.undo_levels=\u64a4\u9500\u6b21\u6570
@@ -340,23 +372,19 @@ Index: Resources_zh_CN.properties
 +PatternDialog.EdgeWidth_thin=thin
 +PatternDialog.as_parent=As parent
 +PatternDialog.bezier=bezier
-+PatternDialog.bubble=bubble
-+PatternDialog.combined=combined
++PatternDialog.bubble=Bubble
++PatternDialog.combined=Combined
 +PatternDialog.edgecolor.tooltip=Property of the edge to the parent node (is also applied to all child nodes)
 +PatternDialog.edgecolor=Edge color
 +PatternDialog.edgestyle.tooltip=Property of the edge to the parent node (is also applied to all child nodes)
 +PatternDialog.edgestyle=Edge style
 +PatternDialog.edgewidth.tooltip=Property of the edge to the parent node (is also applied to all child nodes)
 +PatternDialog.edgewidth=Edge width
-+PatternDialog.fork=fork
++PatternDialog.fork=Fork
 +PatternDialog.linear=linear
-+PatternDialog.nodebackgroundcolor.tooltip=nodebackgroundcolor.tooltip
 +PatternDialog.nodebackgroundcolor=Node background color
-+PatternDialog.nodecolor.tooltip=nodecolor.tooltip
 +PatternDialog.nodecolor=Node color
-+PatternDialog.nodestyle.tooltip=nodestyle.tooltip
 +PatternDialog.nodestyle=Node style
-+PatternDialog.nodetext.tooltip=nodetext.tooltip
 +PatternDialog.nodetext=Node text
 +PatternDialog.separator.EdgeControls=Edges
 +PatternDialog.separator.NodeColors=Node colors
@@ -391,13 +419,7 @@ Index: Resources_zh_CN.properties
 +accessories/plugins/ManagePatterns.properties_documentation=Change the patterns defined in patterns.xml in an editor. The result is automatically saved.
 +accessories/plugins/ManagePatterns.properties_name=Manage Patterns...
 +# fc, 14.3.06:
-+PatternDialog.nodefontname.tooltip=nodefont.tooltip
-+PatternDialog.nodefontname=Node font
-+PatternDialog.nodefontsize.tooltip=nodefont.tooltip
-+PatternDialog.nodefontsize=Node font
-+PatternDialog.nodefontbold.tooltip=nodefont.tooltip
 +PatternDialog.nodefontbold=Bold font
-+PatternDialog.nodefontitalic.tooltip=nodefont.tooltip
 +PatternDialog.nodefontitalic=Italic font
 +PatternDialog.separator.NodeFont=Node Font
 +# fc, 19.3.06:
@@ -473,7 +495,7 @@ Index: Resources_zh_CN.properties
 +# fc, 4.9.06
 +OptionPanel.keystroke_plugins/ScriptingEngine.keystroke.evaluate=Evaluate
 +# fc, 6.9.06:
-+error_applying_template=Error applying XSL tempalte.
++error_applying_template=Error applying XSL template.
 +# fc, 11.10.06:
 +accessories/plugins/NodeNote_jumpto.properties_documentation=Switch to resp. from note window
 +accessories/plugins/NodeNote_jumpto.properties_name=Note Edit Switch
@@ -513,7 +535,6 @@ Index: Resources_zh_CN.properties
 +plugins/ScriptEditor/window.title=Script Editor
 +plugins/ScriptEditor.menu_actions=&Actions
 +plugins/ScriptEditor.run=&Run
-+plugins/ScriptEditor.exit=&Exit
 +plugins/ScriptEditor/window.Result=Result:
 +
 +# SimplyHTML.properties
@@ -732,7 +753,7 @@ Index: Resources_zh_CN.properties
 +simplyhtml.htmlTabTitle=HTML Code view
 +
 +#fc, 14.2.07:
-+ScriptEditorPanel.changed_cancel=The scripts were changed. Do you really want to abandon this changes?
++ScriptEditorPanel.changed_cancel=The scripts were changed. Do you really want to abandon those changes?
 +
 +# fc, 2.3.07:
 +OptionPanel.separator.mouse_wheel=Mouse Wheel
@@ -768,7 +789,6 @@ Index: Resources_zh_CN.properties
 +
 +edit.decision=HTML Editor
 +edit.edit_rich_text=Do you want to use formattings like bold or italics?
-+OptionPanel.remind_use_rich_text_in_new_long_nodes=Use formatting for new nodes
 +OptionPanel.remind_type_of_new_nodes.tooltip=<html>"Ask" will ask you (use in doubt).<br>"Yes" displays the rich text editor.<br>"No" displays the plain text editor.</html>
 +OptionPanel.ask=Ask
 +
@@ -803,7 +823,6 @@ Index: Resources_zh_CN.properties
 +OptionPanel.use_common_out_point_for_root_node.tooltip=Edges start from one point at root node=======
 +
 +#fc, 9.11.07:
-+plugins/ScriptEditor.cancel=&Cancel
 +ManagePatternsPopupDialog.apply=Apply
 +PatternDialog.setscript=Change?
 +PatternDialog.setscript.tooltip=A script can be associated to the style.
@@ -826,7 +845,7 @@ Index: Resources_zh_CN.properties
 +OptionPanel.cut_nodes_without_question.tooltip=If this check box is set the nodes are cut without confirmation. This can cause loss of information if pressed without intention.
 +
 +# fc, 9.1.2008:
-+follow_graphical_link=Go to:
++follow_graphical_link=Go to: 
 +
 +#fc 10.1.2008: changed:
 +accessories/plugins/NodeNote_hide_show.properties_documentation=Lets the note window appear resp. disappear.
@@ -836,5 +855,97 @@ Index: Resources_zh_CN.properties
 +
 +#fc, 20.2.2008:
 +OptionPanel.separator.save=Save
-+OptionPanel.save_only_intrisically_needed_ids=Save used Node IDs only 
-+OptionPanel.save_only_intrisically_needed_ids.tooltip=When checked, node IDs are omitted that are not used inside the map. Observe, that you can't link external map to specific nodes inside the map without ID.
++OptionPanel.save_only_intrisically_needed_ids=Save used Node IDs only
++OptionPanel.save_only_intrisically_needed_ids.tooltip=When checked, node IDs are omitted that are not used inside the map. Observe, that you can't link external map to specific nodes inside the map without node ID.
++
++# fc, 10.3.2008:
++OptionPanel.plugins/scripting/tab_name=Scripting
++OptionPanel.separator.plugins/scripting/separatorPropertyName=Permissions
++OptionPanel.resources_execute_scripts_without_file_restriction=Permit File Operations (NOT recommended)
++OptionPanel.resources_execute_scripts_without_file_restriction.tooltip=<html><body>If your Groovy Scripts need to execute special file actions (open, close, read, write, delete(!)),<br>you have to enable this option. <br>But use it with care, as now malicious scripts can hurt your computer!</body></html>
++OptionPanel.resources_execute_scripts_without_network_restriction=Permit Network Operations (NOT recommended)
++OptionPanel.resources_execute_scripts_without_network_restriction.tooltip=<html><body>If your Groovy Scripts need to execute special network actions,<br>you have to enable this option. <br>But use it with care, as now malicious scripts can disclosure your secrets!</body></html>
++OptionPanel.resources_execute_scripts_without_exec_restriction=Permit to Execute other Applications (NOT recommended)
++OptionPanel.resources_execute_scripts_without_exec_restriction.tooltip=<html><body>If your Groovy Scripts need to execute special other applications (like a browser) without asking(!),<br>you have to enable this option. <br>But use it with care, as now malicious scripts can hurt your computer!</body></html>
++plugins/ScriptEditor.FORBIDDEN_ACTION=FreeMind groovy scripts are restricted. The following {0,choice,0#File|1#Network|2#Exec} operation is forbidden: {1,choice,0#Accept|1#Connect|2#Listen|3#Multicast|4#SetFactory|5#Exec|6#Link|7#Delete|8#Read|9#Write}. You can change this in the program settings.
++
++
++# changed, fc, 11.3.2008: 
++plugins/ScriptEditor.cancel=&Dismiss Changes and Exit
++plugins/ScriptEditor.exit=&Save and Exit
++
++# changed, fc, 26.3.2008:
++plugins/TimeManagement.xml_closeButton=Close
++
++# changed, fc, 7.4.2008:
++PatternDialog.nodebackgroundcolor.tooltip=The node's background when not selected.
++PatternDialog.nodecolor.tooltip=The node's foreground color when not selected.
++PatternDialog.nodestyle.tooltip=<html>The style describes the outer form of a node. <br>Possible values:<br><table border="1"><tr><td>fork: </td><td> without surrounding box,</td></tr><tr><td>bubble: </td><td> node with a surrounding rectangle,</td></tr><tr><td>As parent: </td><td> take the style from the parent node <br>or the default root node style for the root node,</td></tr><tr><td>Combined: </td><td> Bubble when node is folded, fork otherwise.</td></tr></table></html>
++PatternDialog.nodetext.tooltip=Here, you can define the node's text. The former text is discarded when such a pattern is applied.
++PatternDialog.nodefontname=Node's font name
++PatternDialog.nodefontsize=Node's font size
++PatternDialog.nodefontname.tooltip=
++PatternDialog.nodefontsize.tooltip=
++PatternDialog.nodefontbold.tooltip=
++PatternDialog.nodefontitalic.tooltip=
++
++# new, fc, 8.4.2008:
++PatternDialog.separator.ScriptingControl=Scripting
++
++# new, fc, 10.4.2008:
++OptionPanel.resources_don_t_show_note_icons=Don't show the note icons
++
++#new, fc, 11.4.2008:
++FreeMind=FreeMind's Homepage
++
++# new, fc, 12.4.2008:
++really_remove_notes=Really remove the note(s)?
++OptionPanel.resources_remove_notes_without_question=Remove Notes without Question?
++OptionPanel.remove_notes_without_question.tooltip=If this check box is set the notes belonging to the selected nodes are removed without confirmation. This can cause loss of information if pressed without intention.
++OptionPanel.resources_save_folding_state=Always save folding state changes 
++OptionPanel.resources_save_folding_state.tooltip=If checked, each folding action makes the map dirty and reminds you to save it.
++     
++# new, fc, 17.4.2008:
++plugins/ScriptEditor.sign=Sign Script...
++
++# new, fc, 18.4.2008:
++OptionPanel.resources_script_user_key_name_for_signing=Optional User Key Alias for Signing
++OptionPanel.resources_script_user_key_name_for_signing.tooltip=<html>If you want to sign your scripts, enter the alias of the key here. <br>The key is expected to reside in the default keystore. <br>The password of the key's secret key must coincide with the keystore password (this is the default).</html>
++OptionPanel.resources_signed_script_are_trusted=Trust signed scripts (recommended).
++OptionPanel.resources_signed_script_are_trusted.tooltip=If scripts are signed by a trusted party (ie. from the FreeMind's authors or by yourself), it is executed without restrictions. 
++
++# changed, fc, 24.4.2008:
++# this is still the old "export_branch", but as many users didn't find this feature, we 
++# have to describe it better. Moreover, it is put into the node context menu.
++export_branch_new = Branch as new Map ...
++
++# new, fc, 28.4.2008:
++icon_yes = Important
++icon_folder = Folder
++icon_up = Up
++icon_down = Down
++icon_smiley-neutral = No Mind
++icon_smiley-oh = Surprising
++icon_smiley-sad = Sad
++icon_smiley-angry = Angry
++icon_encrypted = Locked
++icon_decrypted = Unlocked
++icon_broken-line = Broken
++icon_flag-black = Black Flag
++icon_flag-blue = Blue Flag
++icon_flag-green = Green Flag
++icon_flag-orange = Orange Flag
++icon_flag-pink = Pink Flag
++icon_flag-yellow = Yellow Flag
++icon_clock = Time
++icon_hourglass = Waiting
++icon_calendar = Date
++icon_kmail = E-Mail
++icon_edit = Refine
++icon_stop-sign = Stop
++icon_closed = No Entry
++# changed:
++icon_flag = Red Flag
++
++#changed:
++OptionPanel.remind_use_rich_text_in_new_long_nodes=Use formatting for all nodes

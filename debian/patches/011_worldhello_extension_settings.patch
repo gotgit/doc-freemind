@@ -1,0 +1,87 @@
+diff -u freemind.org/freemind.properties freemind/freemind.properties
+--- a/freemind/freemind.properties	2008-05-25 00:18:05.000000000 +0800
++++ b/freemind/freemind.properties	2008-05-25 01:16:27.000000000 +0800
+@@ -506,4 +506,11 @@
+ # fc, 28.4.2008: used and displayed icons as a list with divider ';':
+ icons.list=help;messagebox_warning;idea;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;full-8;full-9;back;forward;attach;ksmiletris;smily_bad;clanbomber;desktop_new;flag;gohome;kaddressbook;knotify;korn;Mail;password;pencil;stop;wizard;xmag;bell;bookmark;penguin;licq;freemind_butterfly
+ #icons.list=help;yes;messagebox_warning;idea;folder;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;back;forward;up;down;attach;ksmiletris;smiley-neutral;smiley-oh;smiley-sad;smiley-angry;encrypted;decrypted;smily_bad;clanbomber;broken-line;desktop_new;flag-black;flag-blue;flag-green;flag-orange;flag-pink;flag;flag-yellow;clock;hourglass;gohome;calendar;kaddressbook;knotify;korn;Mail;kmail;password;pencil;edit;stop;stop-sign;closed;wizard;xmag;bell;bookmark;penguin;licq
+-#icons.list=help;yes;idea;messagebox_warning;stop;stop-sign;closed;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;ksmiletris;smiley-neutral;smiley-oh;smiley-sad;smiley-angry;smily_bad;attach;folder;clanbomber;broken-line;desktop_new;clock;hourglass;gohome;calendar;kaddressbook;knotify;korn;Mail;kmail;password;pencil;edit;wizard;xmag;bell;bookmark;penguin;licq;back;forward;up;down;flag-black;flag-blue;flag-green;flag-orange;flag-pink;flag;flag-yellow;encrypted;decrypted
+\ No newline at end of file
++#icons.list=help;yes;idea;messagebox_warning;stop;stop-sign;closed;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;ksmiletris;smiley-neutral;smiley-oh;smiley-sad;smiley-angry;smily_bad;attach;folder;clanbomber;broken-line;desktop_new;clock;hourglass;gohome;calendar;kaddressbook;knotify;korn;Mail;kmail;password;pencil;edit;wizard;xmag;bell;bookmark;penguin;licq;back;forward;up;down;flag-black;flag-blue;flag-green;flag-orange;flag-pink;flag;flag-yellow;encrypted;decrypted
++
++# worldhello, 25.5.2008:
++wh_save_extra_attrs_in_aux_file=true
++wh_separate_attr_folded=true
++wh_separate_attr_created=true
++wh_separate_attr_modified=true
++wh_nonascii_in_utf8=true
+diff -u freemind.org/Resources_en.properties freemind/Resources_en.properties
+--- a/freemind/Resources_en.properties	2008-05-04 23:05:13.000000000 +0800
++++ b/freemind/Resources_en.properties	2008-05-25 01:20:30.000000000 +0800
+@@ -1367,3 +1367,15 @@
+ 
+ #changed:
+ OptionPanel.remind_use_rich_text_in_new_long_nodes=Use formatting for all nodes
++
++# new, worldhello, 25.5.2008:
++OptionPanel.wh_extension=WorldHello Extension
++OptionPanel.separator.wh_mm_aux_file=MindMap auxiliary file
++OptionPanel.wh_save_extra_attrs_in_aux_file.tooltip=If selected, save the following attributes in .filename.mmx file.
++OptionPanel.wh_save_extra_attrs_in_aux_file=Enable auxiliary file feature
++OptionPanel.wh_separate_attr_folded=Save attribute 'FOLDED' in aux file
++OptionPanel.wh_separate_attr_created=Save attribute 'CREATED' in aux file
++OptionPanel.wh_separate_attr_modified=Save attribute 'MODIFIED' in aux file
++OptionPanel.separator.wh_nonascii_in_utf8=Character Encoding
++OptionPanel.wh_nonascii_in_utf8.tooltip=If selected, save characters > 126 in utf8 format instead of &#HEX;
++OptionPanel.wh_nonascii_in_utf8=Save non-ascii characters in UTF-8
+diff -u freemind.org/Resources_zh_CN.properties freemind/Resources_zh_CN.properties
+--- a/freemind/Resources_zh_CN.properties	2008-05-25 00:18:04.000000000 +0800
++++ b/freemind/Resources_zh_CN.properties	2008-05-25 01:25:34.000000000 +0800
+@@ -1368,3 +1368,15 @@
+ 
+ #changed:
+ OptionPanel.remind_use_rich_text_in_new_long_nodes=Use formatting for all nodes
++
++# new, worldhello, 25.5.2008:
++OptionPanel.wh_extension=WorldHello \u6269\u5c55
++OptionPanel.separator.wh_mm_aux_file=\u9644\u52a0\u7684\u8f85\u52a9\u6587\u4ef6
++OptionPanel.wh_save_extra_attrs_in_aux_file.tooltip=\u5982\u679c\u542f\u7528\uff0c\u4e0b\u5217\u5c5e\u6027\u5c06\u4e0d\u518d\u4fdd\u5b58\u5728 MindMap \u6587\u4ef6\u4e2d\uff0c\u800c\u662f\u4fdd\u5b58\u4e8e\u9644\u52a0\u7684 .mmx \u6587\u4ef6\u4e2d\u3002
++OptionPanel.wh_save_extra_attrs_in_aux_file=\u542f\u7528\u9644\u52a0\u6587\u4ef6\u529f\u80fd
++OptionPanel.wh_separate_attr_folded=\u4fdd\u5b58\u5c5e\u6027 'FOLDED' \u4e8e\u9644\u52a0\u6587\u4ef6
++OptionPanel.wh_separate_attr_created=\u4fdd\u5b58\u5c5e\u6027 'CREATED' \u4e8e\u9644\u52a0\u6587\u4ef6
++OptionPanel.wh_separate_attr_modified=\u4fdd\u5b58\u5c5e\u6027 'MODIFIED' \u4e8e\u9644\u52a0\u6587\u4ef6
++OptionPanel.separator.wh_nonascii_in_utf8=\u5b57\u7b26\u7f16\u7801
++OptionPanel.wh_nonascii_in_utf8.tooltip=\u5982\u679c\u542f\u7528\uff0c\u5c06\u4e2d\u6587\u5b57\u7b26\u4ee5 UTF8 \u683c\u5f0f\u4fdd\u5b58\uff0c\u5426\u5219\u4ee5 &#HEX; \u683c\u5f0f\u7f16\u7801\u3002
++OptionPanel.wh_nonascii_in_utf8=\u5c06\u4e2d\u6587\u5b57\u7b26\u4fdd\u5b58\u4e3aUTF8
+diff -ru freemind.org/freemind/preferences/layout/OptionPanel.java freemind/freemind/preferences/layout/OptionPanel.java
+--- a/freemind/freemind/preferences/layout/OptionPanel.java	2008-05-25 00:18:05.000000000 +0800
++++ b/freemind/freemind/preferences/layout/OptionPanel.java	2008-05-25 01:57:32.000000000 +0800
+@@ -1141,6 +1141,28 @@
+         controls.add(new NumberProperty("undo_levels.tooltip", "undo_levels", 2,1000,1));
+ 
+ 		/***********************************************************************
++		 * WorldHello ****************************************************************
++		 */
++		controls.add(new NewTabProperty("wh_extension"));
++		controls.add(new SeparatorProperty("wh_nonascii_in_utf8"));
++		controls.add(new BooleanProperty(
++				"wh_nonascii_in_utf8.tooltip",
++				"wh_nonascii_in_utf8")); // true
++		controls.add(new SeparatorProperty("wh_mm_aux_file"));
++		controls.add(new BooleanProperty(
++				"wh_save_extra_attrs_in_aux_file.tooltip",
++				"wh_save_extra_attrs_in_aux_file")); // true
++		controls.add(new BooleanProperty(
++				"wh_separate_attr_folded",
++				"wh_separate_attr_folded")); // true
++		controls.add(new BooleanProperty(
++				"wh_separate_attr_created",
++				"wh_separate_attr_created")); // true
++		controls.add(new BooleanProperty(
++				"wh_separate_attr_modified",
++				"wh_separate_attr_modified")); // true
++
++		/***********************************************************************
+ 		 * Browser/external apps
+ 		 * ****************************************************************
+ 		 */

@@ -18,7 +18,7 @@ Index: freemind/main/XMLElement.java
                      int unicode = (int) ch;
 -                    if ((unicode < 32) || (unicode > 126)) {
 +                    // OSSXP.COM: do not convert Chinese characters into &#blahblah;
-+                    if (unicode < 32) {
++                    if (!Resources.getInstance().getBoolProperty("wh_nonascii_in_utf8") && unicode > 126 || unicode < 32) {
                          writer.write('&'); writer.write('#');
                          writer.write('x');
                          writer.write(Integer.toString(unicode, 16));
@@ -40,7 +40,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
 ===================================================================
 --- a/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（修订版 2510）
 +++ b/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（工作拷贝）
-@@ -251,7 +251,8 @@
+@@ -252,7 +252,8 @@
          	if(timerForAutomaticSaving != null) {
          		timerForAutomaticSaving.cancel();
          	}
@@ -50,7 +50,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
              getXml(fileout);
  
              if(!isInternal) {
-@@ -278,10 +279,14 @@
+@@ -281,10 +282,14 @@
  	 * @throws IOException
  	 */
  	private void getXml(Writer fileout, boolean saveInvisible) throws IOException {
@@ -66,7 +66,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
  		getRegistry().save(fileout);
  		(getRootNode()).save(fileout, this.getLinkRegistry(), saveInvisible, true);
  		fileout.write("</map>\n");
-@@ -357,7 +362,28 @@
+@@ -360,7 +365,28 @@
          int versionInfoLength;
  		versionInfoLength = EXPECTED_START_STRINGS[0].length();
          // reading the start of the file:

@@ -6,3 +6,5 @@
 007_freemind.startup.patch
 008_build_xml.patch
 009_filter_all_illegal_xml_characters.patch
+010_freemind_default_settings.patch
+011_worldhello_extension_settings.patch
