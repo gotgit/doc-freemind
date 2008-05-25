@@ -6,19 +6,15 @@
 <node COLOR="#990000" ID="Freemind_Link_1426395329">
 <richcontent TYPE="NODE"><html>
   <head>
-    <style type="text/css">
-      <!--
-        p { margin-top: 0 }
-      -->
-    </style>
     
   </head>
   <body>
     <p style="text-align: center">
-      <font size="5">FreeMind <br size="5"/>点亮智慧的明灯</font><br/><font size="2"><b>(版本号: 0.4.F-$Rev$ )</b></font>
+      <font size="5">FreeMind&#160;<br size="5" />&#28857;&#20142;&#26234;&#24935;&#30340;&#26126;&#28783;</font><br /><font size="2"><b>(&#29256;&#26412;&#21495;: 0.5.F-$Rev$ )</b></font>
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <edge WIDTH="thin"/>
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <node COLOR="#3300cc" FOLDED="true" ID="Freemind_Link_757657139" POSITION="right" STYLE="bubble" 
@@ -233,6 +229,23 @@
 	TEXT="WHODO 所做的修改">
 <edge WIDTH="thin"/>
 <cloud COLOR="#ccccff"/>
+<node FOLDED="true" ID="ID_1754430274" 
+	TEXT="WorldHello扩展功能设置">
+<node FOLDED="true" ID="ID_1740567957" 
+	TEXT="字符编码&#xa;">
+<node ID="ID_1170984594" 
+	TEXT="将中文字符以 UTF8 编码保存在 filename.mm 文件中，而不是 &amp;#HEX; 格式的编码。"/>
+</node>
+<node FOLDED="true" ID="ID_782411083" 
+	TEXT="附加的辅助文件">
+<node ID="ID_943799703" 
+	TEXT="将不适合版本控制的属性保存在 filename.mm 文件之外的一个辅助文件中，辅助文件名为 .filename.mmx (扩展名为.mmx，文件名前加上一个点，在Unix下是隐藏文件)。"/>
+<node ID="ID_1552859814" 
+	TEXT="可以选择哪些属性从 filename.mm 文件移动到 .filename.mmx 文件。默认三个属性 &apos;FOLDED&apos;, &apos;CREATED&apos;, &apos;MODIFIED&apos; 都被移动到附加的辅助文件中。 &#xa;"/>
+</node>
+<node ID="ID_280033103" 
+	TEXT="注：“WorldHello扩展”扩展菜单在 FreeMind 0.9.0.Beta.17+wh-13 版本之后引入"/>
+</node>
 <node FOLDED="true" ID="Freemind_Link_1768010534" 
 	TEXT="中文编码补丁">
 <node ID="Freemind_Link_485913597" 
@@ -358,6 +371,35 @@
 	TEXT="看看是否由于您的浏览器禁用了 JavaScript；  "/>
 <node ID="Freemind_Link_1894215054" 
 	TEXT="或者浏览器的广告过滤插件把 Flash 屏蔽掉了；"/>
+</node>
+</node>
+<node FOLDED="true" ID="ID_483497482" POSITION="right" STYLE="bubble" 
+	TEXT="疑难解答">
+<icon BUILTIN="clanbomber"/>
+<node FOLDED="true" ID="ID_201063976" 
+	TEXT="运行 FreeMind，在显示 Splash 时挂起，不能继续运行">
+<node ID="ID_17445931" 
+	TEXT="如果是在 Windows 平台使用，运行 freemind.bat。"/>
+<node ID="ID_1426564559" 
+	TEXT="如果是在 Linux 平台使用，运行 freemind.sh。"/>
+<node ID="ID_89120891" 
+	TEXT="注意在 DOS窗口/Linux控制台下的错误显示"/>
+</node>
+<node FOLDED="true" ID="ID_1086132323" 
+	TEXT="不能保存 FreeMind 文件">
+<node ID="ID_564238224" 
+	TEXT="查看一下 JRE 版本： java -version"/>
+<node ID="ID_1702056816" 
+	TEXT="尝试升级到最新的 JRE，再试试。"/>
+</node>
+<node FOLDED="true" ID="ID_285362381" 
+	TEXT="在 Windows 平台不能运行，提示找不到 freemind.jar">
+<node ID="ID_1969926223" 
+	TEXT="看看是不是由于目录名中包含了特殊字符（如＋号），造成查找 FreeMind 目录失败。"/>
+<node ID="ID_1620970519" 
+	TEXT="从 WordHello.net 下载的软件包名称中可能包含＋号，如果在Windows平台直接展开到目录，就会出现这个问题。&#xa;例如展开到： C:\Bin\FreeMind-0.9.0BETA17+wh-13\ "/>
+<node ID="ID_142934203" 
+	TEXT="解决办法：修改FreeMind目录名。&#xa;例如：将 C:\Bin\FreeMind-0.9.0BETA17+wh-13\ 修改为 C:\Bin\FreeMind\"/>
 </node>
 </node>
 <node COLOR="#990000" FOLDED="true" ID="Freemind_Link_868000310" POSITION="left" STYLE="bubble" 
