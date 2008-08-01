@@ -1,6 +1,6 @@
 --- a/freemind/freemind/preferences/layout/OptionPanel.java
 +++ b/freemind/freemind/preferences/layout/OptionPanel.java
-@@ -525,7 +525,7 @@
+@@ -532,7 +532,7 @@
  		
  		controls.add(new BooleanProperty(
  				"resources_save_folding_state.tooltip",

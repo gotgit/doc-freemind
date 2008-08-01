@@ -1,6 +1,6 @@
 --- a/freemind/freemind.sh	2006-10-30 04:31:53.000000000 +0800
 +++ b/freemind/freemind.sh	2007-03-09 23:57:16.000000000 +0800
-@@ -135,6 +135,7 @@
+@@ -136,6 +136,7 @@
  #--------- Put the environment together --------------------------------
  
  _source /etc/freemind/freemindrc
@@ -8,7 +8,7 @@
  _source ~/.freemind/freemindrc
  
  findjava
-@@ -176,7 +177,10 @@
+@@ -177,7 +178,10 @@
  	exit 1
  fi
  
@@ -20,7 +20,7 @@
  then
  	if [ ! -d ~/.freemind ]
  	then
-@@ -184,7 +188,7 @@
+@@ -185,7 +189,7 @@
  		mkdir -p ~/.freemind
  	fi
  	_debug "Copying patterns.xml to ~/.freemind."
@@ -29,7 +29,7 @@
  fi
  
  #--------- Call (at last) FreeMind -------------------------------------
-@@ -198,6 +202,7 @@
+@@ -199,6 +203,7 @@
  ${freedir}/lib/bindings.jar:\
  ${freedir}/lib/commons-lang-2.0.jar:\
  ${freedir}/lib/forms-1.0.5.jar:\

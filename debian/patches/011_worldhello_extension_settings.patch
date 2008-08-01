@@ -1,13 +1,13 @@
 diff -u freemind.org/freemind.properties freemind/freemind.properties
 --- a/freemind/freemind.properties	2008-05-25 00:18:05.000000000 +0800
 +++ b/freemind/freemind.properties	2008-05-25 01:16:27.000000000 +0800
-@@ -506,4 +506,11 @@
+@@ -505,4 +505,11 @@
+ 
  # fc, 28.4.2008: used and displayed icons as a list with divider ';':
- icons.list=help;messagebox_warning;idea;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;full-8;full-9;back;forward;attach;ksmiletris;smily_bad;clanbomber;desktop_new;flag;gohome;kaddressbook;knotify;korn;Mail;password;pencil;stop;wizard;xmag;bell;bookmark;penguin;licq;freemind_butterfly
- #icons.list=help;yes;messagebox_warning;idea;folder;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;back;forward;up;down;attach;ksmiletris;smiley-neutral;smiley-oh;smiley-sad;smiley-angry;encrypted;decrypted;smily_bad;clanbomber;broken-line;desktop_new;flag-black;flag-blue;flag-green;flag-orange;flag-pink;flag;flag-yellow;clock;hourglass;gohome;calendar;kaddressbook;knotify;korn;Mail;kmail;password;pencil;edit;stop;stop-sign;closed;wizard;xmag;bell;bookmark;penguin;licq
--#icons.list=help;yes;idea;messagebox_warning;stop;stop-sign;closed;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;ksmiletris;smiley-neutral;smiley-oh;smiley-sad;smiley-angry;smily_bad;attach;folder;clanbomber;broken-line;desktop_new;clock;hourglass;gohome;calendar;kaddressbook;knotify;korn;Mail;kmail;password;pencil;edit;wizard;xmag;bell;bookmark;penguin;licq;back;forward;up;down;flag-black;flag-blue;flag-green;flag-orange;flag-pink;flag;flag-yellow;encrypted;decrypted
+ icons.list=idea;help;yes;messagebox_warning;stop-sign;closed;info;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;full-8;full-9;full-0;stop;prepare;go;back;forward;up;down;attach;ksmiletris;smiley-neutral;smiley-oh;smiley-angry;smily_bad;clanbomber;desktop_new;gohome;folder;korn;Mail;kmail;list;edit;kaddressbook;knotify;password;pencil;wizard;xmag;bell;bookmark;penguin;licq;freemind_butterfly;broken-line;calendar;clock;hourglass;launch;flag-black;flag-blue;flag-green;flag-orange;flag-pink;flag;flag-yellow;family;female1;female2;male1;male2;fema;group
+-# not added: encrypted;decrypted;redo;
 \ No newline at end of file
-+#icons.list=help;yes;idea;messagebox_warning;stop;stop-sign;closed;button_ok;button_cancel;full-1;full-2;full-3;full-4;full-5;full-6;full-7;ksmiletris;smiley-neutral;smiley-oh;smiley-sad;smiley-angry;smily_bad;attach;folder;clanbomber;broken-line;desktop_new;clock;hourglass;gohome;calendar;kaddressbook;knotify;korn;Mail;kmail;password;pencil;edit;wizard;xmag;bell;bookmark;penguin;licq;back;forward;up;down;flag-black;flag-blue;flag-green;flag-orange;flag-pink;flag;flag-yellow;encrypted;decrypted
++# not added: encrypted;decrypted;redo;
 +
 +# worldhello, 25.5.2008:
 +wh_save_extra_attrs_in_aux_file=true
@@ -15,14 +15,15 @@ diff -u freemind.org/freemind.properties freemind/freemind.properties
 +wh_separate_attr_created=true
 +wh_separate_attr_modified=true
 +wh_nonascii_in_utf8=true
+\ No newline at end of file
 diff -u freemind.org/Resources_en.properties freemind/Resources_en.properties
 --- a/freemind/Resources_en.properties	2008-05-04 23:05:13.000000000 +0800
 +++ b/freemind/Resources_en.properties	2008-05-25 01:20:30.000000000 +0800
-@@ -1367,3 +1367,15 @@
+diff -u freemind.org/Resources_zh_CN.properties freemind/Resources_zh_CN.properties
+@@ -1375,6 +1375,18 @@
+ # new, fc, 25.5.2008:
+ node_is_write_protected=Target node is write protected.
  
- #changed:
- OptionPanel.remind_use_rich_text_in_new_long_nodes=Use formatting for all nodes
-+
 +# new, worldhello, 25.5.2008:
 +OptionPanel.wh_extension=WorldHello Extension
 +OptionPanel.separator.wh_mm_aux_file=MindMap auxiliary file
@@ -34,13 +35,16 @@ diff -u freemind.org/Resources_en.properties freemind/Resources_en.properties
 +OptionPanel.separator.wh_nonascii_in_utf8=Character Encoding
 +OptionPanel.wh_nonascii_in_utf8.tooltip=If selected, save characters > 126 in utf8 format instead of &#HEX;
 +OptionPanel.wh_nonascii_in_utf8=Save non-ascii characters in UTF-8
-diff -u freemind.org/Resources_zh_CN.properties freemind/Resources_zh_CN.properties
++
+ # new, fc, 6.7.2008:
+ KeyDoc=Key Documentation PDF
+ # translate only, when you have an own translation of this doc.
 --- a/freemind/Resources_zh_CN.properties	2008-05-25 00:18:04.000000000 +0800
 +++ b/freemind/Resources_zh_CN.properties	2008-05-25 01:25:34.000000000 +0800
-@@ -1368,3 +1368,15 @@
+@@ -1375,3 +1375,15 @@
  
- #changed:
- OptionPanel.remind_use_rich_text_in_new_long_nodes=Use formatting for all nodes
+ # new, fc, 25.5.2008:
+ node_is_write_protected=\u76ee\u6807\u8282\u70b9\u88ab\u5199\u4fdd\u62a4\u3002
 +
 +# new, worldhello, 25.5.2008:
 +OptionPanel.wh_extension=WorldHello \u6269\u5c55
@@ -56,7 +60,7 @@ diff -u freemind.org/Resources_zh_CN.properties freemind/Resources_zh_CN.propert
 diff -ru freemind.org/freemind/preferences/layout/OptionPanel.java freemind/freemind/preferences/layout/OptionPanel.java
 --- a/freemind/freemind/preferences/layout/OptionPanel.java	2008-05-25 00:18:05.000000000 +0800
 +++ b/freemind/freemind/preferences/layout/OptionPanel.java	2008-05-25 01:57:32.000000000 +0800
-@@ -1141,6 +1141,28 @@
+@@ -1150,6 +1150,28 @@
          controls.add(new NumberProperty("undo_levels.tooltip", "undo_levels", 2,1000,1));
  
  		/***********************************************************************

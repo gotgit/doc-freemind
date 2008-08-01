@@ -2,7 +2,7 @@ Index: freemind/controller/Controller.java
 ===================================================================
 --- a/freemind/freemind/controller/Controller.java	（修订版 2510）
 +++ b/freemind/freemind/controller/Controller.java	（工作拷贝）
-@@ -1128,7 +1128,7 @@
+@@ -1156,7 +1156,7 @@
              this.controller = controller;
          }
          public void actionPerformed(ActionEvent e) {
@@ -49,7 +49,7 @@ Index: freemind/main/FreeMind.java
 ===================================================================
 --- a/freemind/freemind/main/FreeMind.java	（修订版 2510）
 +++ b/freemind/freemind/main/FreeMind.java	（工作拷贝）
-@@ -82,6 +82,9 @@
+@@ -81,6 +81,9 @@
  
  public class FreeMind extends JFrame implements FreeMindMain {
  

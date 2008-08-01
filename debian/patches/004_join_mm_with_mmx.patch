@@ -2,9 +2,9 @@ Index: freemind/main/Tools.java
 ===================================================================
 --- a/freemind/freemind/main/Tools.java	（修订版 2519）
 +++ b/freemind/freemind/main/Tools.java	（工作拷贝）
-@@ -82,6 +82,12 @@
- import javax.xml.transform.stream.StreamResult;
- import javax.xml.transform.stream.StreamSource;
+@@ -87,6 +87,12 @@
+ 
+ import freemind.view.mindmapview.NodeView;
  
 +//OSSXP.COM: classes for .mm and .mmx join.
 +import javax.xml.parsers.DocumentBuilder;
@@ -15,7 +15,7 @@ Index: freemind/main/Tools.java
  /**
   * @author foltin
   *
-@@ -960,16 +966,125 @@
+@@ -985,16 +991,125 @@
  		    return new StringReader(writer.getBuffer().toString());
  	    }
  	    else{
@@ -195,7 +195,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
 ===================================================================
 --- a/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（修订版 2519）
 +++ b/freemind/freemind/modes/mindmapmode/MindMapMapModel.java	（工作拷贝）
-@@ -433,7 +433,7 @@
+@@ -435,7 +435,7 @@
          	}
              if (mapStart.startsWith(EXPECTED_START_STRINGS[i])) {
                  // actual version:
@@ -204,7 +204,7 @@ Index: freemind/modes/mindmapmode/MindMapMapModel.java
                  break;
              }
          }
-@@ -447,7 +447,7 @@
+@@ -449,7 +449,7 @@
  					OptionalDontShowMeAgainDialog.ONLY_OK_SELECTION_IS_STORED)
  					.show().getResult();
  			if(showResult != JOptionPane.OK_OPTION) {
@@ -217,7 +217,7 @@ Index: build.xml
 ===================================================================
 --- a/freemind/build.xml	（修订版 2519）
 +++ b/freemind/build.xml	（工作拷贝）
-@@ -327,6 +327,7 @@
+@@ -336,6 +336,7 @@
  				<include name="Resources*"/>
  				<include name="mindmap_menus.xml"/>
  				<include name="**/freemind_version_updater.xslt"/>

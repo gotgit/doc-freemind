@@ -2,7 +2,7 @@ Index: freemind/freemind/modes/NodeAdapter.java
 ===================================================================
 --- a/freemind/freemind/modes/NodeAdapter.java	（版本 2678）
 +++ b/freemind/freemind/modes/NodeAdapter.java	（工作副本）
-@@ -208,7 +208,7 @@
+@@ -209,7 +209,7 @@
  
      /** \0 is not allowed: */
      private String makeValidXml(String pXmlNoteText) {
@@ -11,7 +11,7 @@ Index: freemind/freemind/modes/NodeAdapter.java
      }
      /* ************************************************************
       * ********     Notes                                   *******
-@@ -1000,7 +1000,7 @@
+@@ -1003,7 +1003,7 @@
      	// OSSXP.COM: not save TEXT attributes in .mmx file
      	if( node.isInWhiteAttlist("TEXT"))
      	{
@@ -20,7 +20,7 @@ Index: freemind/freemind/modes/NodeAdapter.java
          if(!HtmlTools.isHtmlNode(text)) {
              node.setAttribute(XMLElementAdapter.XML_NODE_TEXT,text);
          } else {
-@@ -1008,14 +1008,14 @@
+@@ -1011,14 +1011,14 @@
              XMLElement htmlElement = new XMLElement();
              htmlElement.setName(XMLElementAdapter.XML_NODE_XHTML_CONTENT_TAG);
              htmlElement.setAttribute(XMLElementAdapter.XML_NODE_XHTML_TYPE_TAG, XMLElementAdapter.XML_NODE_XHTML_TYPE_NODE);
