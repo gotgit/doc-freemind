@@ -320,7 +320,7 @@
 </node>
 </node>
 </node>
-<node ID="Freemind_Link_1562105759" LINK="http://whodo.worldhello.net" POSITION="right" 
+<node ID="Freemind_Link_1562105759" LINK="http://www.worldhello.net" POSITION="right" 
 	TEXT="获取 WHODO 账号，参与本文翻译……">
 <cloud COLOR="#ffff66"/>
 <font ITALIC="true" NAME="SansSerif" SIZE="12"/>

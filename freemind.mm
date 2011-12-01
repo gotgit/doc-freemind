@@ -1205,7 +1205,7 @@
 </node>
 <node FOLDED="true" ID="Freemind_Link_1998866896" 
 	TEXT="作者">
-<node ID="Freemind_Link_1892886125" LINK="http://whodo.worldhello.net/wiki/User:Jiangxin" 
+<node ID="Freemind_Link_1892886125" LINK="http://www.worldhello.net/about" 
 	TEXT="蒋鑫"/>
 </node>
 </node>
